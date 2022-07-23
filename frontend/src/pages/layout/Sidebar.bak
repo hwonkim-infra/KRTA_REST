@@ -1,0 +1,37 @@
+import React from 'react'
+
+const Sidebar = () => {
+    return (
+        <main className="main" id="top">
+            <div className="container" data-layout="container">
+                <nav className="navbar navbar-dark navbar-vertical navbar-expand-xl">
+                    <div className="d-flex align-items-center">
+                            Center
+                <div className="collapse navbar-collapse">
+                    <div className="navbar-vertical-content">
+                        <ul className="navbar-nav flex-column mb-3">
+                            <li className="nav-item">
+                                <a href="/HEX" className="nav-link drowdown-indicator">
+                                    <div className="d-flex align-items-center">
+                                        <div className="nav-link-text ps-1">Crawler</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    </div>
+                </nav>
+                <div className="content">
+                    <nav className="navbar navbar-dark navbar-glass navbar-top navbar-expand">
+                        <button className="btn navbar-toggler-hamburger-icon navbar-toggler me-1 me-sm-3">
+                            
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </main>
+    )
+}
+
+export default Sidebar

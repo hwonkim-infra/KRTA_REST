@@ -1,0 +1,149 @@
+<% var GrossWeight = product.operating_weight + 65 // 운전중량 %>
+<% 
+var ground_Length = product.undercarriage.tumbler_distance + 0.35 * (product.undercarriage.track_length - product.undercarriage.tumbler_distance);
+var ground_pressure = (GrossWeight / (2 * product.undercarriage.shoe_width/10 * ground_Length/10)).toFixed(2);
+%> 
+
+<% var GrossWeight_origin = origin.operating_weight + 65 // 운전중량 %>
+<% 
+var ground_Length_origin = origin.undercarriage.tumbler_distance+0.35*(origin.undercarriage.track_length - origin.undercarriage.tumbler_distance);
+var ground_pressure_origin = (GrossWeight_origin / (2 * origin.undercarriage.shoe_width/10 * ground_Length_origin/10)).toFixed(2);
+%> 
+
+
+
+
+<!-- ===============================================-->
+<!--    제원 비교    -->
+<!-- ===============================================-->
+
+<div class="pages" id="compareChange">
+    <table class="bordertable">
+        <tr class="borderheader">
+            <td height="30mm">형식 변경에 따른 제원 비교</td>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="innertable" height="" width="80%">
+
+                    <tr height="70">
+                        <th width="25%">제원 항목</th>
+                        <th>변경 전</th>
+                        <th>변경 후</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% if(origin.attachments.boom_length !== product.attachments.boom_length) { %> <tr height="50">
+                            <td>붐</td>
+                            <td><%= origin.attachments.boom_length %></td>
+                            <td><%= product.attachments.boom_length %>  </td>
+                        </tr><% } %> 
+                        <% if(origin.attachments.arm_length !== product.attachments.arm_length) { %> <tr height="50">
+                            <td>암</td>
+                            <td><%= origin.attachments.arm_length %></td>
+                            <td><%= product.attachments.arm_length %>  </td>
+                        </tr><% } %>
+                        <% if(origin.attachments.bucket_struck !== product.attachments.bucket_struck) { %> <tr height="50">
+                            <td>버켓 (평적 / 산적)</td>
+                            <td><%= origin.attachments.bucket_struck %> / <%= origin.attachments.bucket_heap %></td>
+                            <td><%= product.attachments.bucket_struck %> / <%= product.attachments.bucket_heap %> </td>
+                        </tr><% } %>
+                        <% if(origin.attachments.quick_coupler_1 !== product.attachments.quick_coupler_1) { %> <tr height="50">
+                            <td>퀵 커플러</td>
+                            <td><%= origin.attachments.quick_coupler_1 %></td>
+                            <td><%= product.attachments.quick_coupler_1 %>  </td>
+                        </tr><% } %>
+                        <% if(origin.operating_weight !== product.operating_weight) { %> <tr height="50">
+                            <td>자체중량</td>
+                            <td><%= origin.operating_weight %></td>
+                            <td><%= product.operating_weight %>  </td>
+                        </tr><% } %>
+                        <% if(origin.overall_length !== product.overall_length) { %> <tr height="50">
+                            <td>길이</td>
+                            <td><%= origin.overall_length %></td>
+                            <td><%= product.overall_length %>  </td>
+                        </tr><% } %>
+                        <% if(origin.overall_width !== product.overall_width) { %> <tr height="50">
+
+                            <td>너비</td>
+                            <td><%= origin.overall_width %></td>
+                            <td><%= product.overall_width %>  </td>
+                        </tr><% } %>
+                        <% if(origin.overall_height !== product.overall_height) { %> <tr height="50">
+
+                            <td>높이</td>
+                            <td><%= origin.overall_height %></td>
+                            <td><%= product.overall_height %>  </td>
+                        </tr><% } %>
+                        <% if(origin.attachments.digging_reach !== product.attachments.digging_reach) { %> <tr height="50">
+
+                            <td>최대굴착반지름</td>
+                            <td><%= origin.attachments.digging_reach %></td>
+                            <td><%= product.attachments.digging_reach %>  </td>
+                        </tr><% } %>
+                        <% if(origin.attachments.digging_depth !== product.attachments.digging_depth) { %> <tr height="50">
+
+                            <td>최대굴착깊이</td>
+                            <td><%= origin.attachments.digging_depth %></td>
+                            <td><%= product.attachments.digging_depth %>  </td>
+                        </tr><% } %>
+                        <% if(origin.attachments.loading_height !== product.attachments.loading_height) { %> <tr height="50">
+
+                            <td>최대덤프높이</td>
+                            <td><%= origin.attachments.loading_height %></td>
+                            <td><%= product.attachments.loading_height %>  </td>
+                        </tr><% } %>
+
+                        <% if(origin.undercarriage.dozer_size !== product.undercarriage.dozer_size) { %> <tr height="50">
+                            <td>배토판</td>
+                            <td><%= origin.undercarriage.dozer_size %></td>
+                            <td><%= product.undercarriage.dozer_size %>  </td>
+                        </tr><% } %>
+                        
+                        <% if(origin.undercarriage.ground_clearance !== product.undercarriage.ground_clearance) { %> <tr height="50">
+
+                            <td>최저지상고</td>
+                            <td><%= origin.undercarriage.ground_clearance %></td>
+                            <td><%= product.undercarriage.ground_clearance %>  </td>
+                        </tr><% } %>
+                        <% if(origin.undercarriage.shoe_width !== product.undercarriage.shoe_width) { %> <tr height="50">
+
+                            <td>슈폭</td>
+                            <td><%= origin.undercarriage.shoe_width %></td>
+                            <td><%= product.undercarriage.shoe_width %>  </td>
+                        </tr><% } %>
+                        <% if(origin.undercarriage.track_height !== product.undercarriage.track_height) { %> <tr height="50">
+
+                            <td>트랙높이</td>
+                            <td><%= origin.undercarriage.track_height %></td>
+                            <td><%= product.undercarriage.track_height %>  </td>
+                        </tr><% } %>
+                        <% if(origin.undercarriage.track_gap !== product.undercarriage.track_gap) { %> <tr height="50">
+
+                            <td>트랙중심간거리</td>
+                            <td><%= origin.undercarriage.track_gap %></td>
+                            <td><%= product.undercarriage.track_gap %>  </td>
+                        </tr><% } %>
+                        <% if(origin.undercarriage.tumbler_distance !== product.undercarriage.tumbler_distance) { %> <tr height="50">
+
+                            <td>텀블러중심간거리</td>
+                            <td><%= origin.undercarriage.tumbler_distance %></td>
+                            <td><%= product.undercarriage.tumbler_distance %>  </td>                            
+                        </tr><% } %>
+                        <% if(ground_pressure_origin !== ground_pressure) { %> <tr height="50">
+
+
+                            <td>접지압</td>
+                            <td><%= ground_pressure_origin %> </td>
+                            <td><%= ground_pressure %> </td>
+                        </tr><% } %>
+
+                        
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

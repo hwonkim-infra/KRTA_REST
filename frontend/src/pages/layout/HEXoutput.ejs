@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%- pageTitle %> 형식신고 </title>
+
+<script>
+        MathJax = {
+            tex: {
+                inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                ],
+            },
+        };
+    </script>
+  <script id="MathJax-script" async src="/vendors/mathjax/tex-mml-chtml.js"></script>
+
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../../stylesheets/pages.css">
+
+  
+  <style></style>
+
+</head>
+<%- include('HEXcalculations.ejs') %> 
+
+<body>
+
+<% 
+var GrossWeight = product.operating_weight + 65; // 운전중량
+    var GrossWeight_load = product.operating_weight + 65 + 1500 * product.attachments.bucket_heap;
+
+var attachments_load_weight = product.COG.attachments.weight + 1500 * product.attachments.bucket_heap;
+
+var bucket_exca_capa=product.attachments.bucket_heap * 1500;
+var excavating_limit = Math.round(GrossWeight * (product.stability.tipping_line + product.stability.COG_COS ) / (product.stability.bucket_COS - product.stability.tipping_line)); 
+
+
+var ground_Length =
+    product.undercarriage.tumbler_distance + 0.35 * (product.undercarriage.track_length - product.undercarriage.tumbler_distance);
+var ground_pressure = GrossWeight / ((((2 * product.undercarriage.shoe_width) / 10) * ground_Length) / 10);
+var quick_coupler_weight = Math.max(product.attachments.quick_coupler_weight_1, product.attachments.quick_coupler_weight_2);
+
+var TM_rev_1 = (
+    ((product.travel.pump_displacement * product.travel.TM_mv) /
+        (product.travel.TM_flow_1 * product.travel.reduc)) *
+    1000
+).toFixed(2);
+var TM_rev_2 = (
+    ((product.travel.pump_displacement * product.travel.TM_mv) /
+        (product.travel.TM_flow_2 * product.travel.reduc)) *
+    1000
+).toFixed(2);
+var travel_speed_1 = (
+    (TM_rev_1 * 2 * Math.PI * product.travel.sprocket_radius * 60) / 10 ** 6).toFixed(2);
+var travel_speed_2 = (
+    (TM_rev_2 * 2 * Math.PI * product.travel.sprocket_radius * 60) / 10 ** 6).toFixed(2);
+var travel_speed = Math.max(travel_speed_1, travel_speed_2);
+
+var TM_1 = (
+    ((product.travel.pump_pressure * product.travel.TM_flow_1) /
+        (200 * Math.PI)) *
+    product.travel.reduc *
+    product.travel.TM_mt
+).toFixed(2);
+var TM_2 = (
+    ((product.travel.pump_pressure * product.travel.TM_flow_2) /
+        (200 * Math.PI)) *
+    product.travel.reduc *
+    product.travel.TM_mt
+).toFixed(2);
+var Traction_Sprocket =
+    ((2 * TM_2 * 1000) / product.travel.sprocket_radius) * product.travel.TM_r;
+var ground_traction = product.travel.surface_drag * GrossWeight;
+
+var TS = (
+    ((2 * TM_1 * 1000) / product.travel.sprocket_radius) *
+    product.travel.TM_r
+).toFixed(0);
+var AF = (
+    product.travel.surface_drag *
+    (product.operating_weight + 65)
+).toFixed(2);
+var DP = Math.min(TS, AF);
+var traction_downward=(product.travel.sprocket_radius / 1000 * GrossWeight * Math.sin(16.7/180*Math.PI)).toFixed(2);
+
+var theta_1 = (Math.atan(product.travel.surface_drag) * (180 / Math.PI)).toFixed(1);
+var theta_2 = ((180 / Math.PI) * Math.asin((DP - product.travel.drag * GrossWeight) / GrossWeight)).toFixed(1);
+var theta_3 = product.travel.greadability_ref;
+
+var swing_reduction_rev = (
+    ((product.swivel.pump_flow * product.swivel.motor_eff) /
+        product.swivel.motor_displacement) *
+    1000
+).toFixed(2);
+
+var swing_rev = (swing_reduction_rev / product.swivel.reduction).toFixed(1);
+
+%> 
+
+ <% 
+  
+  var upperStructure_weight=GrossWeight - product.COG.counterWeight.weight - product.COG.underCarriage.weight - product.COG.attachments.weight;
+
+// default Config.
+var COG_longitudinal=Math.round((upperStructure_weight*product.COG.upperStructure.longitudinal + product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+product.COG.attachments.weight*product.COG.attachments.longitudinal)/ GrossWeight, 1); 
+
+var COG_lateral = Math.round((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+product.COG.attachments.weight*product.COG.attachments.lateral)/
+GrossWeight, 1); 
+
+var COG_vertical = Math.round((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+product.COG.attachments.weight*product.COG.attachments.vertical)/ GrossWeight, 1) ; 
+
+// attachments_load
+var COG_longitudinal_load = Math.round((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+attachments_load_weight*product.COG.attachments_load.longitudinal)/ GrossWeight_load, 1) ; 
+
+var COG_lateral_load  = Math.round((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+attachments_load_weight*product.COG.attachments_load.lateral)/
+GrossWeight_load, 1); 
+
+var COG_vertical_load  = Math.round((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+attachments_load_weight*product.COG.attachments_load.vertical)/ GrossWeight_load, 1); 
+
+
+// attachments_maxReach
+var COG_longitudinal_maxReach = Math.round((upperStructure_weight*product.COG.upperStructure.longitudinal+product.COG.counterWeight.weight*product.COG.counterWeight.longitudinal+product.COG.underCarriage.weight*product.COG.underCarriage.longitudinal+attachments_load_weight*product.COG.attachments_maxReach.longitudinal)/ GrossWeight_load, 1); 
+
+var COG_lateral_maxReach  = Math.round((upperStructure_weight*product.COG.upperStructure.lateral+product.COG.counterWeight.weight*product.COG.counterWeight.lateral+product.COG.underCarriage.weight*product.COG.underCarriage.lateral+attachments_load_weight*product.COG.attachments_maxReach.lateral)/
+GrossWeight_load, 1); 
+
+var COG_vertical_maxReach  = Math.round((upperStructure_weight*product.COG.upperStructure.vertical+product.COG.counterWeight.weight*product.COG.counterWeight.vertical+product.COG.underCarriage.weight*product.COG.underCarriage.vertical+attachments_load_weight*product.COG.attachments_maxReach.vertical)/ GrossWeight_load, 1);
+ %>
+
+<!-- ===============================================-->
+<!--    제원표    -->
+<!-- ===============================================-->
+
+  <div class="pages" id="mainSpec">
+    <table style="height: 270mm">
+      <thead>
+        <tr>
+          <th colSpan="6" height="50px">건설기계 (무한궤도식 등) 제원표</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colSpan="2" width="25%">형식승인(신고)자</td>
+          <td colSpan="4">현대건설기계㈜</td>
+        </tr>
+        <tr>
+          <td colSpan="2">건설기계명</td>
+          <td width="25%">굴착기</td>
+          <td colSpan="2" width="30%">제작회사(제작국)</td>
+          <td>현대건설기계 <br> (대한민국) </td>
+        </tr>
+        <tr>
+          <td colSpan="2">형식</td>
+          <td> <%= product.model_name %></td>
+          <td colSpan="2">규격</td>
+          <td><%= product.machine_grade %></td>
+        </tr>
+        <tr>
+          <td colSpan="2">자체중량 (㎏)</td>
+          <td><%= product.operating_weight %></td>
+          <td colSpan="2">변속기</td>
+          <td><%= product.gearbox %></td>
+        </tr>
+        <tr>
+          <td colSpan="2">최고속도 (㎞/hr)</td>
+          <td id=""><%= travel_speed %> </td>
+          <td rowSpan="6" width="4%" class="vertical_cell">엔진</td>
+          <td>형식</td>
+          <td id=""><%= product.engine.engine_name %>   </td>
+        </tr>
+        <tr>
+          <td colSpan="2">등판능력 (무부하)</td>
+          <td id=""><%= Math.min(theta_1, theta_2, theta_3) %> </td>
+          <td>출력(정격출력)</td>
+            <td><%= product.engine.power %>ps @ <%= product.engine.nominal_rev %>rpm</td>
+        </tr>
+        <tr>
+          <td rowSpan="4" width="4%" class="vertical_cell">외관</td>
+          <td>길이 (㎜)</td>
+          <td id=""><%= product.overall_length %></td>
+          <td>최대토크(㎏ㆍm/rpm)</td>
+            <td><%= product.engine.torque %>㎏m @ <%= product.engine.torque_rev %>rpm</td>
+        </tr>
+        <tr>
+          <td>너비 (㎜)</td>
+          <td id=""><%= product.overall_width %> </td>
+          <td>기통수</td>
+          <td id=""><%= product.engine.cylinder %>기통</td>
+        </tr>
+        <tr>
+          <td>높이 (㎜)</td>
+          <td id=""><%= product.overall_height %> </td>
+          <td>연료종류</td>
+          <td>디젤 </td>
+        </tr>
+        <tr>
+          <td>최저지상고 (㎜)</td>
+          <td id=""><%= product.undercarriage.ground_clearance %> </td>
+          <td>제작회사</td>
+          <td id=""><%= product.engine.supplier %> </td>
+        </tr>
+        <tr>
+          <td rowSpan="5" class="vertical_cell">무한궤도식등</td>
+          <td>슈폭 (㎜)</td>
+          <td id=""><%= product.undercarriage.shoe_width %> </td>
+          <td rowSpan="5" class="vertical_cell">드럼등기타방식</td>
+          <td>드럼치수(㎜× ㎜)</td>
+          <td id="drum_size">-</td>
+        </tr>
+        <tr>
+          <td>트랙높이</td>
+          <td id=""><%= product.undercarriage.track_height %> </td>
+          <td>타이어치수</td>
+          <td id="tire_radius">-</td>
+        </tr>
+        <tr>
+          <td>트랙중심간거리 (㎜)</td>
+          <td id=""><%= product.undercarriage.track_gap %> </td>
+          <td>축간거리 (㎜)</td>
+          <td id="wheel_base">-</td>
+        </tr>
+        <tr>
+          <td>텀블러중심간거리 (㎜)</td>
+          <td id=""><%= product.undercarriage.tumbler_distance %> </td>
+          <td>최소회전반경 (㎜)</td>
+          <td id="min_turning_raduis">-</td>
+        </tr>
+        <tr>
+          <td>접지압(㎏/㎠)</td>
+          <td id=""><%= ground_pressure.toFixed(2) %> </td>
+          <td>제동거리 (m/ ㎞/hr)</td>
+          <td id="braking_distance">-</td>
+        </tr>
+        <tr>
+          <td colSpan="6">작 업 장 치</td>
+        </tr>
+        <tr>
+          <td colSpan="2">버킷용량(평적) (㎥)</td>
+          <td id=""><%= product.attachments.bucket_struck %> </td>
+          <td colSpan="2">버킷용량(산적) (㎥)</td>
+          <td id=""><%= product.attachments.bucket_heap %> </td>
+        </tr>
+        <tr>
+          <td colSpan="2">선회속도 (rpm)</td>
+          <td id=""><%= swing_rev %></td>
+          <td colSpan="2">암의길이 (㎜)</td>
+          <td id=""><%= product.attachments.arm_length %> </td>
+        </tr>
+        <tr>
+          <td colSpan="2">붐의길이 (㎜)</td>
+          <td id=""><%= product.attachments.boom_length %></td>
+          <td colSpan="2">최대굴착반지름 (㎜)</td>
+          <td id=""><%= product.attachments.digging_reach %> </td>
+        </tr>
+        <tr>
+          <td colSpan="2">최대굴착깊이 (㎜)</td>
+          <td id=""><%= product.attachments.digging_depth %></td>
+          <td colSpan="2">최대덤프높이 (㎜)</td>
+          <td id=""><%= product.attachments.loading_height %> </td>
+        </tr>
+        <tr>
+          <td colSpan="2">배토판너비x높이 (㎜)</td>
+          <td id=""><%= product.undercarriage.dozer_size %></td>
+          <td colSpan="2"> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td colSpan="2">퀵 커플러 (모델명 / 중량(kg))</td>
+          <td colSpan="2" id=""><%= product.attachments.quick_coupler_1 %> <br> <%= product.attachments.quick_coupler_2  %></td>
+          <td id=""><%= product.attachments.quick_coupler_weight_1 %> <br> <%= product.attachments.quick_coupler_weight_2 %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colSpan="2">비고</td>
+          <td colSpan="4" id=""><%= product.ETC %></td>
+        </tr>
+
+        <tr>
+          <td colSpan="2">형식승인연월일</td>
+          <td> </td>
+          <td colSpan="2">형식승인번호</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+<% if(product.ChangeModel) { %>
+
+  <%- include('./report/CompareChange.ejs') %>
+<% } %> 
+
+  <%- include('./report/HEXdimensions.ejs') %>
+
+  <%- include('./report/drawings.ejs') %>
+
+<%- include('./report/HX_WorkingRange.ejs') %>
+
+<%- include('./report/HX_GroundPressure.ejs', {  GrossWeight, quick_coupler_weight, ground_pressure }) %>
+
+
+<%- include('./report/HX_Swivel.ejs', { swing_reduction_rev, swing_rev }) %>
+
+<%- include('./report/HX_Travel.ejs', {travel_speed, TM_rev_1, TM_rev_2, travel_speed_1, travel_speed_2, DP, TM_1, TM_2, TS, AF, theta_1, theta_2, theta_3, GrossWeight, traction_downward  }) %>
+
+
+
+
+
+
+<%- include('./report/Stability.ejs', {upperStructure_weight, COG_longitudinal, COG_lateral, COG_vertical, COG_longitudinal_load, COG_lateral_load, COG_vertical_load,  COG_longitudinal_maxReach, COG_lateral_maxReach, COG_vertical_maxReach}) %>
+
+<%- include('./report/HX_Stability-tipping.ejs',{GrossWeight, upperStructure_weight, COG_longitudinal, COG_lateral, COG_vertical, COG_longitudinal_load, COG_lateral_load, COG_vertical_load,  COG_longitudinal_maxReach, COG_lateral_maxReach, COG_vertical_maxReach, bucket_exca_capa, excavating_limit}) %>
+
+
+
+  <!-- ===============================================-->
+  <!--    버켓 기울기의 변화량    -->
+  <!-- ===============================================-->
+  <div class="pages" id="Front_Creep">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          버켓 기울기의 변화량
+        </td>
+      </tr>
+
+      <tr>
+        <td class="head_description">
+          <p>굴착기는 최대작업반경 상태에서 버켓 끝단 기울기의 변화량이 10분당 5도 이내 이어야 한다</p>
+          <p>- 수평 지면에서 빈 버켓 상태로 측정</p>
+          <p>- 최대작업반경 상태</p>
+          <p>- 최초 높이 측정 후 10분 뒤 측정 (지면에서 버켓 끝단 간의 높이 측정)</p>
+          <%- product.description.bucket_creep %> 
+
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+
+
+  <!-- ===============================================-->
+  <!--    분해 수송    -->
+  <!-- ===============================================-->
+  <div class="pages" id="Transportation">
+    <table class="bordertable">
+      <tr class="borderheader">
+        <td height="30mm">
+          도로에서의 수송
+        </td>
+      </tr>
+      <%
+        var trailer_weight = 12;
+          %>
+      <tr>
+        <td class="head_description">
+          운송 제원
+
+          <table width="100%" height="20%">
+            <thead>
+              <tr>
+                <th></th>
+                <th>건설기계</th>
+                <th>운송차량</th>
+                <th>운송제원</th>
+                <th>규제치</th>
+                <th>적합여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>길이(m)</td>
+                <td><%= (product.overall_length/1000).toFixed(1) %></td>
+                <td>15.3</td>
+                <td><% if (product.overall_length/1000 > 15.3){ %><%= product.overall_length/1000 %><% } else %><%= 15.3 %></td>
+                <td>16.7</td>
+                <td><% if (product.overall_length/1000 > 16.7){ %><%= "초과" %><% } else %><%= "적합" %></td>
+              </tr>
+              <tr>
+                <td>너비(m)</td>
+                <td><%= (product.overall_width/1000).toFixed(1) %></td>
+                <td>2.5</td>
+                <td><% if (product.overall_width/1000 > 2.5){ %><%= product.overall_width/1000 %><% } else { %><%= 2.5 %><% } %></td>
+                <td>2.5</td>
+                <td><% if (product.overall_width/1000 > 2.5){ %><%= "초과" %><% } else { %><%= "적합" %><% } %></td>
+              </tr>
+              <tr>
+                <td>높이(m)</td>
+                <td><%= (product.overall_height/1000).toFixed(1) %></td>
+                <td><%= 0.7 %> </td>
+                <td><%= (product.overall_height/1000+0.7).toFixed(1) %></td>
+                <td>4.0</td>
+                <td><% if (product.overall_height/1000 + 0.7 > 4.0){ %><%= "초과" %><% } else { %><%= "적합" %><% } %></td>
+              </tr>
+              <tr>
+                <td>총중량(ton)</td>
+                <td><%= (product.operating_weight/1000).toFixed(1) %></td>
+                <td><%= trailer_weight %> </td>
+                <td><%= (product.operating_weight/1000+trailer_weight).toFixed(1) %></td>
+                <td>40</td>
+                <td><% if (product.operating_weight/1000 + trailer_weight > 40){ %><%= "초과" %><% } else { %><%= "적합" %><% } %></td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+              완성 장비 상태로 수송시 너비, 중량, 높이가 관련 도로 규제치를 초과하므로, 수송 시 지방경찰청에 신청하여 승인을 득하고 폭의 양 끝에 너비 30cm, 길이 50cm 이상의 붉은 헝겊으로 된 표지를 달고 야간에는 반사체로 된 표시를 달고 운행해야 한다.
+          </p>
+          
+
+          <table width="100%" height="50%">
+            <thead>
+              <tr>
+                <th></th>
+                <th>부분항목</th>
+                <th>부분중량</th>
+                <th>적재중량</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowSpan="3">차량 1</td>
+                <td>하부체</td>
+                <td><%= (product.weight_understructure/1000).toFixed(1) %></td>
+                <td rowSpan="3"></td>
+              </tr>
+              <tr>
+                <td>상부체</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>붐실린더</td>
+                <td>0.7</td>
+              </tr>
+              <tr>
+                <td rowSpan="5">차량 2</td>
+                <td>카운터웨이트</td>
+                <td></td>
+                <td rowSpan="5"></td>
+              </tr>
+              <tr>
+                <td>붐</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>암 조립품</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>퀵 커플러</td>
+                <td><%= (quick_coupler_weight/1000).toFixed(1) %></td>
+              </tr>
+              <tr>
+                <td>버켓</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>합계</td>
+                <td></td>
+                <td><%= (product.operating_weight/1000).toFixed(1) %></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+
+
+
+    
+
+
+
+  <script src="https://cdn.ckeditor.com/4.17.1/standard-all/ckeditor.js"></script>
+  <script>
+    // Turn off automatic editor creation first.
+    CKEDITOR.disableAutoInline = true;
+    CKEDITOR.inline('editor1');
+  </script>
+
+</body>
+
+</html>
