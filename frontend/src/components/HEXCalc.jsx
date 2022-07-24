@@ -73,6 +73,10 @@ const HEXCalc = (values) => {
 
     const swing_rev = roundTwo(swing_reduction_rev / values.swivel.reduction) || null;
 
+
+    /* 수송중량 */
+    const transport_1_weight = (values.operating_weight - values.transport?.transport_2_weight);
+
     return (
         values.grossWeight = grossWeight,
         values.attachments.bucket_exca_capa = bucket_exca_capa,
@@ -100,6 +104,8 @@ const HEXCalc = (values) => {
         values.travel.theta_2 = theta_2,
         values.travel.theta_3 = theta_3,
         values.travel.greadability = greadability,
+
+        values.transport.transport_1_weight = transport_1_weight,
         ''
 
 

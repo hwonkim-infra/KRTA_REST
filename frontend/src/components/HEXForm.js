@@ -8,7 +8,7 @@ import {
 } from "../actions/HEXs";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Form, Field } from "react-final-form";
+import { Form, Field, FormSpy } from "react-final-form";
 import FlashMessage from "react-flash-message";
 
 import Summary from "./HEXForms/Summary";
@@ -20,6 +20,7 @@ import Swivel from "./HEXForms/Swivel";
 import TravelHX from "./HEXForms/TravelHX";
 import AddDrawings from "./HEXForms/Drawings/AddDrawings";
 import StabilityCOG from "./HEXForms/StabilityCOG";
+import TransPortation from "./HEXForms/TransPortation";
 
 import {
   Grid,
@@ -128,6 +129,7 @@ const HEXForm = (HEXData) => {
                       <Dimensions values={values} />
                       <DimensionsTrack />
                       <DimensionsQC />
+
                     </Tab>
 
                     <Tab eventKey="travel" title="주행 선회">
@@ -145,6 +147,10 @@ const HEXForm = (HEXData) => {
 
                     <Tab eventKey="engine" title="엔진 사양">
                       <EngineFields {...values} />
+                    </Tab>
+
+                    <Tab eventKey="transportation" title="분해 수송">
+                      <TransPortation {...values} />
                     </Tab>
                   </Tabs>
 
@@ -177,9 +183,15 @@ const HEXForm = (HEXData) => {
               </Grid>
         <Grid item xs={6}>
                   {values.ChangeModel && <CompareSheet values={values} />}
-                  <SpecSheet values={values} />
+                  <FormSpy subscription={{ values: true }}>
+                  {({ values }) => (
 
-                  <pre>{JSON.stringify(values, 0, 2)}</pre>
+                    <SpecSheet values={values} />
+                    )}
+
+                  </FormSpy>
+                    <pre>{JSON.stringify(values, 0, 2)}</pre>
+
             </Grid>
       </Grid>
           </form>

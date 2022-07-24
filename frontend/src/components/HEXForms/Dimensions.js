@@ -9,6 +9,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { FormSpy } from 'react-final-form'
 
 const Dimensions = () => {
   const formFields = [
@@ -28,7 +29,7 @@ const Dimensions = () => {
     },
     {
       size: 2,
-      field: <TextField label="배토판너비x높이" name="undercarriage.dozer_size" margin="none"  InputProps={{endAdornment: <InputAdornment position="end">㎜ ㎜</InputAdornment>}} />,
+      field: <TextField label="배토판너비x높이" name="undercarriage.dozer_size" margin="none"   InputProps={{endAdornment: <InputAdornment position="end">㎜ ㎜</InputAdornment>}} />,
     },
   ];
   
@@ -37,6 +38,7 @@ const Dimensions = () => {
       <div className="input-group mb-1">
         <Paper style={{ padding: 16 }}>
           <Grid container alignItems="flex-start" spacing={2}>
+            
             {formFields.map((item, idx) => (
               <Grid item xs={item.size} key={idx}>
                 {item.field}

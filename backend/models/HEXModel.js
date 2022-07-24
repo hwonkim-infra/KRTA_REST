@@ -165,6 +165,19 @@ const HEXSchema = new Schema({
         attachments_maxReach_lateral: Number,
         attachments_maxReach_vertical: Number,        
     },
+
+    // 수송
+    transport: {
+        transport_1: String,
+        transport_1_weight: Number,
+        transport_2: String,
+        transport_2_weight: Number,
+        transport_3: String,
+        transport_3_weight: Number,
+        transport_4: String,
+        transport_4_weight: Number,
+    },
+    
 }, { timestamps: true });
 
 const HEX = mongoose.model('HEX', HEXSchema);

@@ -24,7 +24,12 @@ const initialHEXState = {
     swing_reduction: null
   },
   COG: {
-    upperStructure_longitudinal: null}
+    upperStructure_longitudinal: null
+  },
+  transport: {
+    transport_1: null,
+
+  }
 };
 
 const HEX = (props) => {
