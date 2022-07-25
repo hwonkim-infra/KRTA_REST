@@ -27,13 +27,12 @@ const initialHEXState = {
     upperStructure_longitudinal: null
   },
   transport: {
-    transport_1: null,
+    transport_1: "본체",
 
   }
 };
 
 const HEX = (props) => {
-console.log("🚀 ~ file: HEX.js ~ line 30 ~ HEX ~ props", props)
   const [currentHEX, setCurrentHEX] = useState(initialHEXState);
   const [message, setMessage] = useState("");
 

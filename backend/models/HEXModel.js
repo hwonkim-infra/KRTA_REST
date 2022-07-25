@@ -157,12 +157,13 @@ const HEXSchema = new Schema({
         attachments_lateral: Number,
         attachments_vertical: Number,
         
+        /* 자세별 작업장치의 COG */
         attachments_load_longitudinal: Number,
-        attachments_load_lateral: Number,
+        // attachments_load_lateral: Number,   // lateral COG 는 불변
         attachments_load_vertical: Number,
         
         attachments_maxReach_longitudinal: Number,
-        attachments_maxReach_lateral: Number,
+        // attachments_maxReach_lateral: Number,
         attachments_maxReach_vertical: Number,        
     },
 

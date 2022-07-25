@@ -142,7 +142,7 @@ const HEXForm = (HEXData) => {
                     </Tab>
 
                     <Tab eventKey="stability" title="안정도">
-                      <StabilityCOG />
+                      <StabilityCOG {...values} />
                     </Tab>
 
                     <Tab eventKey="engine" title="엔진 사양">

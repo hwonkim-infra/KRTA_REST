@@ -6,7 +6,7 @@ import {
   Paper,
 } from "@mui/material";
 
-const TransPortation = (values) => {
+const TransPortation = ({values}) => {
     // const transportation_1_weight = values.operating_weight - values.transportation.transportation_2_weight;
     
     const formFields = [
@@ -139,7 +139,7 @@ const TransPortation = (values) => {
           </Grid>
 
         </Grid>
-        중량1: {(values.operating_weight - values.transport?.transport_2_weight)}
+        {/* 중량1: {(values?.operating_weight - values.transport?.transport_2_weight)} */}
       </div>
     </>
   );

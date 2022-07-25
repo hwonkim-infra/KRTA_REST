@@ -75,7 +75,7 @@ const HEXCalc = (values) => {
 
 
     /* 수송중량 */
-    const transport_1_weight = (values.operating_weight - values.transport?.transport_2_weight);
+    const transport_1_weight = (values?.operating_weight - values.transport?.transport_2_weight);
 
     return (
         values.grossWeight = grossWeight,
@@ -95,10 +95,6 @@ const HEXCalc = (values) => {
         values.travel.travel_speed_2 = travel_speed_2,
 
         values.travel.travel_speed = travel_speed,
-
-
-
-
 
         values.travel.theta_1 = theta_1,
         values.travel.theta_2 = theta_2,
