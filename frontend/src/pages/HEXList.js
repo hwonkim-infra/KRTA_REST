@@ -40,7 +40,7 @@ const HEXList = () => {
 
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: "model_name", headerName: "기종명", width: 130 },
+    { field: "model_name", headerName: "기종명", width: 110 },
     { field: "changeModel", headerName: "변경", width: 30 },
     {
       field: "boom",
@@ -90,6 +90,7 @@ const HEXList = () => {
       updated: HEX.updatedAt,
       shoe: HEX.undercarriage?.shoe_width,
       changeModel: HEX.ChangeModel ? "변경" : " ",
+      counterWeight: HEX.COG?.counterWeight_weight/1000,
       ...HEX,
     };
   });
@@ -99,7 +100,7 @@ const HEXList = () => {
       <Navbar></Navbar>
 
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <div style={{ width: "100%", height: 1000 }}>
             <DataGrid
               rows={rows}
@@ -116,7 +117,7 @@ const HEXList = () => {
           </div>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={5}>
           <Stack
             direction="row"
             spacing={3}

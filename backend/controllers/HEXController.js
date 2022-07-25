@@ -49,7 +49,7 @@ const deleteHEX = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  /Admin
 const createHEX = asyncHandler(async (req, res) => {
-  const { model_name, serial_no, ...rest } = req.body;
+  const { model_name, ...rest } = req.body;
   const product = new HEX({
     model_name,
     _id: req.body.model_name + "_" + Date.now(),
@@ -67,7 +67,7 @@ const createHEXChange = asyncHandler(async (req, res) => {
   const originProdId = req.params.originId;
   
   await HEX.findById(originProdId).then((product) => {
-    const { model_name, serial_no, ...rest } = req.body;
+    const { model_name,  ...rest } = req.body;
     
     try {
       console.log("🚀 ~ file: HEXController.js ~ line 73 ~ awaitHEX.findById ~ product", product)
@@ -95,7 +95,7 @@ const createHEXChange = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const updateHEX = asyncHandler(async (req, res) => {
-  const { model_name, serial_no, ...rest } = req.body;
+  const { model_name,  ...rest } = req.body;
   const productFields = {model_name, ...rest};
 
 

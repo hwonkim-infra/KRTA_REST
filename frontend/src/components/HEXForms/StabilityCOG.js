@@ -1,8 +1,30 @@
 import { Field } from "react-final-form";
 import React from "react";
-import { Table } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+const useStyles = makeStyles(theme => ({
+    root: {
+      width: "100%",
+      marginTop: theme.spacing(3),
+      overflowX: "auto"
+    },
+    table: {
+      minWidth: 700
+    }
+  }));
 
 const StabilityCOG = (values) => {
+
+
+     const classes = useStyles();
+
+
     let GrossWeight=values.operating_weight + 65;
 let GrossWeight_load = values.operating_weight + 65 + 1500 * values.attachments_bucket_heap;
 let attachments_load_weight = values.COG?.attachments_weight + 1500 * values.attachments_bucket_heap;
@@ -34,7 +56,9 @@ let COG_vertical_maxReach  = Math.round((upperStructure_weight*values.COG?.upper
 
   return (
     <>
-    <Table>
+        <Paper className={classes.root}>
+
+    <Table className={classes.table} >
         <thead>
             <tr>
                 <th>Component</th>
@@ -96,7 +120,7 @@ let COG_vertical_maxReach  = Math.round((upperStructure_weight*values.COG?.upper
 
         </tbody>
     </Table>
-
+    </Paper>
     </>
   );
 };

@@ -121,7 +121,7 @@ const HEXForm = (HEXData) => {
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
                   {HEXCalc(values)}
                   <Summary {...values}/>
                   <Tabs defaultActiveKey="dimension" className="mb-3">
@@ -181,7 +181,7 @@ const HEXForm = (HEXData) => {
                   <p>{message}</p>
                   <FlashMessage duration={5000}></FlashMessage>
               </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
                   {values.ChangeModel && <CompareSheet values={values} />}
                   <FormSpy subscription={{ values: true }}>
                   {({ values }) => (

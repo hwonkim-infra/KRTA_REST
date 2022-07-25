@@ -28,6 +28,7 @@ const initialHEXState = {
   },
   transport: {
     transport_1: "본체",
+    transport_1_weight: null,
 
   }
 };
