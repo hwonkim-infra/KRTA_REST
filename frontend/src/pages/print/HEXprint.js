@@ -14,6 +14,7 @@ import SwivelSpeed from "./SwivelSpeed";
 import TravelSpecHX from "./TravelSpecHX";
 import TravelSlope from "./TravelSlope";
 import Drawings from "./Drawings";
+import Transportation from "./Transportation";
 
 const HEXprint = () => {
   
@@ -55,6 +56,7 @@ const HEXprint = () => {
       <TravelSpecHX values={HEXdata} config={config} />
       <TravelSlope values={HEXdata} config={config} />
       <Drawings values={HEXdata}  />
+      <Transportation values={HEXdata}  />
 
       
     </div>

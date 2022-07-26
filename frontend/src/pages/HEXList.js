@@ -78,6 +78,7 @@ const HEXList = () => {
       sortable: false,
     },
     { field: "updated", headerName: "수정", width: 100 },
+    { field: "result", headerName: "완료", width: 50 },
   ];
 
   const rows = HEXs?.map((HEX) => {
@@ -91,6 +92,7 @@ const HEXList = () => {
       shoe: HEX.undercarriage?.shoe_width,
       changeModel: HEX.ChangeModel ? "변경" : " ",
       counterWeight: HEX.COG?.counterWeight_weight/1000,
+      result: HEX.description?.approval_result ? "완료" : " ",
       ...HEX,
     };
   });

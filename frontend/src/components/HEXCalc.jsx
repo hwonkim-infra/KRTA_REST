@@ -90,7 +90,7 @@ const HEXCalc = (values) => {
 
   /* 수송중량 */
   const transport_1_weight =
-    values.operating_weight -
+    (values.operating_weight -
     (values.transport.transport_2_weight || 0) -
     (values.transport.transport_3_weight || 0) -
     (values.transport.transport_4_weight || 0) -
@@ -98,7 +98,7 @@ const HEXCalc = (values) => {
     (values.transport.transport_6_weight || 0) -
     (values.transport.transport_7_weight || 0) -
     (values.transport.transport_8_weight || 0) -
-    (values.transport.transport_9_weight || 0);
+    (values.transport.transport_9_weight || 0) );
 
 
   return (

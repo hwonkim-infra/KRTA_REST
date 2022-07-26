@@ -21,6 +21,7 @@ import TravelHX from "./HEXForms/TravelHX";
 import AddDrawings from "./HEXForms/Drawings/AddDrawings";
 import StabilityCOG from "./HEXForms/StabilityCOG";
 import TransPortation from "./HEXForms/TransPortation";
+import TAResult from "./HEXForms/TAResult";
 
 import {
   Grid,
@@ -151,6 +152,10 @@ const HEXForm = (HEXData) => {
 
                     <Tab eventKey="transportation" title="분해 수송">
                       <TransPortation {...values} />
+                    </Tab>
+
+                    <Tab eventKey="result" title="승인서">
+                      <TAResult />
                     </Tab>
                   </Tabs>
 
