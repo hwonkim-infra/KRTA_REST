@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 
 // 퀵커플러 탈착
@@ -30,9 +31,11 @@ const Transportation = ({ values }) => {
             </tr>
             </thead>
             <tbody>
+
             <tr>
               <td className="head_description">
-              운송 제원
+      <Box justifyContent="center" padding="10px" sx={{ width:"100%"}}>
+              전체 운송 제원
                 <table className="innertable" width="90%">
                   <thead>
                     <tr>
@@ -80,8 +83,10 @@ const Transportation = ({ values }) => {
               </tr>
             </tbody>                 
                 </table>
+                </Box>
+                <Box justifyContent="center" padding="10px" sx={{ width:"100%"}}>
 
-2. 분리 운송 제원
+ 분리 운송 제원
                 <table className="innertable" width="90%">
                   <thead>
                     
@@ -144,6 +149,9 @@ const Transportation = ({ values }) => {
 
                  
                 </table>
+                </Box>
+
+                <Box justifyContent="center" padding="10px" sx={{ width:"100%"}}>
 
                 <table className="innertable" width="90%">
                   <thead>
@@ -207,9 +215,14 @@ const Transportation = ({ values }) => {
 
                  
                 </table>
+                </Box>
+
+                
 
               </td>
-            </tr></tbody>
+            </tr>
+            
+            </tbody>
           </table>
         </div>
 

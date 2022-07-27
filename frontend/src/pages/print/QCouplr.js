@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import React from "react";
 
 // 퀵커플러 탈착
@@ -17,6 +18,7 @@ const QCouplr = ({ values }) => {
       </thead>
       <tbody>
 
+      <Grid container justify="center" alignItems="center" padding="50px" direction="row">
 
         <tr>
           <td>
@@ -99,6 +101,7 @@ const QCouplr = ({ values }) => {
 
           </td>
         </tr>
+      </Grid>
         </tbody>
       </table>
     </div>

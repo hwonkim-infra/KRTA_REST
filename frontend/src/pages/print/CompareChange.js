@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HEXService from "../../services/HEXServices";
-import { Paper } from "@mui/material";
+import { Box, Grid, Paper } from "@mui/material";
 
 const CompareChange = ({ values }) => {
   
@@ -32,9 +32,15 @@ const CompareChange = ({ values }) => {
             </tr>
 
 
-    <Paper elevation= {1} style= {{
-      padding: "20px", height: '100%'
+    
+      <Grid container justifyContent="center" padding="20px">
+      <Paper variant="outlined" elevation={1} style= {{
+      padding: "15px", width: '80%'
     }}>
+      주요 형식 변경 사양:
+      {values.ECN}
+
+      </Paper>
       
       <table className="innertable" width="80%">
         <thead>
@@ -176,7 +182,7 @@ const CompareChange = ({ values }) => {
           
         </tbody>
       </table>
-    </Paper>
+      </Grid>
     </table>
     </div>
 
