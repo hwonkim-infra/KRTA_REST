@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, } from "react";
 import { useDispatch } from "react-redux";
 import {
   updateHEX,
@@ -8,7 +8,7 @@ import {
 } from "../actions/HEXs";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Form, Field, FormSpy } from "react-final-form";
+import { Form, FormSpy } from "react-final-form";
 import FlashMessage from "react-flash-message";
 
 import Summary from "./HEXForms/Summary";
@@ -25,7 +25,6 @@ import TAResult from "./HEXForms/TAResult";
 
 import {
   Grid,
-  Box,
   Button,
   Stack,
   
@@ -33,7 +32,7 @@ import {
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import {Tab, Tabs, ButtonGroup, } from 'react-bootstrap'
+import {Tab, Tabs,  } from 'react-bootstrap'
 import SpecSheet from "../pages/previews/SpecSheet";
 import CompareSheet from "../pages/previews/CompareSheet";
 import { useLocation } from "react-router-dom";
@@ -195,7 +194,7 @@ const HEXForm = (HEXData) => {
                     )}
 
                   </FormSpy>
-                    <pre>{JSON.stringify(values, 0, 2)}</pre>
+                    {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
 
             </Grid>
       </Grid>

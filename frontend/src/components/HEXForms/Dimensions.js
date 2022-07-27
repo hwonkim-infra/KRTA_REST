@@ -29,6 +29,10 @@ const Dimensions = () => {
     },
     {
       size: 2,
+      field: <TextField label="후방선회반경" name="rear_swing_radius" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎜</InputAdornment>}} />,
+    },
+    {
+      size: 2,
       field: <TextField label="배토판너비x높이" name="undercarriage.dozer_size" margin="none"   InputProps={{endAdornment: <InputAdornment position="end">㎜ ㎜</InputAdornment>}} />,
     },
   ];

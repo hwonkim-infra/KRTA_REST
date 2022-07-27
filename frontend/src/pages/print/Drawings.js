@@ -65,16 +65,16 @@ const Drawings = ({ values }) => {
     <td>트랙높이</td>
   </tr>
   <tr align="right">
-    <td>{ values.undercarriage.track_height }</td>
+    <td>{ values.undercarriage?.track_height }</td>
   </tr>
   <tr>
     <td>최저지상고</td>
   </tr>
   <tr align="right">
-    <td>{ values.undercarriage.ground_clearance }</td>
+    <td>{ values.undercarriage?.ground_clearance }</td>
   </tr>
   <tr>
-    <td>후단 선회반경</td>
+    <td>후방선회반경</td>
   </tr>
   <tr align="right">
     <td>{ values.rear_swing_radius }</td>
@@ -83,25 +83,25 @@ const Drawings = ({ values }) => {
     <td>텀블러 간격</td>
   </tr>
   <tr align="right">
-    <td>{ values.undercarriage.tumbler_distance }</td>
+    <td>{ values.undercarriage?.tumbler_distance }</td>
   </tr>
   <tr>
     <td>트랙 길이</td>
   </tr>
   <tr align="right">
-    <td>{ values.undercarriage.track_length }</td>
+    <td>{ values.undercarriage?.track_length }</td>
   </tr>
   <tr>
     <td>트랙 간격</td>
   </tr>
   <tr align="right">
-    <td>{ values.undercarriage.track_gap }</td>
+    <td>{ values.undercarriage?.track_gap }</td>
   </tr>
   <tr>
     <td>슈 폭</td>
   </tr>
   <tr align="right">
-    <td>{ values.undercarriage.shoe_width }</td>
+    <td>{ values.undercarriage?.shoe_width }</td>
   </tr>
             </tbody>
             </table>

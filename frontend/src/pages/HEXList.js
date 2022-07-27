@@ -91,7 +91,7 @@ const HEXList = () => {
       updated: HEX.updatedAt,
       shoe: HEX.undercarriage?.shoe_width,
       changeModel: HEX.ChangeModel ? "변경" : " ",
-      counterWeight: HEX.COG?.counterWeight_weight/1000,
+      counterWeight: HEX.COG?.counterWeight_weight/1000 || '',
       result: HEX.description?.approval_result ? "완료" : " ",
       ...HEX,
     };

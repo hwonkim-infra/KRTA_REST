@@ -18,7 +18,7 @@ const WorkingRange = ({ values }) => {
 
         <tr>
           <td>
-            <img src="" alt="workingRange" srcSet="" />
+            <img src={process.env.PUBLIC_URL + "/images/workingRange_HX.png"} alt="workingRange" srcSet="" />
             <table className="innertable" height="20%" width="60%">
               <thead></thead>
               <tbody>

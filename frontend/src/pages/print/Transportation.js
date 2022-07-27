@@ -13,13 +13,13 @@ const Transportation = ({ values }) => {
   // const transport = values.keys(transport).map(keys =>  )
 
   /* 적재중량 */
-  const trailer_1 = trailer_weight + values.transport?.transport_1_weight/1000;
-  const trailer_2 = trailer_weight + values.transport?.transport_2_weight/1000;
-  const trailer_3 = trailer_weight + values.transport?.transport_3_weight/1000;
-  const trailer_4 = trailer_weight + values.transport?.transport_4_weight/1000;
-  const trailer_5 = trailer_weight + values.transport?.transport_5_weight/1000;
-  const trailer_6 = trailer_weight + values.transport?.transport_6_weight/1000;
-  const trailer_7 = trailer_weight + values.transport?.transport_7_weight/1000;
+  const trailer_1 = trailer_weight + (values.transport?.transport_1_weight/1000  || '') ;
+  const trailer_2 = trailer_weight + (values.transport?.transport_2_weight/1000  || '');
+  const trailer_3 = trailer_weight + (values.transport?.transport_3_weight/1000  || '');
+  const trailer_4 = trailer_weight + (values.transport?.transport_4_weight/1000  || '');
+  const trailer_5 = trailer_weight + (values.transport?.transport_5_weight/1000  || '');
+  const trailer_6 = trailer_weight + (values.transport?.transport_6_weight/1000  || '');
+  const trailer_7 = trailer_weight + (values.transport?.transport_7_weight/1000  || '');
 
   return (
     <>
@@ -110,7 +110,7 @@ const Transportation = ({ values }) => {
                       <td>중량</td>
                       <td>ton</td>
                       <td>{trailer_weight}</td>
-                      <td>{values.transport?.transport_1_weight/1000}</td>
+                      <td>{values.transport?.transport_1_weight/1000 || ''}</td>
                       <td>{trailer_1}</td>
                       <td>40</td>
                       <td>{trailer_1 > 40 ? '초과': '적합'}</td>
@@ -129,19 +129,19 @@ const Transportation = ({ values }) => {
                     <tr>
                       <td>너비</td>
                       <td>{trailer_width} </td>
-                      <td>{values.overall_width/1000}  </td>
-                      <td>{Math.max(trailer_width, values.overall_width/1000)}</td>
+                      <td>{values.overall_width/1000 || ''}  </td>
+                      <td>{Math.max(trailer_width, (values.overall_width/1000 || ''))}</td>
                       <td>2.5</td>
-                      <td>{Math.max(trailer_width, values.overall_width/1000) > 2.5 ? '초과': '적합'}</td>
+                      <td>{Math.max(trailer_width, (values.overall_width/1000 || '')) > 2.5 ? '초과': '적합'}</td>
                     </tr>
 
                     <tr>
                       <td>높이</td>
                       <td>{trailer_height} </td>
-                      <td>{values.transport?.transport_1_height}  </td>
-                      <td>{(trailer_height + values.transport?.transport_1_height).toFixed(1)}</td>
+                      <td>{values.transport?.transport_1_height || ''}  </td>
+                      <td>{(trailer_height + (values.transport?.transport_1_height || 0)).toFixed(1)}</td>
                       <td>4.0</td>
-                      <td>{(trailer_height +  values.transport?.transport_1_height) > 4.0 ? '초과': '적합'}</td>
+                      <td>{(trailer_height +  (values.transport?.transport_1_height || 0)) > 4.0 ? '초과': '적합'}</td>
                     </tr>
               
               
@@ -176,7 +176,7 @@ const Transportation = ({ values }) => {
                       <td>중량</td>
                       <td>ton</td>
                       <td>{trailer_weight}</td>
-                      <td>{values.transport?.transport_2_weight/1000}</td>
+                      <td>{values.transport?.transport_2_weight/1000  || ''}</td>
                       <td>{trailer_2}</td>
                       <td>40</td>
                       <td>{trailer_2 > 40 ? '초과': '적합'}</td>
