@@ -11,7 +11,7 @@ const TransPortation = (values) => {
     
     const formFields = [
     {
-      size: 10,
+      size: 8,
       field: (
         <TextField
           label="분해수송 (1)"
@@ -20,6 +20,20 @@ const TransPortation = (values) => {
           placeholder="본체"
           InputProps={{
             endAdornment: <InputAdornment position="end"></InputAdornment>,
+          }}
+        />
+      ),
+    },
+    {
+      size: 2,
+      field: (
+        <TextField
+          label="분해수송 높이"
+          name="transport.transport_1_height"
+          margin="none"
+          type="number"
+          InputProps={{
+            endAdornment: <InputAdornment position="end">m</InputAdornment>,
           }}
         />
       ),
@@ -40,10 +54,10 @@ const TransPortation = (values) => {
       ),
     },
     {
-        size: 10,
+        size: 8,
         field: (
           <TextField
-            label="분해수송"
+            label="분해수송(2)"
             name="transport.transport_2"
             margin="none"
             InputProps={{
@@ -52,6 +66,22 @@ const TransPortation = (values) => {
           />
         ),
       },
+      {
+        size: 2,
+        field: (
+          <TextField
+            label="분해수송 높이"
+            name="transport.transport_2_height"
+            margin="none"
+            type="number"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">m</InputAdornment>,
+            }}
+            
+          />
+        ),
+      },
+  
       {
         size: 2,
         field: (
@@ -67,10 +97,10 @@ const TransPortation = (values) => {
         ),
       },
       {
-        size: 10,
+        size: 8,
         field: (
           <TextField
-            label="분해수송"
+            label="분해수송(3)"
             name="transport.transport_3"
             margin="none"
             InputProps={{
@@ -79,6 +109,22 @@ const TransPortation = (values) => {
           />
         ),
       },
+      {
+        size: 2,
+        field: (
+          <TextField
+            label="분해수송 높이"
+            name="transport.transport_3_height"
+            margin="none"
+            type="number"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">m</InputAdornment>,
+            }}
+            
+          />
+        ),
+      },
+  
       {
         size: 2,
         field: (
@@ -94,10 +140,10 @@ const TransPortation = (values) => {
         ),
       },
       {
-        size: 10,
+        size: 8,
         field: (
           <TextField
-            label="분해수송"
+            label="분해수송(4)"
             name="transport.transport_4"
             margin="none"
             InputProps={{
@@ -106,6 +152,22 @@ const TransPortation = (values) => {
           />
         ),
       },
+      {
+        size: 2,
+        field: (
+          <TextField
+            label="분해수송 높이"
+            name="transport.transport_4_height"
+            margin="none"
+            type="number"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">m</InputAdornment>,
+            }}
+            
+          />
+        ),
+      },
+  
       {
         size: 2,
         field: (
@@ -121,10 +183,10 @@ const TransPortation = (values) => {
         ),
       },
       {
-        size: 10,
+        size: 8,
         field: (
           <TextField
-            label="분해수송"
+            label="분해수송(5)"
             name="transport.transport_5"
             margin="none"
             InputProps={{
@@ -133,6 +195,22 @@ const TransPortation = (values) => {
           />
         ),
       },
+      {
+        size: 2,
+        field: (
+          <TextField
+            label="분해수송 높이"
+            name="transport.transport_5_height"
+            margin="none"
+            type="number"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">m</InputAdornment>,
+            }}
+            
+          />
+        ),
+      },
+  
       {
         size: 2,
         field: (

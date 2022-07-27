@@ -171,13 +171,20 @@ const HEXSchema = new Schema({
     // 수송
     transport: {
         transport_1: String,
+        transport_1_height: Number,
         transport_1_weight: Number,
         transport_2: String,
+        transport_2_height: Number,
         transport_2_weight: Number,
         transport_3: String,
+        transport_3_height: Number,
         transport_3_weight: Number,
         transport_4: String,
+        transport_4_height: Number,
         transport_4_weight: Number,
+        transport_5: String,
+        transport_5_height: Number,
+        transport_5_weight: Number,
     },
     
 }, { timestamps: true });

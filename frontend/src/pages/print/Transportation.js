@@ -113,7 +113,7 @@ const Transportation = ({ values }) => {
 
                     <tr>
                       <td>길이</td>
-                      <td>m</td>
+                      <td rowSpan="3">m</td>
                       <td>{trailer_length} </td>
                       <td> - </td>
                       <td>{trailer_length}</td>
@@ -123,13 +123,85 @@ const Transportation = ({ values }) => {
                     
                     <tr>
                       <td>너비</td>
-                      <td>m</td>
                       <td>{trailer_width} </td>
                       <td>{values.overall_width/1000}  </td>
                       <td>{Math.max(trailer_width, values.overall_width/1000)}</td>
                       <td>2.5</td>
                       <td>{Math.max(trailer_width, values.overall_width/1000) > 2.5 ? '초과': '적합'}</td>
                     </tr>
+
+                    <tr>
+                      <td>높이</td>
+                      <td>{trailer_height} </td>
+                      <td>{values.transport?.transport_1_height}  </td>
+                      <td>{(trailer_height + values.transport?.transport_1_height).toFixed(1)}</td>
+                      <td>4.0</td>
+                      <td>{(trailer_height +  values.transport?.transport_1_height) > 4.0 ? '초과': '적합'}</td>
+                    </tr>
+              
+              
+            </tbody>
+
+                 
+                </table>
+
+                <table className="innertable" width="90%">
+                  <thead>
+                    
+                  </thead>
+                  
+                  <tbody>
+                  <tr>
+                      <td colSpan="7">②트레일러({trailer_weight}ton) + {values.transport?.transport_2}</td>
+                    </tr>
+                    <tr>
+                      <td>구분</td>
+                      <td>단위</td>
+                      <td>트레일러</td>
+                      <td>적재</td>
+                      <td>전체</td>
+                      <td>규제기준</td>
+                      <td>적합여부</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>중량</td>
+                      <td>ton</td>
+                      <td>{trailer_weight}</td>
+                      <td>{values.transport?.transport_2_weight/1000}</td>
+                      <td>{trailer_2}</td>
+                      <td>40</td>
+                      <td>{trailer_2 > 40 ? '초과': '적합'}</td>
+                    </tr>
+
+                    <tr>
+                      <td>길이</td>
+                      <td rowSpan="3">m</td>
+                      <td>{trailer_length} </td>
+                      <td> - </td>
+                      <td>{trailer_length}</td>
+                      <td>16.7</td>
+                      <td>{trailer_length > 16.7 ? '초과': '적합'}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>너비</td>
+                      <td>{trailer_width} </td>
+                      <td>-  </td>
+                      <td>-</td>
+                      <td>2.5</td>
+                      <td>{trailer_width > 2.5 ? '초과': '적합'}</td>
+                    </tr>
+
+                    <tr>
+                      <td>높이</td>
+                      <td>{trailer_height} </td>
+                      <td>{values.transport?.transport_2_height || '-'}  </td>
+                      <td>{(trailer_height + (values.transport?.transport_2_height || 0)).toFixed(1)}</td>
+                      <td>4.0</td>
+                      <td>{(trailer_height +  values.transport?.transport_2_height) > 4.0 ? '초과': '적합'}</td>
+                    </tr>
+              
               
             </tbody>
 
