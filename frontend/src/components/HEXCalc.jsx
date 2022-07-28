@@ -2,6 +2,22 @@ const roundTwo = (num) => {
     return +(Math.round(num + "e+2") + "e-2");
 };
 
+const roundOne = (num) => {
+    return +(Math.round(num + "e+1") + "e-1");
+};
+
+const values = {
+    undercarriage: {},
+    engine: {},
+    attachments: {},
+    swivel: {},
+    travel: {},
+    drawings: {},
+    description: {},
+    COG: {},
+    transport: {},
+}
+
 const HEXCalc = (values) => {
     const grossWeight = Number(values.operating_weight) + 65; // 총중량
     const bucket_exca_capa = Number(values.attachments.bucket_heap) * 1500; // 산적 시 버켓 중량
@@ -79,6 +95,16 @@ const HEXCalc = (values) => {
     const theta_3 = values.travel.greadability_ref;
     const greadability = Math.min(theta_1, theta_2, theta_3) || null;
 
+    /* 전도안정도 */
+
+    let baseMachine_weight = values.grossWeight - values.COG.attachments_weight;
+
+    let COG_longitudinal = roundOne((baseMachine_weight * values.COG.baseMachine_longitudinal + values.COG.attachments_weight * values.COG.attachments_longitudinal) / values.grossWeight);
+
+    let COG_lateral = roundOne((baseMachine_weight * values.COG.baseMachine_lateral + values.COG.attachments_weight * values.COG.attachments_lateral) / values.grossWeight);
+
+    let COG_vertical = roundOne((baseMachine_weight * values.COG.baseMachine_vertical + values.COG.attachments_weight * values.COG.attachments_vertical) / values.grossWeight);
+
     /* 선회성능 */
     const swing_reduction_rev =
         ((values.swivel.pump_flow * values.swivel.motor_eff) /
@@ -89,7 +115,6 @@ const HEXCalc = (values) => {
         roundTwo(swing_reduction_rev / values.swivel.reduction) || null;
 
     /* 수송중량 */
-    if (!values.transport) values.transport = {};
 
     const transport_1_weight =
         (values.operating_weight -
@@ -121,6 +146,9 @@ const HEXCalc = (values) => {
         (values.travel.theta_3 = theta_3),
         (values.travel.greadability = greadability),
         (values.transport.transport_1_weight = transport_1_weight),
+        (values.COG.COG_longitudinal = COG_longitudinal),
+        (values.COG.COG_lateral = COG_lateral),
+        (values.COG.COG_vertical = COG_vertical),
         ""
     );
 };

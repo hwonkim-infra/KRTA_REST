@@ -2,11 +2,13 @@ import { Field } from "react-final-form";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import { TextField } from "mui-rff";
+import {
+  Grid,
+  InputAdornment,
+  Paper, FormGroup
+} from "@mui/material";
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,6 +21,11 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
+  let values = {
+    COG: {}
+  };
+//   let values.COG = {};
+
 const StabilityCOG = (values) => {
 
 
@@ -27,35 +34,61 @@ const StabilityCOG = (values) => {
 
     let GrossWeight=values.operating_weight + 65;
 let GrossWeight_load = values.operating_weight + 65 + 1500 * values.attachments_bucket_heap;
-let attachments_load_weight = values.COG?.attachments_weight + 1500 * values.attachments_bucket_heap;
+let attachments_load_weight = values.COG.attachments_weight + 1500 * values.attachments_bucket_heap;
 
-let upperStructure_weight=values.grossWeight - values.COG?.counterWeight_weight - values.COG?.underCarriage_weight - values.COG?.attachments_weight;
+let baseMachine_weight = values.grossWeight - values.COG.attachments_weight;
+let upperStructure_weight=values.grossWeight - values.COG.counterWeight_weight - values.COG.underCarriage_weight - values.COG.attachments_weight;
+
 // default Config.
-let COG_longitudinal=Math.round((upperStructure_weight*values.COG?.upperStructure_longitudinal + values.COG?.counterWeight_weight*values.COG?.counterWeight_longitudinal+values.COG?.underCarriage_weight*values.COG?.underCarriage_longitudinal+values.COG?.attachments_weight*values.COG?.attachments_longitudinal)/ GrossWeight, 1); 
+let COG_longitudinal=Math.round((upperStructure_weight*values.COG.upperStructure_longitudinal + values.COG.counterWeight_weight*values.COG.counterWeight_longitudinal+values.COG.underCarriage_weight*values.COG.underCarriage_longitudinal+values.COG.attachments_weight*values.COG.attachments_longitudinal)/ GrossWeight, 1); 
 
-let COG_lateral = Math.round((upperStructure_weight*values.COG?.upperStructure_lateral+values.COG?.counterWeight_weight*values.COG?.counterWeight_lateral+values.COG?.underCarriage_weight*values.COG?.underCarriage_lateral+values.COG?.attachments_weight*values.COG?.attachments_lateral)/
+let COG_lateral = Math.round((upperStructure_weight*values.COG.upperStructure_lateral+values.COG.counterWeight_weight*values.COG.counterWeight_lateral+values.COG.underCarriage_weight*values.COG.underCarriage_lateral+values.COG.attachments_weight*values.COG.attachments_lateral)/
 GrossWeight, 1); 
 
-let COG_vertical = Math.round((upperStructure_weight*values.COG?.upperStructure_vertical+values.COG?.counterWeight_weight*values.COG?.counterWeight_vertical+values.COG?.underCarriage_weight*values.COG?.underCarriage_vertical+values.COG?.attachments_weight*values.COG?.attachments_vertical)/ GrossWeight, 1) ; 
+let COG_vertical = Math.round((upperStructure_weight*values.COG.upperStructure_vertical+values.COG.counterWeight_weight*values.COG.counterWeight_vertical+values.COG.underCarriage_weight*values.COG.underCarriage_vertical+values.COG.attachments_weight*values.COG.attachments_vertical)/ GrossWeight, 1) ; 
 
 // attachments_load
-let COG_longitudinal_load = ((upperStructure_weight*values.COG?.upperStructure_longitudinal+values.COG?.counterWeight_weight*values.COG?.counterWeight_longitudinal+values.COG?.underCarriage_weight*values.COG?.underCarriage_longitudinal+attachments_load_weight*values.COG?.attachments_load_longitudinal)/ GrossWeight_load, 1) ; 
+let COG_longitudinal_load = ((upperStructure_weight*values.COG.upperStructure_longitudinal+values.COG.counterWeight_weight*values.COG.counterWeight_longitudinal+values.COG.underCarriage_weight*values.COG.underCarriage_longitudinal+attachments_load_weight*values.COG.attachments_load_longitudinal)/ GrossWeight_load, 1) ; 
 
 let COG_lateral_load  = COG_lateral; 
 
-let COG_vertical_load  = Math.round((upperStructure_weight*values.COG?.upperStructure_vertical+values.COG?.counterWeight_weight*values.COG?.counterWeight_vertical+values.COG?.underCarriage_weight*values.COG?.underCarriage_vertical+attachments_load_weight*values.COG?.attachments_load_vertical)/ GrossWeight_load, 1); 
+let COG_vertical_load  = Math.round((upperStructure_weight*values.COG.upperStructure_vertical+values.COG.counterWeight_weight*values.COG.counterWeight_vertical+values.COG.underCarriage_weight*values.COG.underCarriage_vertical+attachments_load_weight*values.COG.attachments_load_vertical)/ GrossWeight_load, 1); 
 
 
 // attachments_maxReach
-let COG_longitudinal_maxReach = Math.round((upperStructure_weight*values.COG?.upperStructure_longitudinal+values.COG?.counterWeight_weight*values.COG?.counterWeight_longitudinal+values.COG?.underCarriage_weight*values.COG?.underCarriage_longitudinal+attachments_load_weight*values.COG?.attachments_maxReach_longitudinal)/ GrossWeight_load, 1); 
+let COG_longitudinal_maxReach = Math.round((upperStructure_weight*values.COG.upperStructure_longitudinal+values.COG.counterWeight_weight*values.COG.counterWeight_longitudinal+values.COG.underCarriage_weight*values.COG.underCarriage_longitudinal+attachments_load_weight*values.COG.attachments_maxReach_longitudinal)/ GrossWeight_load, 1); 
 
 let COG_lateral_maxReach  = COG_lateral; 
 
-let COG_vertical_maxReach  = Math.round((upperStructure_weight*values.COG?.upperStructure_vertical+values.COG?.counterWeight_weight*values.COG?.counterWeight_vertical+values.COG?.underCarriage_weight*values.COG?.underCarriage_vertical+attachments_load_weight*values.COG?.attachments_maxReach_vertical)/ GrossWeight_load, 1); 
+let COG_vertical_maxReach  = Math.round((upperStructure_weight*values.COG.upperStructure_vertical+values.COG.counterWeight_weight*values.COG.counterWeight_vertical+values.COG.underCarriage_weight*values.COG.underCarriage_vertical+attachments_load_weight*values.COG.attachments_maxReach_vertical)/ GrossWeight_load, 1); 
 
+const formFields = [
+
+    {
+      size: 2,
+      field: <TextField label="전도지선" name="COG.tipping_line" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎜</InputAdornment>}} />,
+    },    
+    {
+      size: 2,
+      field: <TextField label="최장굴착지점" name="COG.bucket_COS" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎜</InputAdornment>}} />,
+    },
+  ];
 
   return (
     <>
+    <div className="input-group mb-1">
+        <Paper style={{ padding: 16 }}>
+          <FormGroup row>
+
+            {formFields.map((item, idx) => (
+              <Grid item xs={6} key={idx}>
+                {item.field}
+              </Grid>
+            ))}
+              </FormGroup>
+        </Paper>
+
+      </div>
         <Paper className={classes.root}>
 
     <Table className={classes.table} >
@@ -69,7 +102,14 @@ let COG_vertical_maxReach  = Math.round((upperStructure_weight*values.COG?.upper
             </tr>
         </thead>
         <tbody>
-            <tr>
+        <tr>
+                <td>본체(운전자 65kg)</td>
+                <td>{baseMachine_weight}</td>
+                <td><Field component="input" className="form-control" name="COG.baseMachine_longitudinal" type="number" /> </td>
+                <td><Field component="input" className="form-control" name="COG.baseMachine_lateral" type="number" /> </td>
+                <td><Field component="input" className="form-control" name="COG.baseMachine_vertical" type="number" /> </td>
+            </tr>
+            {/* <tr>
                 <td>상부체(운전자 65kg)</td>
                 <td>{upperStructure_weight}</td>
                 <td><Field component="input" className="form-control" name="COG.upperStructure_longitudinal" type="number" /> </td>
@@ -89,7 +129,7 @@ let COG_vertical_maxReach  = Math.round((upperStructure_weight*values.COG?.upper
                 <td><Field component="input" className="form-control" name="COG.underCarriage_longitudinal" type="number" /> </td>
                 <td><Field component="input" className="form-control" name="COG.underCarriage_lateral" type="number" /> </td>
                 <td><Field component="input" className="form-control" name="COG.underCarriage_vertical" type="number" /> </td>
-            </tr>
+            </tr> */}
             <tr>
                 <td rowSpan="3">작업장치</td>
                 <td><Field component="input" className="form-control" name="COG.attachments_weight" type="number" /> </td>

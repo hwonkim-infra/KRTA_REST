@@ -13,6 +13,7 @@ import GroundPressure from "./GroundPressure";
 import SwivelSpeed from "./SwivelSpeed";
 import TravelSpecHX from "./TravelSpecHX";
 import TravelSlope from "./TravelSlope";
+import StabilityHX from "./StabilityHX";
 import Drawings from "./Drawings";
 import Transportation from "./Transportation";
 
@@ -48,6 +49,7 @@ const HEXprint = () => {
     <div>
       <HEXSpec values={HEXdata} />
       {HEXdata.ChangeModel && <CompareChange values={HEXdata} />}
+      <Drawings values={HEXdata}  />
       <WorkingRange values={HEXdata} />
       <QCouplr values={HEXdata} />
       <GrossWeights values={HEXdata} />
@@ -55,7 +57,7 @@ const HEXprint = () => {
       <SwivelSpeed values={HEXdata} config={config} />
       <TravelSpecHX values={HEXdata} config={config} />
       <TravelSlope values={HEXdata} config={config} />
-      <Drawings values={HEXdata}  />
+      <StabilityHX values={HEXdata}  />
       <Transportation values={HEXdata}  />
 
       

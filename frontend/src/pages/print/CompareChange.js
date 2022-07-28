@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HEXService from "../../services/HEXServices";
 import { Box, Grid, Paper } from "@mui/material";
+import parse from "html-react-parser";
 
 const CompareChange = ({ values }) => {
   
@@ -24,7 +25,10 @@ const CompareChange = ({ values }) => {
   }, [values.origin]);
 
   const origin = originData;
+  const originExterior = origin.drawings?.exterior || "";
+
   return (
+    <>
     <div className="pages" id="Greadability_Spec">
           <table className="bordertable">
           <tr className="borderheader">
@@ -185,6 +189,20 @@ const CompareChange = ({ values }) => {
       </Grid>
     </table>
     </div>
+    <div className="pages">
+        <table className="bordertable">
+          <thead>
+            <tr className="borderheader">
+              <td height="30mm">외관도(최초)</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{parse(originExterior)}</tr>
+          </tbody>
+        </table>
+      </div>
+
+    </>
 
   );
 };

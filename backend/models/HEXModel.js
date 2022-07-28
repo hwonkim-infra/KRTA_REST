@@ -78,13 +78,6 @@ const HEXSchema = new Schema({
         
     },
 
-    //전도안정성
-    stability: {
-        bucket_COS: Number,
-        COG_COS: Number,
-        tipping_line: Number,
-    },
-
     // 선회성능 관련
     swivel: {
         pump_flow: Number,
@@ -137,8 +130,15 @@ const HEXSchema = new Schema({
         approval_result: String,
     },
 
-    // 무게중심 관련
+    // 무게중심과 전도안정성 관련
     COG: {
+        tipping_line: Number,   // 전도지선
+        bucket_COS: Number,     // 버켓최장굴착
+
+        baseMachine_longitudinal: Number,   // 작업장치 제외 COG
+        baseMachine_lateral: Number,
+        baseMachine_vertical: Number,
+
         upperStructure_longitudinal: Number,
         upperStructure_lateral: Number,
         upperStructure_vertical: Number,
@@ -165,7 +165,13 @@ const HEXSchema = new Schema({
         
         attachments_maxReach_longitudinal: Number,
         // attachments_maxReach_lateral: Number,
-        attachments_maxReach_vertical: Number,        
+        attachments_maxReach_vertical: Number,  
+        
+        COG_longitudinal: Number,
+        COG_lateral: Number,
+        COG_vertical: Number,
+
+        
     },
 
     // 수송

@@ -44,9 +44,14 @@ const Summary = (values) => {
     },    {
       size: 2,
       field: <TextField label="버켓 용량(평적)" name="attachments.bucket_struck" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎥</InputAdornment>}} />,
-    },    {
+    },    
+    {
       size: 2,
       field: <TextField label="버켓 용량(산적)" name="attachments.bucket_heap" margin="none" type="number" InputProps={{endAdornment: <InputAdornment position="end">㎥</InputAdornment>}} />,
+    },
+    {
+      size: 2,
+      field: <TextField label="카운터웨이트" name="COG.counterWeight_weight" margin="none" type="number" InputProps={{endAdornment: <InputAdornment position="end">㎏</InputAdornment>}} />,
     },
     
   ];
