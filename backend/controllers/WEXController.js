@@ -70,7 +70,7 @@ const createWEXChange = asyncHandler(async (req, res) => {
     const { model_name, serial_no, ...rest } = req.body;
     
     try {
-      console.log("🚀 ~ file: WEXController.js ~ line 73 ~ awaitWEX.findById ~ product", product)
+      // console.log("🚀 ~ file: WEXController.js ~ line 73 ~ awaitWEX.findById ~ product", product)
       const WEXChange = new WEX({
         ChangeModel: true,
         origin: originProdId,

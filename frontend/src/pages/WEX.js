@@ -27,7 +27,6 @@ const initialWEXState = {
 };
 
 const WEX = (props) => {
-console.log("🚀 ~ file: WEX.js ~ line 30 ~ WEX ~ props", props)
   const [currentWEX, setCurrentWEX] = useState(initialWEXState);
   const [message, setMessage] = useState("");
 
@@ -57,7 +56,7 @@ console.log("🚀 ~ file: WEX.js ~ line 30 ~ WEX ~ props", props)
 
   return (
     <div>
-      <WEXForm WEXData={currentWEX}></WEXForm>
+      <WEXForm WEXData = {currentWEX}></WEXForm>
       <p>{message}</p>
     </div>
   );

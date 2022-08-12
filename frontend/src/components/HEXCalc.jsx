@@ -6,19 +6,19 @@ const roundOne = (num) => {
     return +(Math.round(num + "e+1") + "e-1");
 };
 
-const values = {
-    undercarriage: {},
-    engine: {},
-    attachments: {},
-    swivel: {},
-    travel: {},
-    drawings: {},
-    description: {},
-    COG: {},
-    transport: {},
-}
 
 const HEXCalc = (values) => {
+    values.undercarriage ??= {};
+    values.engine ??= {};
+    values.attachments ??= {};
+    values.swivel ??= {};
+    values.travel ??= {};
+    values.drawings ??= {};
+    values.description ??= {};
+    values.COG ??= {};
+    values.transport ??= {};
+
+console.log("🚀 ~ file: HEXCalc.jsx ~ line 11 ~ HEXCalc ~ values", values)
     const grossWeight = Number(values.operating_weight) + 65; // 총중량
     const bucket_exca_capa = Number(values.attachments.bucket_heap) * 1500; // 산적 시 버켓 중량
     const quick_coupler_weight = Math.max(

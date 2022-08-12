@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getHEXs } from "../actions/HEXs";
+import { getWEXs } from "../actions/WEXs";
 import {
   Grid,
   Box,
@@ -15,17 +15,17 @@ import QueueIcon from "@mui/icons-material/Queue";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-import SpecSheet from "./previews/SpecSheet";
+import SpecSheetWX from "./previews/SpecSheetWX";
 
 
-const HEXList = () => {
-  const [currentHEX, setCurrentHEX] = useState({});
+const WEXList = () => {
+  const [currentWEX, setCurrentWEX] = useState({});
 
-  const HEXs = useSelector((state) => state.productList);
+  const WEXs = useSelector((state) => state.productList);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getHEXs());
+    dispatch(getWEXs());
   }, []);
 
   const columns = [
@@ -71,19 +71,19 @@ const HEXList = () => {
     { field: "result", headerName: "완료", width: 50 },
   ];
 
-  const rows = HEXs?.map((HEX) => {
+  const rows = WEXs?.map((WEX) => {
     return {
-      id: HEX._id,
-      model_name: HEX.model_name,
-      boom: HEX.attachments?.boom_length,
-      arm: HEX.attachments?.arm_length,
-      bucket: HEX.attachments?.bucket_heap,
-      updated: HEX.updatedAt,
-      shoe: HEX.undercarriage?.shoe_width,
-      changeModel: HEX.ChangeModel ? "변경" : " ",
-      counterWeight: HEX.COG?.counterWeight_weight/1000 || '',
-      result: HEX.description?.approval_result ? "완료" : " ",
-      ...HEX,
+      id: WEX._id,
+      model_name: WEX.model_name,
+      boom: WEX.attachments?.boom_length,
+      arm: WEX.attachments?.arm_length,
+      bucket: WEX.attachments?.bucket_heap,
+      updated: WEX.updatedAt,
+      shoe: WEX.undercarriage?.shoe_width,
+      changeModel: WEX.ChangeModel ? "변경" : " ",
+      counterWeight: WEX.COG?.counterWeight_weight/1000 || '',
+      result: WEX.description?.approval_result ? "완료" : " ",
+      ...WEX,
     };
   });
 
@@ -102,7 +102,7 @@ const HEXList = () => {
                 const selectedRowData = rows.filter((row) =>
                   selectedIDs.has(row.id.toString())
                 );
-                setCurrentHEX(selectedRowData[0]);
+                setCurrentWEX(selectedRowData[0]);
               }}
             />
           </div>
@@ -117,25 +117,25 @@ const HEXList = () => {
           >
             <Box component="span" sx={{ fontSize: "h4.fontSize" }}>
               {" "}
-              {currentHEX?.model_name}
+              {currentWEX?.model_name}
             </Box>
             <Box component="span" sx={{ p: 1, border: "1px" }}>
-              {currentHEX?.serial_no}
+              {currentWEX?.serial_no}
             </Box>
 
-            {currentHEX.model_name && (
+            {currentWEX.model_name && (
               <Box >
                 <Button
                   variant="outlined"
                   startIcon={<EditIcon />}
-                  href={"/HEX/" + currentHEX?.id}
+                  href={"/WEX/" + currentWEX?.id}
                 >
                   수정
                 </Button>
                 <Button
                   variant="contained"
                   startIcon={<PrintIcon />}
-                  href={"/HEX/print/" + currentHEX?.id}
+                  href={"/WEX/print/" + currentWEX?.id}
                   target="_blank"
                 >
                   출력
@@ -144,7 +144,7 @@ const HEXList = () => {
             )}
           </Stack>
 
-          {(!currentHEX.ChangeModel && currentHEX.model_name) && (
+          {(!currentWEX.ChangeModel && currentWEX.model_name) && (
             <Box>
               <Button
                 variant="compromised"
@@ -152,14 +152,14 @@ const HEXList = () => {
                 
               >
                 <Link to={{
-                  pathname: `/HEX/addChange/${currentHEX?.id}`,
+                  pathname: `/WEX/addChange/${currentWEX?.id}`,
                   isChangeModel: true,
                 }}>변경형식</Link>
                 
               </Button>
             </Box>
           )}
-              <SpecSheet values={currentHEX}></SpecSheet>
+              <SpecSheetWX values={currentWEX}></SpecSheetWX>
 
 
             </Grid>
@@ -168,4 +168,4 @@ const HEXList = () => {
   );
 };
 
-export default HEXList;
+export default WEXList;

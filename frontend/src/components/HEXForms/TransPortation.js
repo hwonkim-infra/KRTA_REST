@@ -229,7 +229,7 @@ const TransPortation = (values) => {
 
   return (
     <>
-      <div classname="input-group mb-1">
+      <div className="input-group mb-1">
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Paper style={{ padding: 10 }}>

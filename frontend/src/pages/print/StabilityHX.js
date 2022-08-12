@@ -8,7 +8,8 @@ const StabilityHX = ({ values, config }) => {
 
    
 
-  let attachments_load_weight = values.COG?.attachments_weight + 1500 * values.attachments?.bucket_heap; 
+    let COG_longitudinal=Math.round((values.COG?.baseMachine_longitudinal * (values.grossWeight - values.COG?.attachments_weight) + values.COG?.attachments_weight * values.COG?.attachments_maxReach_longitudinal)/ values.grossWeight, 1); 
+
 let excavating_limit = Math.round(values.grossWeight * (values.COG?.tipping_line + values.COG?.COG_longitudinal ) / (values.COG?.bucket_COS - values.COG?.tipping_line)); 
 let bucket_exca_capa=values.attachments?.bucket_heap * 1800;
 
@@ -68,7 +69,7 @@ let bucket_exca_capa=values.attachments?.bucket_heap * 1800;
                             <td><strong><i>X<sub>T</sub> </i></strong></td>                            
                             <td>㎜</td>
                             <td>
-                                { values.COG?.COG_longitudinal }
+                                { COG_longitudinal }
                             </td>
                             <td>-값: 작업장치 방향</td>
                         </tr>
@@ -114,7 +115,7 @@ let bucket_exca_capa=values.attachments?.bucket_heap * 1800;
                     <tbody>
                         <tr>
                           <td><MathJax>{`$$W_L = W_T\\frac{L_1 + X_T}{L - L_1}$$`}</MathJax></td>
-                          <td><MathJax>{`$$ ${values.grossWeight} \\times \\frac{ ${values.COG?.tipping_line} + ${values.COG?.COG_longitudinal} }{${values.COG?.bucket_COS} - ${values.COG?.tipping_line}}$$`}</MathJax></td>
+                          <td><MathJax>{`$$ ${values.grossWeight} \\times \\frac{ ${values.COG?.tipping_line} + ${COG_longitudinal} }{${values.COG?.bucket_COS} - ${values.COG?.tipping_line}}$$`}</MathJax></td>
                             <td>{ excavating_limit } </td>
                         </tr>
                     </tbody>

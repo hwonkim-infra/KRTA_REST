@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 
 import HEXRoutes from './routes/HEXRoutes.js'
 import WEXRoutes from './routes/WEXRoutes.js'
+import BlogRoutes from './routes/BlogRoutes.js'
 
 dotenv.config()
 
@@ -32,8 +33,9 @@ app.use(bodyParser.urlencoded({
     parameterLimit: 1000000,
 }));
 
-app.use('/api/HEX', HEXRoutes)
-app.use('/api/WEX', WEXRoutes)
+app.use('/api/HEX', HEXRoutes);
+app.use('/api/WEX', WEXRoutes);
+app.use('/api/Blog', BlogRoutes);
     /* app.use('/api/users', userRoutes)
     app.use('/api/orders', orderRoutes)
     app.use('/api/upload', uploadRoutes)
