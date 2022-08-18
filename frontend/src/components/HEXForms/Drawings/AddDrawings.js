@@ -82,14 +82,34 @@ const AddDrawings = (values) => {
       </Field>
 </TabPanel>
 <TabPanel value={tabValue} index={3}>
-<Field name='drawings.bucket'>
+버켓 도면
+<Field name='drawings.bucket'> 
         {({ input: {onChange, value}}) => (
           <Editor tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
-          value={value} init={{height: "960",
+          value={value} init={{height: "500",
           resize: true, menubar: false,
         }} onEditorChange = {(e) => onChange(e)} />
         )}
       </Field>
+      1. 평적 용량.
+      <Field name='drawings.bucket_capa_struck' > 
+        {({ input: {onChange, value}}) => (
+          <Editor tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
+          value={value} init={{height: "500",
+          resize: true, menubar: false, placeholder: "평적 용량 자료",
+        }} onEditorChange = {(e) => onChange(e)} />
+        )}
+      </Field>
+      2. 산적 용량.
+      <Field name='drawings.bucket_capa_heap' > 
+        {({ input: {onChange, value}}) => (
+          <Editor tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
+          value={value} init={{height: "500",
+          resize: true, menubar: false, placeholder: "산적 용량 자료",
+        }} onEditorChange = {(e) => onChange(e)} />
+        )}
+      </Field>
+      
 </TabPanel>
 <TabPanel value={tabValue} index={4}>
 <Field name='drawings.Qcouplr'>

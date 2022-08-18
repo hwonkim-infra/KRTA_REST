@@ -8,7 +8,7 @@ import WEXSpec from "./WEXSpec";
 import WorkingRange from "./WorkingRange";
 import GrossWeights from "./GrossWeights";
 import AxleAndLoad from "./AxleAndLoad";
-import CompareChange from "./CompareChange";
+import CompareChangeWX from "./CompareChangeWX";
 import QCouplr from "./QCouplr";
 import SwivelSpeed from "./SwivelSpeed";
 import TravelSpecHW from "./TravelSpecHW";
@@ -48,7 +48,7 @@ const WEXprint = () => {
   return (
     <div>
       <WEXSpec {...WEXdata} />
-      {WEXdata.ChangeModel && <CompareChange values={WEXdata} />}
+      {WEXdata.ChangeModel && <CompareChangeWX values={WEXdata} />}
       <WorkingRange values={WEXdata} />
       <QCouplr values={WEXdata} />
       <GrossWeights values={WEXdata} />

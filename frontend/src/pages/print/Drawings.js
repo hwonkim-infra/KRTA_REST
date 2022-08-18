@@ -9,6 +9,8 @@ const Drawings = ({ values }) => {
   const boom = values.drawings?.boom;
   const arm = values.drawings?.arm || "";
   const bucket = values.drawings?.bucket || "";
+  const bucket_capa_struck = values.drawings?.bucket_capa_struck || "";
+  const bucket_capa_heap = values.drawings?.bucket_capa_heap || "";
   const Qcouplr = values.drawings?.Qcouplr;
   const dozer = values.drawings?.dozer;
 
@@ -149,6 +151,35 @@ const Drawings = ({ values }) => {
           </thead>
           <tbody>
             <tr>{parse(bucket)}</tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="pages">
+        <table className="bordertable">
+          <thead>
+            <tr className="borderheader">
+              <td height="30mm">버켓 용량</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{parse(bucket_capa_struck)}</tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="pages">
+        <table className="bordertable">
+          <thead>
+            <tr className="borderheader">
+              <td height="30mm">버켓 용량</td>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+            <tr><p>2. 산적 용량 <br />산적 용량이란 평적 용량에 굴착물을 1:1로 쌓아서 추가된 용량을 말한다. </p>
+              {parse(bucket_capa_heap)}</tr>
           </tbody>
         </table>
       </div>

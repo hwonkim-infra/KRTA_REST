@@ -20,7 +20,7 @@ export default function Navbar ({modelType})  {
     switch(menutype) {
       case 'WEX':
         return 'WEX'
-      case 'BLOG':
+      case 'Blog':
         return 'Blog'
       default:
         return ''

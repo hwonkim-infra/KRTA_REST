@@ -16,7 +16,7 @@ const TravelWX = () => {
           name="travel.pump_displacement_travel"
           margin="none"
           InputProps={{
-            endAdornment: <InputAdornment position="end"> </InputAdornment>,
+            endAdornment: <InputAdornment position="end">l/min</InputAdornment>,
           }}
         />
       ),
@@ -30,7 +30,7 @@ const TravelWX = () => {
           margin="none"
           type="number"
           InputProps={{
-            endAdornment: <InputAdornment position="end"></InputAdornment>,
+            endAdornment: <InputAdornment position="end">㎜</InputAdornment>,
           }}
         />
       ),
@@ -43,7 +43,7 @@ const TravelWX = () => {
           name="travel.motor_displacement_travel"
           margin="none"
           InputProps={{
-            endAdornment: <InputAdornment position="end"></InputAdornment>,
+            endAdornment: <InputAdornment position="end">㏄/rev</InputAdornment>,
           }}
         />
       ),
@@ -56,6 +56,8 @@ const TravelWX = () => {
           name="travel.motor_eff_travel"
           margin="none"
           type="number"
+          min="0"
+          max="1"
           InputProps={{
             endAdornment: <InputAdornment position="end"></InputAdornment>,
           }}
@@ -147,7 +149,7 @@ const TravelWX = () => {
           margin="none"
           type="number"
           InputProps={{
-            endAdornment: <InputAdornment position="end"></InputAdornment>,
+            endAdornment: <InputAdornment position="end">㎏f</InputAdornment>,
           }}
         />
       ),
@@ -161,7 +163,7 @@ const TravelWX = () => {
           margin="none"
           type="number"
           InputProps={{
-            endAdornment: <InputAdornment position="end"></InputAdornment>,
+            endAdornment: <InputAdornment position="end">Nm</InputAdornment>,
           }}
         />
       ),

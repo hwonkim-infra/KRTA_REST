@@ -48,7 +48,7 @@ const WEXSpec = (values ) => {
             <td colSpan="2">등판능력</td>
               <td> {values.travel?.greadability} </td>
             <td>제동거리</td>
-            <td></td>
+              <td> {values.travel?.braking_distance_max} </td>
           </tr>
           <tr>
             <td rowSpan="4" width="4%" className="vertical_cell">외 관</td>

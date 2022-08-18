@@ -49,7 +49,7 @@ const deleteWEX = asyncHandler(async (req, res) => {
 // @route   POST /api/products
 // @access  /Admin
 const createWEX = asyncHandler(async (req, res) => {
-  const { model_name, serial_no, ...rest } = req.body;
+  const { model_name,  ...rest } = req.body;
   const product = new WEX({
     model_name,
     _id: req.body.model_name + "_" + Date.now(),
@@ -67,7 +67,7 @@ const createWEXChange = asyncHandler(async (req, res) => {
   const originProdId = req.params.originId;
   
   await WEX.findById(originProdId).then((product) => {
-    const { model_name, serial_no, ...rest } = req.body;
+    const { model_name,  ...rest } = req.body;
     
     try {
       // console.log("🚀 ~ file: WEXController.js ~ line 73 ~ awaitWEX.findById ~ product", product)
@@ -95,7 +95,7 @@ const createWEXChange = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const updateWEX = asyncHandler(async (req, res) => {
-  const { model_name, serial_no, ...rest } = req.body;
+  const { model_name,  ...rest } = req.body;
   const productFields = {model_name, ...rest};
 
 

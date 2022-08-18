@@ -34,7 +34,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import {Tab, Tabs,  } from 'react-bootstrap'
 import SpecSheetWX from "../pages/previews/SpecSheetWX";
-import CompareSheet from "../pages/previews/CompareSheet";
+import CompareSheetWX from "../pages/previews/CompareSheetWX";
 import { useLocation } from "react-router-dom";
 
 import WEXCalc from "./WEXCalc";
@@ -200,7 +200,7 @@ const WEXForm = (WEXData) => {
                   <FlashMessage duration={5000}></FlashMessage>
               </Grid>
         <Grid item xs={5}>
-                  {values.ChangeModel && <CompareSheet values={values} />}
+                  {values.ChangeModel && <CompareSheetWX values={values} />}
                   <FormSpy subscription={{ values: true }}>
                   {({ values }) => (
 
