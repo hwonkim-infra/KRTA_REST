@@ -127,6 +127,7 @@ const WEXSchema = new Schema({
         friction_surface: Number,
         running_resist: Number,
         engine_slope: Number,
+        greadability: Number,
 
         // 최소회전반경
         kingpin_gap: Number,
@@ -140,6 +141,10 @@ const WEXSchema = new Schema({
         brake_eff: Number,
         axle_hub_reduction: Number,
         brake_torque_axle: Number,
+
+        braking_distance_max: Number,
+        braking_distance_norm: Number,
+
         braking_description: String,
     },
 

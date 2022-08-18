@@ -14,7 +14,7 @@ const initialWEXState = {
     
   },
   travel: {
-    pump_displacement: null,
+    // pump_displacement: null,
   },
   drawings: {
     exterior: null,

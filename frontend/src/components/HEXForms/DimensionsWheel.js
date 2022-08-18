@@ -14,7 +14,7 @@ const DimensionsWheel = () => {
     },
     {
       size: 2,
-      field: <TextField label="전축 중심 간격" name="undercarriage.frontAxle_center" margin="none" type="number"  InputProps={{endAdornment: <nputAdornment position="end"></nputAdornment>}} />,
+      field: <TextField label="전축 중심 간격" name="undercarriage.frontAxle_center" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end"></InputAdornment>}} />,
     },    
     {
       size: 2,
@@ -56,7 +56,7 @@ const DimensionsWheel = () => {
 
       {
         size: 2,
-        field: <TextField label="타이어 갯수" name="undercarriage.no_tires" margin="none" type="number"  InputProps={{endAdornment: <nputAdornment position="end"></nputAdornment>}} />,
+        field: <TextField label="타이어 갯수" name="undercarriage.no_tires" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end"></InputAdornment>}} />,
       },    
       
   ];

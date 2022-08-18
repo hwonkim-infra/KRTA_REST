@@ -33,7 +33,7 @@ const WEXCalc = (values) => {
     values.attachments.quick_coupler_weight_2
   );
 
-  const grossWeight_load = grossWeight + bucket_exca_capa; // 적재총중량
+  const grossWeight_load = Number(grossWeight + bucket_exca_capa); // 적재총중량
 
   /* 주행성능 */
   const rearAxle_center =
@@ -73,12 +73,12 @@ const WEXCalc = (values) => {
       values.travel.motor_displacement_travel) *
     1000
   ));
-  const travel_speed = (
+  const travel_speed = Math.round(Number(
     (((2 * Math.PI * axle_motor_rev * values.travel.tire_rolling_radius) /
       1000) *
       60) /
     (values.travel.TM_reduction * values.travel.axle_reduction * 10 ** 3)
-  ).toFixed();
+  ));
 
   const noslip_slope = radians_to_degrees(
     Math.atan(values.travel.friction_surface)
@@ -90,11 +90,11 @@ const WEXCalc = (values) => {
         grossWeight
     )
   ).toFixed(1);
-  const min_slope = Math.min(
+  const greadability = Math.round(Number(Math.min(
     values.travel.engine_slope,
     noslip_slope,
     traction_slope
-  ).toFixed();
+  )));
 
   const innerKingpin_COS = Math.round(
     values.undercarriage.wheel_base /
@@ -118,14 +118,14 @@ const WEXCalc = (values) => {
 
   const decceleration_rate = (braking_force_total / grossWeight).toFixed(1);
   const decceleration = (decceleration_rate * 9.81).toFixed(1);
-  const braking_distance_max = (
+  const braking_distance_max = roundOne(Number(
     (travel_speed ** 2 / (2 * decceleration)) * (1000 / 3600) ** 2 +
     idle_running * travel_speed * (1000 / 3600)
-  ).toFixed(1);
-  const braking_distance_norm = (
+  ));
+  const braking_distance_norm = roundOne(Number(
     (braking_speed_standard ** 2 / (2 * decceleration)) * (1000 / 3600) ** 2 +
     idle_running * braking_speed_standard * (1000 / 3600)
-  ).toFixed(1);
+  ));
 
   /* 전도안정도 */
 
@@ -184,6 +184,11 @@ const WEXCalc = (values) => {
 
     (values.travel.axle_motor_rev = axle_motor_rev),
     (values.travel.travel_speed = travel_speed),
+    (values.travel.greadability = greadability),
+
+    (values.travel.braking_distance_max = braking_distance_max),
+    (values.travel.braking_distance_norm = braking_distance_norm),
+
 
     (values.travel.turning_radius = turning_radius),
     (values.swivel.swing_rev = swing_rev),

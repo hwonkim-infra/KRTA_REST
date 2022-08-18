@@ -50,7 +50,7 @@ const SpecSheet = ({ values }) => {
               <td>등판능력 (무부하)</td>
               <td> {values.travel.greadability} </td>
               <td>제동거리</td>
-              <td></td>
+              <td> {values.travel.braking_distance_max} </td>
             </tr>
             <tr>
               <td>길이 (㎜)</td>
@@ -112,7 +112,7 @@ const SpecSheet = ({ values }) => {
             <td>제작사</td>
           <td >{ values.engine.supplier } </td>
             <td>한계 하중 (2축)</td>
-            <td > axle_weight_rear_limit </td>
+            <td >{ values.undercarriage.axle_weight_rear_limit }</td>
             
           </tr>
             <tr>
