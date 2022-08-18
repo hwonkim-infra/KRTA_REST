@@ -17,12 +17,12 @@ const QCouplr = ({ values }) => {
 
       </thead>
       <tbody>
+      {/* <Grid container justify="center" alignItems="center" padding="50px" direction="row"> */}
 
-      <Grid container justify="center" alignItems="center" padding="50px" direction="row">
 
         <tr>
           <td>
-          <table className="table table-striped innertable"  width="80%">
+          <table className="table-striped innertable"  width="80%" height="80%">
             <thead>
               <tr>
                 <th width="30%">구분</th>
@@ -61,14 +61,14 @@ const QCouplr = ({ values }) => {
               </tr>
               <tr>
                 <td>전축중(공차시) (kg)</td>
-                <td id="">{ values.attachments?.front_axle_load }</td>
-                <td id="">{ values.attachments?.front_axle_load_woqc }</td>
+                <td id="">{ values.undercarriage?.axle_weight_front_unload }</td>
+                <td id="">{ values.undercarriage?.front_axle_load_woqc }</td>
                 <td> </td>
               </tr>
               <tr>
                 <td>후축중(공차시) (kg)</td>
-                <td id="">{ values.attachments?.rear_axle_load }</td>
-                <td id="">{ values.attachments?.rear_axle_load_woqc }</td>
+                <td id="">{ values.undercarriage?.axle_weight_rear_unload }</td>
+                <td id="">{ values.undercarriage?.rear_axle_load_woqc }</td>
                 <td> </td>
               </tr>
               <tr>
@@ -86,14 +86,12 @@ const QCouplr = ({ values }) => {
               <tr>
                 <td>경고음장치</td>
                 <td>설치</td>
-                <td>-</td>
-                <td>유압잠금장치가 해제된 경우 조종사가 알 수 있는 충분한 크기</td>
+                <td colSpan="2">유압잠금장치가 해제된 경우 조종사가 알 수 있는 충분한 크기</td>
               </tr>
               <tr>
                 <td>과전류차단</td>
                 <td>설치</td>
-                <td>-</td>
-                <td>조종석에 퓨즈박스 및 스위치 설치</td>
+                <td colSpan="2">조종석에 퓨즈박스 및 스위치 설치</td>
               </tr>
             </tbody>
 
@@ -101,7 +99,7 @@ const QCouplr = ({ values }) => {
 
           </td>
         </tr>
-      </Grid>
+      {/* </Grid> */}
         </tbody>
       </table>
     </div>

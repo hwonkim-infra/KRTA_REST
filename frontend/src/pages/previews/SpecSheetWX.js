@@ -48,7 +48,7 @@ const SpecSheet = ({ values }) => {
             </tr>
             <tr>
               <td>등판능력 (무부하)</td>
-              <td> {values.travel?.greadability} </td>
+              <td> {values.travel.greadability} </td>
               <td>제동거리</td>
               <td></td>
             </tr>
@@ -87,19 +87,19 @@ const SpecSheet = ({ values }) => {
               <td>출력 (정격)</td>
               <td>{values.engine.power}ps@{values.engine.nominal_rev} </td>
               <td>공차 하중 (2축)</td>
-              <td>axle_weight_rear_unload </td>
+              <td>{values.undercarriage.axle_weight_rear_unload} </td>
             </tr>
             <tr>
               <td>출력 (정격)</td>
               <td>{values.engine.torque}㎏m@{values.engine.torque_rev} </td>
               <td>적재 하중 (1축)</td>
-              <td> axle_weight_front_load </td>
+              <td>{values.undercarriage.axle_weight_front_load} </td>
             </tr>
             <tr>
             <td>기통수</td>
             <td>{ values.engine.cylinder }기통</td>
             <td>적재 하중 (2축)</td>
-            <td> axle_weight_rear_load </td>
+            <td>{values.undercarriage.axle_weight_rear_load} </td>
           </tr>
           <tr>
             <td>연료 종류</td>

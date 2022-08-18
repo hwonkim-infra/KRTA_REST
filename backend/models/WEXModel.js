@@ -39,9 +39,10 @@ const WEXSchema = new Schema({
         tire_load_limit: Number,
         tire_load_limit_running: Number,
 
-        COG_center_unload: Number,
+        COG_center_unload: Number,  // 공차 적재 무게중심 
         COG_center_load: Number,
         frontAxle_center: Number,
+        rearAxle_center: Number,
 
         axle_weight_front_unload: Number,
         axle_weight_rear_unload: Number,
@@ -116,6 +117,11 @@ const WEXSchema = new Schema({
         TM_reduction: Number,
         axle_reduction: Number,
         tire_rolling_radius: Number,
+
+        /* 주행속도 */
+        axle_motor_rev: Number,
+        travel_speed: Number,
+
         // 등판능력 계산
         traction_force: Number,
         friction_surface: Number,

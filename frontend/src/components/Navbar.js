@@ -16,6 +16,18 @@ export default function Navbar ({modelType})  {
     setAnchorEl(null);
   };
   
+  const renderMenu = (menutype) => {
+    switch(menutype) {
+      case 'WEX':
+        return 'WEX'
+      case 'BLOG':
+        return 'Blog'
+      default:
+        return ''
+    }
+  }
+
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -51,8 +63,7 @@ export default function Navbar ({modelType})  {
       </Menu>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link href="/" color="inherit">Model List</Link>
-            {/* <Link href="/WEX" color="inherit">WEXs List</Link> */}
+            <Link href={`/${renderMenu(modelType)}`} color="inherit">Model List</Link>
         
           </Typography>
           <Button color="inherit"><Link href={modelType+"/new"} sx={{color: 'white'}} >New File</Link></Button>

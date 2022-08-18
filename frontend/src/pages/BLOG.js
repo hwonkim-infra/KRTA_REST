@@ -36,9 +36,7 @@ const BLOG = () => {
 
   return (
     <div>
-                        {/* {Posts.map((post) => (
-                            <Post post={post} />
-                        ))} */}
+
 
         <ThemeProvider theme={theme}>
             <CssBaseline />

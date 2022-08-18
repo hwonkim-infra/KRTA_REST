@@ -7,7 +7,7 @@ export const productListReducer = (WEXs = initialState, action) => {
     return WEXs;
 }
 
-export const productDetailsReducer = (WEX = initialState, action) => {
+export const productDetailsReducer = (WEX = {}, action) => {
     const {type, payload} = action;
     if (type === PRODUCT_DETAILS) return payload;    
     return WEX;

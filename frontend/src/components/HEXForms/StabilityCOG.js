@@ -74,6 +74,25 @@ const formFields = [
     },
   ];
 
+  const COGFields = [
+    {
+      size: 2,
+      field: <TextField label="선회중심-전축 간격" name="undercarriage.frontAxle_center" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎜</InputAdornment>}} />,
+    },    
+    {
+      size: 2,
+      field: <TextField disabled label="선회중심-후축 간격" name="undercarriage.rearAxle_center" margin="none" type="number" InputProps={{endAdornment: <InputAdornment position="end" >㎜</InputAdornment>}} />,
+    },    
+    {
+      size: 2,
+      field: <TextField label="무게중심(공차)" name="undercarriage.COG_center_unload" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎜</InputAdornment>}} />,
+    },    
+    {
+      size: 2,
+      field: <TextField label="무게중심(적재)" name="undercarriage.COG_center_load" margin="none" type="number"  InputProps={{endAdornment: <InputAdornment position="end">㎜</InputAdornment>}} />,
+    },
+  ];
+
   return (
     <>
     <div className="input-group mb-1">
@@ -81,6 +100,15 @@ const formFields = [
           <FormGroup row>
 
             {formFields.map((item, idx) => (
+              <Grid item xs={6} key={idx}>
+                {item.field}
+              </Grid>
+            ))}
+          </FormGroup>
+
+          <FormGroup row>
+
+            {COGFields.map((item, idx) => (
               <Grid item xs={6} key={idx}>
                 {item.field}
               </Grid>
