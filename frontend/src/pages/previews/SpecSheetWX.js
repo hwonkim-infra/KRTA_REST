@@ -149,8 +149,8 @@ const SpecSheet = ({ values }) => {
                 )}
                 ㎏
               </td>
-              <td> </td>
-              <td> </td>
+              <td>선회속도 </td>
+            <td>{ values.swivel?.swing_rev } </td>
             </tr>
             <tr>
               <td>형식승인연월일</td>

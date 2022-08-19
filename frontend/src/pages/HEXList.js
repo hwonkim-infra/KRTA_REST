@@ -31,7 +31,6 @@ const HEXList = () => {
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
     { field: "model_name", headerName: "기종명", width: 110 },
-    { field: "changeModel", headerName: "변경", width: 30 },
     {
       field: "boom",
       headerName: "Boom",
@@ -67,7 +66,8 @@ const HEXList = () => {
       width: 70,
       sortable: false,
     },
-    { field: "updated", headerName: "수정", width: 100 },
+    { field: "updated", headerName: "수정", width: 100 },    
+    { field: "changeModel", headerName: "형식변경", width: 100 },
     { field: "result", headerName: "완료", width: 50 },
   ];
 
@@ -80,7 +80,7 @@ const HEXList = () => {
       bucket: HEX.attachments?.bucket_heap,
       updated: HEX.updatedAt,
       shoe: HEX.undercarriage?.shoe_width,
-      changeModel: HEX.ChangeModel ? "변경" : " ",
+      changeModel: HEX.ChangeModel ? HEX.ECN+" 변경" : " ",
       counterWeight: HEX.COG?.counterWeight_weight/1000 || '',
       result: HEX.description?.approval_result ? "완료" : " ",
       ...HEX,

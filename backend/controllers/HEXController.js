@@ -76,6 +76,7 @@ const createHEXChange = asyncHandler(async (req, res) => {
         origin: originProdId,
         model_name,
         _id: model_name + "_" + Date.now(),
+        ECN: '',
         ...rest,
       });
   

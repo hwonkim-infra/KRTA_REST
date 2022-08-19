@@ -7,6 +7,7 @@ import HEXForm from "../components/HEXForm";
 
 
 const initialHEXState = {
+  ECN: null,
   engine: { engine_name: null },
   undercarriage: { ground_clearance: null },
   attachments: { bucket_struck: null },

@@ -86,19 +86,19 @@ const WEXSpec = (values ) => {
           </tr>
           <tr>
             <td>출력 (정격)</td>
-            <td>{ values.engine?.engine_power }ps @ { values.engine?.nominal_rev }rpm</td>
+            <td>{ values.engine?.power }ps @ { values.engine?.nominal_rev }rpm</td>
             <td>공차 하중 (2축)</td>
               <td>{values.undercarriage?.axle_weight_rear_unload} </td>
           </tr>
           <tr>
             <td>최대 토크</td>
-            <td>{ values.engine?.engine_torque }㎏m @ { values.engine?.torque_rev }rpm</td>
+            <td>{ values.engine?.torque }㎏m @ { values.engine?.torque_rev }rpm</td>
             <td>적재 하중 (1축)</td>
               <td>{values.undercarriage?.axle_weight_front_load} </td>
           </tr>
           <tr>
             <td>기통수</td>
-          <td id="">{ values.engine?.engine_cylinder }기통</td>
+          <td id="">{ values.engine?.cylinder }기통</td>
             <td>적재 하중 (2축)</td>
             <td>{values.undercarriage?.axle_weight_rear_load} </td>
           </tr>

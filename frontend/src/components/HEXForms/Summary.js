@@ -6,7 +6,8 @@ import {
   Paper,
 } from "@mui/material";
 
-const Summary = (values) => {
+const Summary = (values = {}) => {
+  
   const formFields = [
     {
       size: 2,
@@ -56,7 +57,7 @@ const Summary = (values) => {
   const ECNField = [
     {
       size: 3,
-      field: <TextField label="주요 형식변경" name="ECN" margin="none" />,
+      field: <TextField label="주요 형식변경" name="ECN" margin="none" parse={x=>x} />,
     },
     
   ];
