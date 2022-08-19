@@ -8,6 +8,8 @@ const BlogSchema = new Schema({
     // 제원 사양
     title: String,
     creator: String,
+    reference: String,
+    tags: [{type: String}],
     description: String,
     date: Date,
 

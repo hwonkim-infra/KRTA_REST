@@ -5,7 +5,7 @@ import Blog from "../models/BlogModel.js";
 // @route   GET /api/posts
 // @access  Public
 const getBlogs = asyncHandler(async (req, res) => {
-  const posts = await Blog.find();
+  const posts = await Blog.find().sort({date: -1});
 
   if (posts) {
     res.status(200).json(posts);
@@ -49,7 +49,8 @@ const deleteBlog = asyncHandler(async (req, res) => {
 // @route   POST /api/posts
 // @access  /Admin
 const createBlog = asyncHandler(async (req, res) => {
-  const { title, ...rest } = req.body;
+  const { title, tags, ...rest } = req.body;
+  tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
   const post = new Blog({
     title,
     // _id: req.body.title + "_" + Date.now(),
@@ -68,7 +69,8 @@ const createBlog = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const updateBlog = asyncHandler(async (req, res) => {
-  const { title, ...rest } = req.body;
+  let { title, tags, ...rest } = req.body;
+  tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
   const postFields = {title, ...rest};
 
 

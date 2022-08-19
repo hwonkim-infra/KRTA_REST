@@ -50,8 +50,8 @@ const App = () => {
               </Route>
               <Route path="Blog">
                   <Route index element={<><Navbar modelType={'Blog'}/> <BLOG /></>} />
-                  <Route path="new" element={<> <Navbar/> <BlogEdit /></>} />
-                  <Route path=":id" element={<> <Navbar/> <BlogEdit /></>} />
+                  <Route path="new" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
+                  <Route path=":id" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
                   
               </Route>
 

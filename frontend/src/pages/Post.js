@@ -25,8 +25,11 @@ const Post = ({post}) => {
                 <Card sx={{display: 'flex'}}>
                     <CardContent sx={{flex: 1}}>
                         <Typography component="h2" variant="h5">{post.title}</Typography>
-                        <Typography variant="subtitle1" color="text.secondary">{post.date}{" by "}{post.creator}</Typography>
-                        <Typography variant="subtitle1" paragraph>{parse(post.description)}</Typography>
+                        <Typography variant="subtitle1" color="text.secondary" component="span">{post.date}{" by "}{post.creator}</Typography>
+                        
+                        <Typography component="div"><div>
+                          {parse(post.description)}</div>
+                          </Typography>
                     </CardContent>
                     <Box >
                 <Button
