@@ -19,7 +19,7 @@ const Summary = (values = {}) => {
     },
     {
       size: 2,
-      field: <TextField label="형식번호" name="registration_no" margin="none" type="number" />,
+      field: <TextField label="형식번호" name="registration_no" margin="none"  />,
     },
     {
       size: 2,
