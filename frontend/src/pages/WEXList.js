@@ -16,6 +16,7 @@ import QueueIcon from "@mui/icons-material/Queue";
 import { DataGrid } from "@mui/x-data-grid";
 
 import SpecSheetWX from "./previews/SpecSheetWX";
+import CertPrev from "./previews/CertPrev";
 
 
 const WEXList = () => {
@@ -160,6 +161,7 @@ const WEXList = () => {
             </Box>
           )}
               <SpecSheetWX values={currentWEX}></SpecSheetWX>
+              <CertPrev values={currentWEX}></CertPrev>
 
 
             </Grid>
