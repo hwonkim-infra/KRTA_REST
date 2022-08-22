@@ -16,6 +16,7 @@ import QueueIcon from "@mui/icons-material/Queue";
 import { DataGrid } from "@mui/x-data-grid";
 
 import SpecSheet from "./previews/SpecSheet";
+import CertPrev from "./previews/CertPrev";
 
 
 const HEXList = () => {
@@ -160,6 +161,7 @@ const HEXList = () => {
             </Box>
           )}
               <SpecSheet values={currentHEX}></SpecSheet>
+              <CertPrev values={currentHEX}></CertPrev>
 
 
             </Grid>

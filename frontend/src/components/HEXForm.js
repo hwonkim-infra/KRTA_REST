@@ -187,13 +187,8 @@ const HEXForm = (HEXData) => {
               </Grid>
         <Grid item xs={5}>
                   {values.ChangeModel && <CompareSheet values={values} />}
-                  <FormSpy subscription={{ values: true }}>
-                  {({ values }) => (
+                  <SpecSheet values={values} />
 
-                    <SpecSheet values={values} />
-                    )}
-
-                  </FormSpy>
                     <pre>{JSON.stringify(values, 0, 2)}</pre>
 
             </Grid>
