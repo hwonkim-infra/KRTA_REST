@@ -12,7 +12,7 @@ const TAResult = () => {
   return (
     <>
 
-<Field name='description.approval_result'>
+<Field name='approval_result'>
         {({ input: {onChange, value}}) => (
           <Editor tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
           value={value} init={{height: "960",

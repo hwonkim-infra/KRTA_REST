@@ -1,65 +1,65 @@
 import asyncHandler from "express-async-handler";
-import Blog from "../models/BlogModel.js";
+import TCF from "../models/TCFModel.js";
 
 // @desc    Fetch all posts
 // @route   GET /api/posts
 // @access  Public
-const getBlogs = asyncHandler(async (req, res) => {
-  const posts = await Blog.find().sort({date: -1});
+const getTCFs = asyncHandler(async (req, res) => {
+  const posts = await TCF.find().sort({date: -1});
 
   if (posts) {
     res.status(200).json(posts);
-    console.log("Fetched Blogs successfully");
+    console.log("Fetched TCFs successfully");
   } else {
     res.status(404);
-    throw new Error("Blog not found");
+    throw new Error("TCF not found");
   }
 });
 
 // @desc    Fetch single post
 // @route   GET /api/posts/:id
 // @access  Public
-const getBlogById = asyncHandler(async (req, res) => {
-  const post = await Blog.findById(req.params.id);
+const getTCFById = asyncHandler(async (req, res) => {
+  const post = await TCF.findById(req.params.id);
 
   if (post) {
     res.json(post);
   } else {
     res.status(404);
-    throw new Error("Blog not found");
+    throw new Error("TCF not found");
   }
 });
 
 // @desc    Delete a post
 // @route   DELETE /api/posts/:id
 // @access  Private/Admin
-const deleteBlog = asyncHandler(async (req, res) => {
-  const post = await Blog.findById(req.params.id);
+const deleteTCF = asyncHandler(async (req, res) => {
+  const post = await TCF.findById(req.params.id);
 
   if (post) {
     await post.remove();
-    res.json({ message: "Blog removed" });
+    res.json({ message: "TCF removed" });
   } else {
     res.status(404);
-    throw new Error("Blog not found");
+    throw new Error("TCF not found");
   }
 });
 
 // @desc    Create a post
 // @route   POST /api/posts
 // @access  /Admin
-const createBlog = asyncHandler(async (req, res) => {
+const createTCF = asyncHandler(async (req, res) => {
   const { title, tags, ...rest } = req.body;
-  // tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
-  const post = new Blog({
+//   tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
+  const post = new TCF({
     title,
     // _id: req.body.title + "_" + Date.now(),
-    date: new Date(),
+    date: Date.now(),
     ...rest,
   });
 
-  const createdBlog = await post.save();
-  res.status(201).json(createdBlog);
+  const createdTCF = await post.save();
+  res.status(201).json(createdTCF);
 });
 
 
@@ -68,7 +68,7 @@ const createBlog = asyncHandler(async (req, res) => {
 // @route   PUT /api/posts/:id
 // @access  Private/Admin
 
-const updateBlog = asyncHandler(async (req, res) => {
+const updateTCF = asyncHandler(async (req, res) => {
   let { title, tags, ...rest } = req.body;
   tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
   const postFields = {title, ...rest};
@@ -77,7 +77,7 @@ const updateBlog = asyncHandler(async (req, res) => {
   try {
     
 
-    const post = await Blog.findOneAndUpdate(
+    const post = await TCF.findOneAndUpdate(
       { _id: req.params.id },
       { $set: postFields },
       { new: true, upsert: true, setDefaultOnInsert: true }
@@ -92,4 +92,4 @@ const updateBlog = asyncHandler(async (req, res) => {
 
 
 
-export { getBlogs, getBlogById, deleteBlog, createBlog, updateBlog, };
+export { getTCFs, getTCFById, deleteTCF, createTCF, updateTCF, };

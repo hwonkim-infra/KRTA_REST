@@ -21,21 +21,21 @@ const Post = ({post}) => {
     
     return (
         <div>
-          <CardActionArea component="a" href="#">
+          <CardActionArea component="a" href={"/Blog/" + post._id}>
                 <Card sx={{display: 'flex'}}>
                     <CardContent sx={{flex: 1}}>
                         <Typography component="h2" variant="h5">{post.title}</Typography>
-                        <Typography variant="subtitle1" color="text.secondary" component="span">{post.date}{" by "}{post.creator}</Typography>
+                        <Typography variant="subtitle1" color="text.secondary" component="span">{(new Date(post.date)).toLocaleDateString('Ko-kr')}{" by "}{post.creator}</Typography>
                         
                         <Typography component="div"><div>
-                          {parse(post.description)}</div>
+                          {parse(post.description || '') }</div>
                           </Typography>
                     </CardContent>
                     <Box >
                 <Button
                   variant="outlined"
                   startIcon={<EditIcon />}
-                  href={"/Blog/" + post._id}
+                  href={"/Blog/edit/" + post._id}
                 >
                   수정
                 </Button>

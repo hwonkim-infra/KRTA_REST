@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBlog } from "../actions/Blogs";
+import { getBlogs } from "../actions/Blogs";
 import {
   Grid,
   Box,
@@ -22,15 +21,14 @@ import QueueIcon from "@mui/icons-material/Queue";
 
 
 
-const Blog = () => {
-  const {id} = useParams();
+const BLOGs = () => {
 
+  const Posts = useSelector((state) => state.productList);
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.productDetails);
   
   useEffect(() => {
-    dispatch(getBlog(id));
-    console.log("🚀 ~ file: BLOG.js ~ line 28 ~ BLOG ~ Posts", Post)
+    dispatch(getBlogs());
+    console.log("🚀 ~ file: BLOG.js ~ line 28 ~ BLOG ~ Posts", Posts)
   }, []);
 
   const theme = createTheme();
@@ -45,8 +43,9 @@ const Blog = () => {
                 {/* <Header /> */}
                 <main> 
                     <Grid container spacing={4} sx={{mt:3}}>
-                        <Post post={post} />
-                    
+                    {Posts.map((post) => (
+                            <Post post={post} key={post._id} />
+                        ))}
 
                     </Grid>
                 </main>
@@ -59,4 +58,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default BLOGs;

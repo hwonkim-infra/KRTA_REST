@@ -21,7 +21,8 @@ import WEXList from "./pages/WEXList";
 import WEX from "./pages/WEX";
 import WEXprint from "./pages/print/WEXprint";
 
-import BLOG from "./pages/BLOG";
+import BLOGs from "./pages/BLOGs";
+import Blog from "./pages/Blog";
 import BlogEdit from "./pages/BlogEdit";
 
 
@@ -49,9 +50,10 @@ const App = () => {
                   <Route path="addChange/:id/" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
               </Route>
               <Route path="Blog">
-                  <Route index element={<><Navbar modelType={'Blog'}/> <BLOG /></>} />
+                  <Route index element={<><Navbar modelType={'Blog'}/> <BLOGs /></>} />
                   <Route path="new" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
-                  <Route path=":id" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
+                  <Route path=":id" element={<> <Navbar modelType={'Blog'}/> <Blog /></>} />
+                  <Route path="edit/:id" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
                   
               </Route>
 

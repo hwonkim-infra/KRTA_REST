@@ -25,6 +25,7 @@ const HEXSchema = new Schema({
     overall_length_woQC: Number,
     ETC: String,
     ECN: String,
+    approval_result: String,
 
     // 하부체와 트랙
     undercarriage: {

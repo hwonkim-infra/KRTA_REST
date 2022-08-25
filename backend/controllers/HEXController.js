@@ -67,7 +67,7 @@ const createHEXChange = asyncHandler(async (req, res) => {
   const originProdId = req.params.originId;
   
   await HEX.findById(originProdId).then((product) => {
-    const { model_name,  ...rest } = req.body;
+    const { model_name,  approval_result, ...rest } = req.body;
     
     try {
       console.log("🚀 ~ file: HEXController.js ~ line 73 ~ awaitHEX.findById ~ product", product)
@@ -77,6 +77,7 @@ const createHEXChange = asyncHandler(async (req, res) => {
         model_name,
         _id: model_name + "_" + Date.now(),
         ECN: '',
+        approval_result: '',
         ...rest,
       });
   

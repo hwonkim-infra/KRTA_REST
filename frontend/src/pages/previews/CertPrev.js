@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 
 
 const CertPrev = ({values}) => {
-  const approval = values.description?.approval_result || '';
+  const approval = values.approval_result || '';
   return (
     <div>
 

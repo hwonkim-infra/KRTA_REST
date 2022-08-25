@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBlog } from "../actions/Blogs";
+import { getTCFs } from "../actions/TCFs";
 import {
   Grid,
   Box,
@@ -22,15 +21,15 @@ import QueueIcon from "@mui/icons-material/Queue";
 
 
 
-const Blog = () => {
-  const {id} = useParams();
+const TCFLIST = () => {
+  const [currentTCF, setCurrentTCF] = useState({});
 
+  const Posts = useSelector((state) => state.productList);
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.productDetails);
   
   useEffect(() => {
-    dispatch(getBlog(id));
-    console.log("🚀 ~ file: BLOG.js ~ line 28 ~ BLOG ~ Posts", Post)
+    dispatch(getTCFs());
+    console.log("🚀 ~ file: TCFLIST.js ~ line 28 ~ TCFLIST ~ Posts", Posts)
   }, []);
 
   const theme = createTheme();
@@ -41,12 +40,13 @@ const Blog = () => {
 
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container maxWidth="lg">
+            <Container maxwidth="lg">
                 {/* <Header /> */}
-                <main> 
-                    <Grid container spacing={4} sx={{mt:3}}>
-                        <Post post={post} />
-                    
+                <main>
+                    <Grid spacing={4}>
+                    {Posts.map((post) => (
+                            <Post post={post} key={post._id} />
+                        ))}
 
                     </Grid>
                 </main>
@@ -59,4 +59,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default TCFLIST;

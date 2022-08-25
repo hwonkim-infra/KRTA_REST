@@ -79,11 +79,11 @@ const HEXList = () => {
       boom: HEX.attachments?.boom_length,
       arm: HEX.attachments?.arm_length,
       bucket: HEX.attachments?.bucket_heap,
-      updated: HEX.updatedAt,
+      updated: (new Date(HEX.updatedAt)).toLocaleDateString('Ko-kr'),
       shoe: HEX.undercarriage?.shoe_width,
       changeModel: HEX.ChangeModel ? HEX.ECN+" 변경" : " ",
       counterWeight: HEX.COG?.counterWeight_weight/1000 || '',
-      result: HEX.description?.approval_result ? "완료" : " ",
+      result: HEX.approval_result ? "완료" : " ",
       ...HEX,
     };
   });
