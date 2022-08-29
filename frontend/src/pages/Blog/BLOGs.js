@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBlogs } from "../actions/Blogs";
+import { getBlogs } from "../../actions/Blogs";
 import {
   Grid,
   Box,
@@ -43,9 +43,12 @@ const BLOGs = () => {
                 {/* <Header /> */}
                 <main> 
                     <Grid container spacing={4} sx={{mt:3}}>
+                      <Grid item sx={6}>
                     {Posts.map((post) => (
-                            <Post post={post} key={post._id} />
-                        ))}
+                      <Post post={post} key={post._id} />
+                      ))}
+
+                      </Grid>
 
                     </Grid>
                 </main>

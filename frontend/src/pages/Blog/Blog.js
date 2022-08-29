@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBlog } from "../actions/Blogs";
+import { getBlog } from "../../actions/Blogs";
 import {
   Grid,
   Box,
@@ -44,10 +44,8 @@ const Blog = () => {
             <Container maxWidth="lg">
                 {/* <Header /> */}
                 <main> 
-                    <Grid container spacing={4} sx={{mt:3}}>
+                    <Grid container spacing={2} sx={{mt:3}} >
                         <Post post={post} />
-                    
-
                     </Grid>
                 </main>
             </Container>

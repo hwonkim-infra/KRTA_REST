@@ -31,8 +31,9 @@ const WEXList = () => {
 
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: "model_name", headerName: "기종명", width: 110 },
-    { field: "changeModel", headerName: "변경", width: 30 },
+    { field: "model_name", headerName: "기종명", width: 90 },
+    { field: "registration_no", headerName: "형식", width: 70 },
+    { field: "weight", headerName: "중량", width: 70 },
     {
       field: "boom",
       headerName: "Boom",
@@ -55,13 +56,6 @@ const WEXList = () => {
       sortable: false,
     },
     {
-      field: "shoe",
-      headerName: "shoe",
-      type: "number",
-      width: 70,
-      sortable: false,
-    },
-    {
       field: "counterWeight",
       headerName: "CW",
       type: "number",
@@ -69,6 +63,7 @@ const WEXList = () => {
       sortable: false,
     },
     { field: "updated", headerName: "수정", width: 100 },
+    { field: "changeModel", headerName: "형식변경", width: 100 },
     { field: "result", headerName: "완료", width: 50 },
   ];
 
@@ -76,12 +71,13 @@ const WEXList = () => {
     return {
       id: WEX._id,
       model_name: WEX.model_name,
+      registration_no: WEX.registration_no,
+      weight: WEX.operating_weight,
       boom: WEX.attachments?.boom_length,
       arm: WEX.attachments?.arm_length,
       bucket: WEX.attachments?.bucket_heap,
       updated: (new Date(WEX.updatedAt)).toLocaleDateString('Ko-kr'),
-      // shoe: WEX.undercarriage?.shoe_width,
-      changeModel: WEX.ChangeModel ? "변경" : " ",
+      changeModel: WEX.ChangeModel ? WEX.ECN+" 변경" : " ",
       counterWeight: WEX.COG?.counterWeight_weight/1000 || '',
       result: WEX.description?.approval_result ? "완료" : " ",
       ...WEX,

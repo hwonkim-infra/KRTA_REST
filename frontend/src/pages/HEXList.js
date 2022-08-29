@@ -31,7 +31,9 @@ const HEXList = () => {
 
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: "model_name", headerName: "기종명", width: 110 },
+    { field: "model_name", headerName: "기종명", width: 90 },
+    { field: "registration_no", headerName: "형식", width: 70 },
+    { field: "weight", headerName: "중량", width: 70 },
     {
       field: "boom",
       headerName: "Boom",
@@ -64,7 +66,7 @@ const HEXList = () => {
       field: "counterWeight",
       headerName: "CW",
       type: "number",
-      width: 70,
+      width: 50,
       sortable: false,
     },
     { field: "updated", headerName: "수정", width: 100 },    
@@ -76,6 +78,8 @@ const HEXList = () => {
     return {
       id: HEX._id,
       model_name: HEX.model_name,
+      registration_no: HEX.registration_no,
+      weight: HEX.operating_weight,
       boom: HEX.attachments?.boom_length,
       arm: HEX.attachments?.arm_length,
       bucket: HEX.attachments?.bucket_heap,

@@ -21,9 +21,9 @@ import WEXList from "./pages/WEXList";
 import WEX from "./pages/WEX";
 import WEXprint from "./pages/print/WEXprint";
 
-import BLOGs from "./pages/BLOGs";
-import Blog from "./pages/Blog";
-import BlogEdit from "./pages/BlogEdit";
+import BLOGs from "./pages/Blog/BLOGs";
+import Blog from "./pages/Blog/Blog";
+import BlogEdit from "./pages/Blog/BlogEdit";
 
 
 const App = () => {
