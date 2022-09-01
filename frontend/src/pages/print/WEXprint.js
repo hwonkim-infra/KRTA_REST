@@ -15,9 +15,6 @@ import TravelSpecHW from "./TravelSpecHW";
 import TravelSlopeWX from "./TravelSlopeWX";
 import TravelBrakingWX from "./TravelBrakingWX";
 import Drawings from "./Drawings";
-/* 
-import StabilityHX from "./StabilityHX";
-import Transportation from "./Transportation"; */
 
 const WEXprint = () => {
   const { id } = useParams();
@@ -28,7 +25,7 @@ const WEXprint = () => {
   useEffect(() => {
     console.log(id);
     dispatch(getWEX(id));
-  }, []);
+  }, [dispatch, id]);
 
   const config = {
     loader: { load: ["[tex]/html"] },

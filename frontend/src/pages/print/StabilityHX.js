@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Paper } from "@mui/material";
+import {  Grid, Paper } from "@mui/material";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 
@@ -43,7 +43,7 @@ let bucket_exca_capa=values.attachments?.bucket_heap * 1800;
                     <thead>
                         <tr>
                             <th colspan="5">
-                                <img src="/images/HEX_maxReach.png" width="90%" />
+                                <img src="/images/HEX_maxReach.png" alt="maxReach" width="90%" />
                             </th>
                         </tr>
                     </thead>

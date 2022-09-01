@@ -23,7 +23,7 @@ import parse from "html-react-parser";
 const Post = ({ post }) => {
   return (
     <div>
-      <CardActionArea component="a" href={"/Blog/" + post._id}>
+      <CardActionArea  href={"/Blog/" + post._id}>
         <Card /* sx={{ display: "flex" }} */>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">

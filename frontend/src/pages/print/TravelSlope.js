@@ -1,23 +1,18 @@
 import React from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { Box } from "@mui/material";
 
 // 퀵커플러 탈착
 
 const TravelSlope = ({ values, config }) => {
-  const TM_rev_1 =
+  /* const TM_rev_1 =
     Math.round(
       ((values.travel?.pump_displacement * values.travel?.TM_mv) /
-        (values.travel?.TM_flow_1 * values.travel?.reduc)) *
-        1000 *
-        100
-    ) / 100;
+        (values.travel?.TM_flow_1 * values.travel?.reduc)) *1000 * 100) / 100;
 
   const TM_rev_2 = (
     ((values.travel?.pump_displacement * values.travel?.TM_mv) /
-      (values.travel?.TM_flow_2 * values.travel?.reduc)) *
-    1000
-  ).toFixed(2);
+      (values.travel?.TM_flow_2 * values.travel?.reduc)) *    1000
+  ).toFixed(2); */
 
   const TM_1 = (
     ((values.travel?.pump_pressure * values.travel?.TM_flow_1) /
@@ -31,9 +26,9 @@ const TravelSlope = ({ values, config }) => {
     values.travel?.reduc *
     values.travel?.TM_mt
   ).toFixed(2);
-  const Traction_Sprocket =
+  /* const Traction_Sprocket =
     ((2 * TM_2 * 1000) / values.travel?.sprocket_radius) * values.travel?.TM_r;
-  const ground_traction = values.travel?.surface_drag * values.grossWeight;
+  const ground_traction = values.travel?.surface_drag * values.grossWeight; */
 
   const TS = (
     ((2 * TM_1 * 1000) / values.travel?.sprocket_radius) *
@@ -239,7 +234,7 @@ const TravelSlope = ({ values, config }) => {
                       </tr>
                       <tr>
                         <td>
-                          <MathJax>{`$$TS = \\frac{2 \\times \TM_{max} \\times 1,000}{R} \\times \\mu_r$$`}</MathJax>
+                          <MathJax>{`$$TS = \\frac{2 \\times \\TM_{max} \\times 1,000}{R} \\times \\mu_r$$`}</MathJax>
                         </td>
                         <td>
                           <MathJax>{`$$ \\frac{2 \\times ${Math.max(

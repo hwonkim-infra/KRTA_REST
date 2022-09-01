@@ -1,6 +1,6 @@
 import React from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { Box } from "@mui/material";
+// import { Box } from "@mui/material";
 
 // 퀵커플러 탈착
 
@@ -9,9 +9,9 @@ const TravelSlopeWX = ({ values, config }) => {
     return radians * (180 / Math.PI);
   };
 
-  const degrees_to_radians = (degrees) => {
+  /* const degrees_to_radians = (degrees) => {
     return degrees / (180 / Math.PI);
-  };
+  }; */
 
   const noslip_slope = radians_to_degrees(
     Math.atan(values.travel?.friction_surface)

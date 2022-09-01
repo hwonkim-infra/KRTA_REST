@@ -160,7 +160,7 @@ const TravelSpecHX = ({ values, config }) => {
                       <tr>
                         <td>
                           (1속)
-                          <MathJax>{`$$SM = \\frac{\Q_{m1} \\times \\mu_{mv}}{q \\times i} \\times 1,000$$`}</MathJax>
+                          <MathJax>{`$$SM = \\frac{\\Q_{m1} \\times \\mu_{mv}}{q \\times i} \\times 1,000$$`}</MathJax>
                         </td>
                         <td>
                           <MathJax>{`$$ \\frac{ ${values.travel?.pump_displacement} \\times ${values.travel?.TM_mv}}{${values.travel?.TM_flow_1} \\times ${values.travel?.reduc}} \\times 1,000$$`}</MathJax>
@@ -172,7 +172,7 @@ const TravelSpecHX = ({ values, config }) => {
                       <tr>
                         <td>
                           (2속)
-                          <MathJax>{`$$SM = \\frac{\Q_{m2} \\times \\mu_{mv}}{q \\times i} \\times 1,000$$`}</MathJax>
+                          <MathJax>{`$$SM = \\frac{\\Q_{m2} \\times \\mu_{mv}}{q \\times i} \\times 1,000$$`}</MathJax>
                         </td>
                         <td>
                           <MathJax>{`$$ \\frac{ ${values.travel?.pump_displacement} \\times ${values.travel?.TM_mv}}{${values.travel?.TM_flow_2} \\times ${values.travel?.reduc}} \\times 1,000$$`}</MathJax>

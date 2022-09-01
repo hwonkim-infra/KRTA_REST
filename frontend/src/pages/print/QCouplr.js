@@ -1,4 +1,3 @@
-import { Grid } from "@mui/material";
 import React from "react";
 
 // 퀵커플러 탈착

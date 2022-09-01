@@ -28,7 +28,7 @@ const HEXprint = () => {
       console.log(id);
       dispatch(getHEX(id));
       
-  }, []);
+  }, [dispatch, id]);
 
   const config = {
     loader: { load: ["[tex]/html"] },

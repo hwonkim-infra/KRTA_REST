@@ -1,6 +1,5 @@
 import React from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { Card } from "@mui/material";
 
 // 퀵커플러 탈착
 
@@ -117,7 +116,7 @@ const TravelSpecHW = ({ values, config }) => {
                         </tr>
                         <tr>
                           <td>
-                            <MathJax>{`$$SM = \\frac{\Q \\times \\mu_{mv}}{q} \\times 1,000$$`}</MathJax>
+                            <MathJax>{`$$SM = \\frac{\\Q \\times \\mu_{mv}}{q} \\times 1,000$$`}</MathJax>
                           </td>
                           <td>
                             <MathJax>{`$$ \\frac{ ${values.travel?.pump_displacement_travel} \\times ${values.travel?.motor_eff_travel}}{${values.travel?.motor_displacement_travel} } \\times 1,000$$`}</MathJax>
