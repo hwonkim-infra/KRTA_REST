@@ -3,16 +3,11 @@ import {
   AppBar,
   Box,
   Toolbar,
-  Typography,
   Button,
   Link,
-  Menu,
   MenuItem,
   styled,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import IconButton from "@mui/material/IconButton";
-import { useLocation, useParams } from "react-router-dom";
 
 export default function Navbar({ modelType }) {
   const Styledtoolbar = styled(Toolbar)({

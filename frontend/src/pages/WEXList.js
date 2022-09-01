@@ -34,36 +34,14 @@ const WEXList = () => {
     { field: "model_name", headerName: "기종명", width: 90 },
     { field: "registration_no", headerName: "형식", width: 70 },
     { field: "weight", headerName: "중량", width: 70 },
-    {
-      field: "boom",
-      headerName: "Boom",
-      type: "number",
-      width: 70,
-      sortable: false,
-    },
-    {
-      field: "arm",
-      headerName: "Arm",
-      type: "number",
-      width: 70,
-      sortable: false,
-    },
-    {
-      field: "bucket",
-      headerName: "bucket",
-      type: "number",
-      width: 70,
-      sortable: false,
-    },
-    {
-      field: "counterWeight",
-      headerName: "CW",
-      type: "number",
-      width: 70,
-      sortable: false,
-    },
-    { field: "updated", headerName: "수정", width: 100 },
-    { field: "changeModel", headerName: "형식변경", width: 100 },
+    { field: "boom", headerName: "Boom", width: 60,},
+    { field: "arm", headerName: "Arm", width: 60, },
+    { field: "bucket", headerName: "버켓", width: 60,},
+    { field: "height", headerName: "높이", width: 60, },
+    { field: "width", headerName: "너비", width: 60, },
+    { field: "counterWeight", headerName: "CW", width: 50, },
+    { field: "updated", headerName: "수정", width: 60 },    
+    { field: "changeModel", headerName: "형식변경", width: 120 },
     { field: "result", headerName: "완료", width: 50 },
   ];
 
@@ -76,6 +54,8 @@ const WEXList = () => {
       boom: WEX.attachments?.boom_length,
       arm: WEX.attachments?.arm_length,
       bucket: WEX.attachments?.bucket_heap,
+      height: WEX.overall_height,
+      width: WEX.overall_width,
       updated: (new Date(WEX.updatedAt)).toLocaleDateString('Ko-kr'),
       changeModel: WEX.ChangeModel ? WEX.ECN+" 변경" : " ",
       counterWeight: WEX.COG?.counterWeight_weight/1000 || '',
@@ -88,7 +68,7 @@ const WEXList = () => {
     <div>
 
       <Grid container spacing={2}>
-        <Grid item xs={7}>
+        <Grid item xs={8}>
           <div style={{ width: "100%", height: 1000 }}>
             <DataGrid
               rows={rows}
@@ -105,7 +85,7 @@ const WEXList = () => {
           </div>
         </Grid>
 
-        <Grid item xs={5}>
+        <Grid item xs={4}>
           <Stack
             direction="row"
             spacing={3}
