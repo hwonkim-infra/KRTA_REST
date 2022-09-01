@@ -7,11 +7,10 @@ import {
   Box,
   Button,
   Stack,
+  styled,
 } from "@mui/material";
 
-import EditIcon from "@mui/icons-material/Edit";
-import PrintIcon from "@mui/icons-material/Print";
-import QueueIcon from "@mui/icons-material/Queue";
+import {Edit as EditIcon, Print as PrintIcon, Queue as QueueIcon, TextSnippet }  from "@mui/icons-material/";
 
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -27,11 +26,12 @@ const HEXList = () => {
 
   useEffect(() => {
     dispatch(getHEXs());
-  }, []);
+  }, [dispatch]);
+
 
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: "model_name", headerName: "기종명", width: 90 },
+    { field: "model_name", headerName: "기종명", width: 110 },
     { field: "registration_no", headerName: "형식", width: 70 },
     { field: "weight", headerName: "중량", width: 70 },
     { field: "boom", headerName: "Boom", width: 60,},
@@ -106,21 +106,32 @@ const HEXList = () => {
             </Box>
 
             {currentHEX.model_name && (
-              <Box >
+              <Box>
                 <Button
+                  sx={{m:1}}
                   variant="outlined"
                   startIcon={<EditIcon />}
-                  href={"/HEX/" + currentHEX?.id}
+                  href={"/HEX/" + currentHEX?.id}                  
                 >
                   수정
                 </Button>
                 <Button
+                  sx={{m:1}}
                   variant="contained"
                   startIcon={<PrintIcon />}
                   href={"/HEX/print/" + currentHEX?.id}
                   target="_blank"
                 >
                   출력
+                </Button>
+                <Button
+                  sx={{m:1}}
+                  variant="text"
+                  startIcon={<TextSnippet />}
+                  href={"/HEX/specW/" + currentHEX?.id}
+                  target="_blank"
+                >
+                  제원표
                 </Button>
               </Box>
             )}

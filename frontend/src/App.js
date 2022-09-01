@@ -15,6 +15,7 @@ import {
 import HEX from "./pages/HEX";
 import HEXList from "./pages/HEXList";
 import HEXprint from "./pages/print/HEXprint";
+import HEXSpecW from "./pages/print/HEXSpecWindw";
 import Navbar from "./components/Navbar";
 
 import WEXList from "./pages/WEXList";
@@ -40,6 +41,7 @@ const App = () => {
                   <Route path="new" element={<> <Navbar/> <HEX /></>} />
                   <Route path=":id" element={<> <Navbar/> <HEX /></>} />
                   <Route path="print/:id" element={<HEXprint />} />
+                  <Route path="specW/:id" element={<HEXSpecW />} />
                   <Route path="addChange/:id/" element={<> <Navbar/> <HEX /></>} />
               </Route>
               <Route path="WEX">
