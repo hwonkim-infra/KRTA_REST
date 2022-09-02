@@ -51,7 +51,7 @@ const HEXSpecW = () => {
     <td>길이</td>
     <td>{values.overall_length}</td>
     <td>트랙높이</td>
-    <td></td>
+    <td>{values.undercarriage?.track_height} </td>
   </tr>
   <tr>
     <td>너비</td>
