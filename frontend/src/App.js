@@ -21,6 +21,7 @@ import Navbar from "./components/Navbar";
 import WEXList from "./pages/WEXList";
 import WEX from "./pages/WEX";
 import WEXprint from "./pages/print/WEXprint";
+import WEXSpecW from "./pages/print/WEXSpecWindW";
 
 import BLOGs from "./pages/Blog/BLOGs";
 import Blog from "./pages/Blog/Blog";
@@ -49,6 +50,7 @@ const App = () => {
                   <Route path="new" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
                   <Route path=":id" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
                   <Route path="print/:id" element={<WEXprint />} />
+                  <Route path="specW/:id" element={<WEXSpecW />} />
                   <Route path="addChange/:id/" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
               </Route>
               <Route path="Blog">

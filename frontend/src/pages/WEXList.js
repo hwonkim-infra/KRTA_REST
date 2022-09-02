@@ -58,7 +58,7 @@ const WEXList = () => {
       updated: (new Date(WEX.updatedAt)).toLocaleDateString('Ko-kr'),
       changeModel: WEX.ChangeModel ? WEX.ECN+" 변경" : " ",
       counterWeight: WEX.COG?.counterWeight_weight/1000 || '',
-      result: WEX.description?.approval_result ? "완료" : " ",
+      result: WEX.approval_result ? "완료" : " ",
       ...WEX,
     };
   });
