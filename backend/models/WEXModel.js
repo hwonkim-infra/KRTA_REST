@@ -169,7 +169,6 @@ const WEXSchema = new Schema({
         travel_reduction: String,
         climb: String,
         bucket_creep: String,
-        approval_result: String,
     },
 
     // 무게중심 관련

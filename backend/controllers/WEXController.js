@@ -67,7 +67,7 @@ const createWEXChange = asyncHandler(async (req, res) => {
   const originProdId = req.params.originId;
   
   await WEX.findById(originProdId).then((product) => {
-    const { model_name,  ...rest } = req.body;
+    const { model_name, approval_result,  ...rest } = req.body;
     
     try {
       // console.log("🚀 ~ file: WEXController.js ~ line 73 ~ awaitWEX.findById ~ product", product)
@@ -77,6 +77,7 @@ const createWEXChange = asyncHandler(async (req, res) => {
         model_name,
         _id: model_name + "_" + Date.now(),
         ECN: '',
+        approval_result: '',
         ...rest,
       });
   
@@ -96,8 +97,8 @@ const createWEXChange = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const updateWEX = asyncHandler(async (req, res) => {
-  const { model_name,  ...rest } = req.body;
-  const productFields = {model_name, ...rest};
+  const { model_name, approval_result,  ...rest } = req.body;
+  const productFields = {model_name, approval_result, ...rest};
 
 
   try {

@@ -97,8 +97,8 @@ const createHEXChange = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const updateHEX = asyncHandler(async (req, res) => {
-  const { model_name,  ...rest } = req.body;
-  const productFields = {model_name, ...rest};
+  const { model_name, approval_result,  ...rest } = req.body;
+  const productFields = {model_name, approval_result, ...rest};
 
 
   try {

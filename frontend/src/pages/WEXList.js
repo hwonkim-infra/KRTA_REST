@@ -72,6 +72,9 @@ const WEXList = () => {
             <DataGrid
               rows={rows}
               columns={columns}
+              initialState={{
+                sorting: { sortModel: [{field: 'model_name', sort: 'asc'}]}
+              }}
               disableMultipleSelection={true}
               onSelectionModelChange={(ids) => {
                 const selectedIDs = new Set(ids);

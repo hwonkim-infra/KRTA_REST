@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import {Box,  Tab, Tabs, Typography } from '@mui/material';
 import { Form, Field } from "react-final-form";
-import { addDrawings } from "../../../actions/HEXs";
 import { Editor } from '@tinymce/tinymce-react';
 
 const TabPanel = (props) => {
