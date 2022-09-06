@@ -7,9 +7,15 @@ import {
   createTheme,
   CssBaseline,
   Container,
+  Stack,
+  Typography,
+  Button,
 } from "@mui/material";
-import Post from './Post'
-
+import Page from '../../components/Page'
+// import Post from './Post'
+import { Link as RouterLink } from "react-router-dom";
+import POSTS from '../../mock/blog';
+import { BlogPostCard } from '../../sections/blog';
 
 
 
@@ -17,38 +23,33 @@ import Post from './Post'
 
 const BLOGs = () => {
 
-  const Posts = useSelector((state) => state.productList);
+  /* const Posts = useSelector((state) => state.productList);
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch(getBlogs());
     console.log("🚀 ~ file: BLOG.js ~ line 28 ~ BLOG ~ Posts", Posts)
-  }, [dispatch, Posts]);
+  }, [dispatch, Posts]); */
 
   const theme = createTheme();
 
   return (
     <div>
+      <Page title="Blog">
+        <Container>
+          <Stack direction="row">
+            <Typography variant="h4" gutterBottom>Blog</Typography>
+            <Button variant="contained" component={RouterLink} to="#">New Post</Button>
+          </Stack>
+          <Stack mb={5} direction="row"></Stack>
+          <Grid container spacing={3}>
+            {POSTS.map((post, index)=> (
+              <BlogPostCard key={post.id} post={post} index={index} />
+            ))}
+          </Grid>
+        </Container>
 
-
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Container maxWidth="lg">
-                {/* <Header /> */}
-                <main> 
-                    <Grid container spacing={4} sx={{mt:3}}>
-                      <Grid item sx={6}>
-                    {Posts.map((post) => (
-                      <Post post={post} key={post._id} />
-                      ))}
-
-                      </Grid>
-
-                    </Grid>
-                </main>
-            </Container>
-
-        </ThemeProvider>
+      </Page>
 
 
     </div>
