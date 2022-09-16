@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  CardActionArea,
-  Card, CardContent,
-  Typography,
-  Box,
-  Button,
-} from "@mui/material";
+import { Box, Card, Divider, Container, Typography, Button } from '@mui/material';
 
+// import Page from 'src/components/Page'
 import EditIcon from "@mui/icons-material/Edit";
 import parse from "html-react-parser";
 
@@ -20,27 +15,15 @@ import parse from "html-react-parser";
 const Post = ({ post }) => {
   return (
     <div>
-      <CardActionArea  href={"/Blog/" + post._id}>
-        <Card /* sx={{ display: "flex" }} */>
-          <CardContent sx={{ flex: 1 }}>
-            <Typography component="h2" variant="h5">
-              {post.title}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="span"
-            >
-              {new Date(post.date).toLocaleDateString("Ko-kr")}
-              {" by "}
-              {post.creator}
-            </Typography>
-
-            <Typography component="div">
-              <div>{parse(post.description || "")}</div>
-            </Typography>
-          </CardContent>
+      {/* <Page title="Blog: Post Details"> */}
+        <Container>
           <Box>
+            <Typography variant="h6" sx={{mb: 5}}>
+              <div>{parse(post.description || "")}</div>
+
+            </Typography>
+            <Divider />
+            <Box>
             <Button
               variant="outlined"
               startIcon={<EditIcon />}
@@ -49,8 +32,11 @@ const Post = ({ post }) => {
               수정
             </Button>
           </Box>
-        </Card>
-      </CardActionArea>
+          </Box>
+
+        </Container>
+
+      {/* </Page> */}
     </div>
   );
 };

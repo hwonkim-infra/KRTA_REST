@@ -80,32 +80,7 @@ const BlogPostCard = ({ post, index }) => {
                 }
             }),
         }}>
-            <SvgIconStyle
-                color="paper"
-          src="https://minimal-assets-api-dev.vercel.app/assets/icons/shape-avatar.svg"
-                sx={{
-                    width: 80,
-                    height: 36,
-                    zIndex: 9,
-                    bottom: -15,
-                    position: 'absolute',
-                    color: 'background.paper',
-                    ...((latestPostLarge || latestPost) && {display: 'none'})
 
-                }} />
-          <AvatarStyle 
-            alt={author.name}
-            src={author.avatarUrl}
-            sx={{
-                ...((latestPostLarge || latestPost) && {
-                    zIndex: 9,
-                    top: 24,
-                    left: 24,
-                    width: 40,
-                    height: 40,
-                })
-            }}
-          />
           <CoverImgStyle alt={title} src={cover} />
         </CardMediaStyle>
         <CardContent
@@ -122,18 +97,7 @@ const BlogPostCard = ({ post, index }) => {
           <TitleStyle to="#" color="inherit" variant="subtitle2" underline="hover" component={RouterLink} sx={{
             ...(latestPostLarge && { typography: 'h5', height:60 }), ...((latestPostLarge || latestPost) && {color: 'common.white'}),
           }}>{title}</TitleStyle>
-          <InfoStyle>{POST_INFO.map((info, index) => (
-            <Box
-            key={index}
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                ml: index === 0 ? 0:1.5,
-                ...((latestPostLarge || latestPost) && {color: 'grey.500'})
-            }}>
-                <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
-            </Box>
-          ))}</InfoStyle>
+
         </CardContent>
       </Card>
     </Grid>
