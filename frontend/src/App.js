@@ -1,14 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./bootstrap.min.css";
-import {
-  Grid,
-  Box,
-  Card,
-  Stack,
-  Table,
-  TableContainer,
-  TableBody,
+import {  
   Container,
 } from "@mui/material";
 
@@ -22,6 +15,10 @@ import WEXList from "./pages/WEXList";
 import WEX from "./pages/WEX";
 import WEXprint from "./pages/print/WEXprint";
 import WEXSpecW from "./pages/print/WEXSpecWindW";
+
+import PSCs from "./pages/TCF/PSCList";
+// import TCF from "./pages/TCF/TCF";
+import PSCEdit from "./pages/TCF/PSCForm";
 
 import BLOGs from "./pages/Blog/BLOGs";
 import Blog from "./pages/Blog/Blog";
@@ -52,6 +49,14 @@ const App = () => {
                   <Route path="print/:id" element={<WEXprint />} />
                   <Route path="specW/:id" element={<WEXSpecW />} />
                   <Route path="addChange/:id/" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
+              </Route>
+              <Route path="PSC">
+                  <Route index element={<><Navbar modelType={'TCF'}/> <PSCs /></>} />
+                  {/* <Route path="new" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} /> */}
+                  {/* <Route path=":id" element={<> <Navbar modelType={'TCF'}/> <PSC /></>} /> */}
+                  <Route path="edit/:id" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />
+                  {/* <Route path="editdesc/:id" element={<> <Navbar modelType={'PSC'}/> <PSCDForm /></>} /> */}
+                  
               </Route>
               <Route path="Blog">
                   <Route index element={<><Navbar modelType={'Blog'}/> <BLOGs /></>} />

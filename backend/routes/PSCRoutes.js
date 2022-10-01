@@ -1,20 +1,20 @@
 import express from 'express'
 const router = express.Router()
 import {
-    getTCFs,
-    getTCFById,
-    deleteTCF,
-    createTCF,
-    updateTCF,    
+    getPSCs,
+    getPSCById,
+    deletePSC,
+    createPSC,
+    updatePSC,    
 } from '../controllers/PSCTCFController.js'
 // import { protect, admin } from '../middleware/authMiddleware.js'
 
-router.route('/').get(getTCFs).post(createTCF)
+router.route('/').get(getPSCs).post(createPSC)
 
 router
     .route('/:id')
-    .get(getTCFById)
-    .delete(deleteTCF)
-    .put(updateTCF)
+    .get(getPSCById)
+    .delete(deletePSC)
+    .put(updatePSC)
 
 export default router;

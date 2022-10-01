@@ -10,6 +10,7 @@ import bodyParser from 'body-parser';
 import HEXRoutes from './routes/HEXRoutes.js'
 import WEXRoutes from './routes/WEXRoutes.js'
 import BlogRoutes from './routes/BlogRoutes.js'
+import PSCRoutes from './routes/PSCRoutes.js'
 import TCFRoutes from './routes/TCFRoutes.js'
 
 dotenv.config()
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({
 app.use('/api/HEX', HEXRoutes);
 app.use('/api/WEX', WEXRoutes);
 app.use('/api/Blog', BlogRoutes);
+app.use('/api/PSC', PSCRoutes);
 app.use('/api/TCF', TCFRoutes);
     /* app.use('/api/users', userRoutes)
     app.use('/api/orders', orderRoutes)

@@ -23,6 +23,7 @@ export default function Navbar({ modelType }) {
   const MenuItems = [
     { Name: "HEX", Link: "/" },
     { Name: "WEX", Link: "/WEX" },
+    { Name: "TCF", Link: "/PSC" },
     { Name: "Blog", Link: "/Blog" },
   ];
 
@@ -39,6 +40,8 @@ export default function Navbar({ modelType }) {
     switch (menutype) {
       case "WEX":
         return "WEX";
+      case "TCF":
+        return "TCF";
       case "Blog":
         return "Blog";
       default:
