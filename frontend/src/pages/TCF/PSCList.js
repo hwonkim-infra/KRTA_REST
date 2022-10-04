@@ -1,32 +1,25 @@
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Box, Collapse, Grid, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+
+import {
+  Box,
+  Collapse,
+  Grid,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getPSCs } from "../../actions/PSCs";
 import PSCTable from "../../components/TCF/PSCTable";
-
-function createData(name, calories, fat, carbs, protein, price) {
-  return { name, calories, fat, carbs, protein, price, history: [ { date: "2020-01-05", customerId: "11091700", amount: 3, }, { date: "2020-01-02", customerId: "Anonymous", amount: 1, }, ], };
-}
-
-function createPSC(item, reference, requirements, riskReduct, complyStatements, hazardDescript) {
-  return {
-    item, reference, requirements, riskReduct, complyStatements, hazardDescript,
-    detail: [
-      {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
-      },
-      {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
-      },
-    ],
-  };
-}
 
 function Row(props) {
   const { row } = props;
@@ -34,10 +27,13 @@ function Row(props) {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }} aria-label="expand row"
-            // size="large"
-            onClick={() => setOpen(!open)}>
-        <TableCell >
+      <TableRow
+        sx={{ "& > *": { borderBottom: "unset" } }}
+        aria-label="expand row"
+        // size="large"
+        onClick={() => setOpen(!open)}
+      >
+        <TableCell>
           <IconButton>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
@@ -88,50 +84,56 @@ function Row(props) {
     </React.Fragment>
   );
 }
-/* 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-}; */
 
 const PSCList = () => {
+  const [TCFwindow, setTCFwindow] = useState(false);
 
   const PSCs = useSelector((state) => state.productList);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(getPSCs());    
-    console.log("🚀 ~ file: PSCList.js ~ line 133 ~ PSCList ~ PSCs", PSCs)
-    
+    dispatch(getPSCs());
   }, [dispatch]);
-  
+
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <TableContainer component={Paper}>
-            {PSCs.map((row) => (
-              <PSCTable row={row} />
-            )
-            )}
-            
-          </TableContainer>
-        </Grid>
-
-
+          <Grid item xs={8}>
+        <Paper elevation={2} style={{ padding: "5px" }}>
+            <TableContainer component={Paper}>
+              <Table
+                sx={{ minWidth: 650 }}
+                size="small"
+                aria-label="simple table"
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell width="5%"> </TableCell>
+                    <TableCell>ITEM</TableCell>
+                    <TableCell align="right">reference</TableCell>
+                    <TableCell align="right">requirements</TableCell>
+                    <TableCell align="right" width="5%" height="10px">
+                      Edit
+                    </TableCell>
+                    <TableCell align="right" width="5%">
+                      TCF
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {PSCs.map((row) => (
+                    <PSCTable row={row} key={row._id} />
+                  ))}
+                  <TableRow>
+                    <TableCell align="center" colSpan={4}>
+                      <Link to={"/PSC/new"}>Add</Link>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+        </Paper>
+          </Grid>
       </Grid>
     </div>
   );

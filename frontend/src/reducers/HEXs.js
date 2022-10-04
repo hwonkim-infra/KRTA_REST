@@ -1,10 +1,16 @@
 import { PRODUCT_LIST, PRODUCT_DETAILS, PRODUCT_DELETE, PRODUCT_CREATE, PRODUCT_UPDATE, PRODUCT_CREATE_CHANGE } from '../actions/types'
 
 const initialState = [];
-export const productListReducer = (HEXs = initialState, action) => {
+export const productListReducer = (state=[], action) => {
     const {type, payload} = action;
-    if (type === PRODUCT_LIST) return payload;    
-    return HEXs;
+    switch (type){
+        case PRODUCT_LIST:
+            return payload;
+        default:
+            return state
+    }
+    /* if (type === PRODUCT_LIST) return payload;    
+    return HEXs; */
 }
 
 export const productDetailsReducer = (HEX = initialState, action) => {
