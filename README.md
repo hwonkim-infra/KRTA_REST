@@ -1,4 +1,4 @@
-# KRTA Documnet Platform
+# KRTA Document Platform
 
 > Korea Type Approval Document Managing platform built with the MERN stack & Redux.
 
