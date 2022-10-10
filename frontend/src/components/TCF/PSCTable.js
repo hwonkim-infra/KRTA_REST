@@ -1,86 +1,36 @@
-import { Edit as EditIcon } from "@mui/icons-material/";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
-
+import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Box, Button, Checkbox, Collapse, IconButton, Table, TableBody, TableCell, TableHead, TableRow, Typography,Modal } from "@mui/material";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+
+import { Box, Button, Checkbox, Chip, Collapse, IconButton, Stack, Table, TableBody, TableCell, TableHead, styled, TableRow, Typography, Modal,Paper} from "@mui/material";
 import React, { Fragment, useState } from "react";
 
-function Row(props) {
-  const { row } = props;
-  const [open, setOpen] = useState(false);
-
-  return (
-    <React.Fragment>
-      <TableRow
-        sx={{ "& > *": { borderBottom: "unset" } }}
-        aria-label="expand row"
-        // size="large"
-        onClick={() => setOpen(!open)}
-      >
-        <TableCell>
-          <IconButton>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.item}
-        </TableCell>
-        <TableCell align="right">{row.reference}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Details
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.detail.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
+const ListItem = styled('li')(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
 
 const modalStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
+
+const chipData = 
+[
+  { key: 0, label: 'Angular' },
+  { key: 1, label: 'jQuery' },
+  { key: 2, label: 'Polymer' },
+  { key: 3, label: 'React' },
+  { key: 4, label: 'Vue.js' },
+]
 
 
 const PSCTable = ({ row }) => {
@@ -98,7 +48,7 @@ const PSCTable = ({ row }) => {
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
         onClick={() => setOpen(!open)}
       >
-        <TableCell padding="checkbox" >
+        <TableCell padding="checkbox">
           <Checkbox color="primary" />
         </TableCell>
         <TableCell>{row.item}</TableCell>
@@ -110,60 +60,76 @@ const PSCTable = ({ row }) => {
           </IconButton>
         </TableCell>
 
-        <TableCell>
-          
-        </TableCell>
+        <TableCell></TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Details {row._id}
-              </Typography>
               <Button onClick={handleModalOpen}>Open modal</Button>
-<Modal
-  open={modalOpen}
-  onClose={handleModalClose}
-  aria-labelledby="modal-modal-title"
-  aria-describedby="modal-modal-description"
->
-  <Box sx={modalStyle}>
-    <Typography id="modal-modal-title" variant="h6" component="h2">
-      Text in a modal
-    </Typography>
-    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-    </Typography>
-  </Box>
-</Modal>
+              <Modal
+                open={modalOpen}
+                onClose={handleModalClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={modalStyle}>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    Details in a modal
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    PSC Item detail requirements
+                    {row.riskReduct}
+                  </Typography>
+                </Box>
+              </Modal>
+              <Typography variant="h6" gutterBottom component="div">
+                TCFs 
+              </Typography>
+              <Stack direction="row" spacing={1}>
+      <Chip label="HX140" component="a" href={`/TCF/edit/`} clickable />
+      <Chip label="Clickable" variant="outlined"  />
+    </Stack>
+    <Paper
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        listStyle: 'none',
+        p: 0.5,
+        m: 0,
+      }}
+      component="ul"
+    >
+      {chipData.map((data) => {
+        let icon;
+
+
+
+        return (
+          <ListItem key={data.key}>
+            <Chip
+              icon={icon}
+              label={data.label}
+            />
+          </ListItem>
+        );
+      })}
+    </Paper>
               <IconButton href={"/TCF/new/"}>
-            <NewspaperIcon />
-          </IconButton>
-              {/*  <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table> */}
+                <NewspaperIcon />
+                New
+              </IconButton>
+              <IconButton href={"/TCF/edit/:id"}>
+                <ModeEditOutlineOutlinedIcon />
+                EditTCF
+              </IconButton>
+
+         
             </Box>
           </Collapse>
         </TableCell>
