@@ -38,12 +38,46 @@ const PSCList = () => {
     };
   });
 
+  const handleDeleteRow = () => {
+    window.alert('Delete row!')
+  };
+
+  const handleAddRow = () => {
+    window.alert('Add row!')
+  };
+
   return (
     <div>
       <Grid container spacing={2}>
           <Grid item xs={8}>
         <Paper elevation={2} style={{ padding: "5px" }}>
-          <div style={{ width: "100%", height: 800 }}>
+        <Box sx={{ width: '100%' }}>
+      <Stack direction="row" spacing={1}>
+        <Button size="small" onClick={handleDeleteRow}>
+          Delete a row
+        </Button>
+        <Button size="small" component="a" href={"/PSC/new"}>
+          Add a row
+        </Button>
+      </Stack>
+      <Box sx={{ height: 400, mt: 1 }}>
+        <DataGrid
+              rows={rows}
+              columns={columns}
+              
+              disableMultipleSelection={true}
+              onSelectionModelChange={(ids) => {
+                const selectedIDs = new Set(ids);
+                const selectedRowData = rows.filter((row) =>
+                  selectedIDs.has(row.id.toString())
+                );
+                setCurrentPSC(selectedRowData[0]);
+              }}
+            />
+      </Box>
+    </Box>
+        
+          {/* <div style={{ width: "100%", height: 800 }}>
             <DataGrid
               rows={rows}
               columns={columns}
@@ -57,7 +91,7 @@ const PSCList = () => {
                 setCurrentPSC(selectedRowData[0]);
               }}
             />
-          </div>
+          </div> */}
           </Paper>
           </Grid>
           <Grid item xs={4}>
@@ -90,6 +124,18 @@ const PSCList = () => {
               </Box>
             )}
           </Stack>
+          <Box>
+              <Button
+                variant="compromised"
+                startIcon={<QueueIcon />}
+                
+              >
+                <Link to={{
+                  pathname: `/PSC/addTCF/${currentPSC?.id}`,
+                }}>Add TCF</Link>
+                
+              </Button>
+            </Box>
 
 {/*           {(!currentPSC.ChangeModel && currentPSC.model_name) && (
             <Box>
