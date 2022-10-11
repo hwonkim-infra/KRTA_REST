@@ -34,7 +34,6 @@ const chipData =
 
 
 const PSCTable = ({ row }) => {
-  console.log("🚀 ~ file: PSCTable.js ~ line 68 ~ PSCTable ~ row", row);
   const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 

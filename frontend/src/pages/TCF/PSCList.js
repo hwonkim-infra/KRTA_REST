@@ -1,92 +1,18 @@
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-
-import {
-  Box,
-  Collapse,
-  Grid,
-  IconButton,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-} from "@mui/material";
 import React, { useEffect, useState } from "react";
+
+import { Box, Button, Grid, IconButton, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {Edit as EditIcon, Print as PrintIcon, Queue as QueueIcon, TextSnippet }  from "@mui/icons-material/";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPSCs } from "../../actions/PSCs";
 import PSCTable from "../../components/TCF/PSCTable";
+import { DataGrid } from "@mui/x-data-grid";
 
-function Row(props) {
-  const { row } = props;
-  const [open, setOpen] = useState(false);
-
-  return (
-    <React.Fragment>
-      <TableRow
-        sx={{ "& > *": { borderBottom: "unset" } }}
-        aria-label="expand row"
-        // size="large"
-        onClick={() => setOpen(!open)}
-      >
-        <TableCell>
-          <IconButton>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.item}
-        </TableCell>
-        <TableCell align="right">{row.reference}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Details
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.detail.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
 
 const PSCList = () => {
   const [TCFwindow, setTCFwindow] = useState(false);
+  const [currentPSC, setCurrentPSC] = useState({});
 
   const PSCs = useSelector((state) => state.productList);
   const dispatch = useDispatch();
@@ -95,45 +21,96 @@ const PSCList = () => {
     dispatch(getPSCs());
   }, [dispatch]);
 
+  const columns = [
+    // { field: "id", headerName: "ID", width: 70 },
+    { field: "ITEM", headerName: "ITEM", width: 150 },
+    { field: "reference", headerName: "reference", width: 200 },
+    { field: "requirements", headerName: "requirements", width: 200 },
+  ];
+
+  const rows = PSCs?.map((PSC) => {
+    return {
+      id: PSC._id,
+      ITEM: PSC.item,
+      reference: PSC.reference,
+      requirements: PSC.requirements,
+      ...PSC,
+    };
+  });
+
   return (
     <div>
       <Grid container spacing={2}>
           <Grid item xs={8}>
         <Paper elevation={2} style={{ padding: "5px" }}>
-            <TableContainer component={Paper}>
-              <Table
-                sx={{ minWidth: 650 }}
-                size="small"
-                aria-label="simple table"
-              >
-                <TableHead>
-                  <TableRow>
-                    <TableCell width="5%"> </TableCell>
-                    <TableCell>ITEM</TableCell>
-                    <TableCell align="right">reference</TableCell>
-                    <TableCell align="right">requirements</TableCell>
-                    <TableCell align="right" width="5%" height="10px">
-                      Edit
-                    </TableCell>
-                    <TableCell align="right" width="5%">
-                      TCF
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {PSCs.map((row) => (
-                    <PSCTable row={row} key={row._id} />
-                  ))}
-                  <TableRow>
-                    <TableCell align="center" colSpan={4}>
-                      <Link to={"/PSC/new"}>Add</Link>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-        </Paper>
+          <div style={{ width: "100%", height: 800 }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              
+              disableMultipleSelection={true}
+              onSelectionModelChange={(ids) => {
+                const selectedIDs = new Set(ids);
+                const selectedRowData = rows.filter((row) =>
+                  selectedIDs.has(row.id.toString())
+                );
+                setCurrentPSC(selectedRowData[0]);
+              }}
+            />
+          </div>
+          </Paper>
           </Grid>
+          <Grid item xs={4}>
+          <Stack
+            direction="row"
+            spacing={3}
+            alignItems="flex-end"
+            justifyContent="space-between"
+          >
+            <Box component="span" sx={{ fontSize: "h6.fontSize" }}>
+              {" "}
+              {currentPSC?.item}
+            </Box>
+            
+
+            {currentPSC.item && (
+              <Box>
+                <Button
+                  sx={{m:1}}
+                  variant="outlined"
+                  startIcon={<EditIcon />}
+                  href={"/PSC/" + currentPSC?.id}                  
+                >
+                  수정
+                </Button>
+                <IconButton href={"/PSC/edit/" + currentPSC._id}>
+            <EditIcon />
+          </IconButton>
+                
+              </Box>
+            )}
+          </Stack>
+
+{/*           {(!currentPSC.ChangeModel && currentPSC.model_name) && (
+            <Box>
+              <Button
+                variant="compromised"
+                startIcon={<QueueIcon />}
+                
+              >
+                <Link to={{
+                  pathname: `/PSC/addChange/${currentPSC?.id}`,
+                  isChangeModel: true,
+                }}>변경형식</Link>
+                
+              </Button>
+            </Box>
+          )} */}
+              {/* <SpecSheet values={currentPSC}></SpecSheet> */}
+              {/* <CertPrev values={currentPSC}></CertPrev> */}
+
+
+            </Grid>
       </Grid>
     </div>
   );
