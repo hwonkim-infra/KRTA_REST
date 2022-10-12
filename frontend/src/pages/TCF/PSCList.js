@@ -26,7 +26,12 @@ const PSCList = () => {
     { field: "ITEM", headerName: "ITEM", width: 150 },
     { field: "reference", headerName: "reference", width: 200 },
     { field: "requirements", headerName: "requirements", width: 200 },
+    { field: "Edit", headerName: "EDIT", width: 50, renderCell: () => <IconButton href={"/PSC/edit/" + currentPSC._id}><EditIcon />
+    </IconButton> },
   ];
+
+  const PSCedit = (currentPSC)=> (<IconButton href={"/PSC/edit/" + currentPSC._id}><EditIcon />
+  </IconButton>)
 
   const rows = PSCs?.map((PSC) => {
     return {
@@ -128,10 +133,10 @@ const PSCList = () => {
               <Button
                 variant="compromised"
                 startIcon={<QueueIcon />}
-                
+                psc_id={currentPSC}
               >
                 <Link to={{
-                  pathname: `/PSC/addTCF/${currentPSC?.id}`,
+                  pathname: `/PSC/`+currentPSC._id + '/newTCF'
                 }}>Add TCF</Link>
                 
               </Button>

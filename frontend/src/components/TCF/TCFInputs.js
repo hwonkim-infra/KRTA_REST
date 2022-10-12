@@ -4,18 +4,21 @@ import { Editor } from '@tinymce/tinymce-react';
 import { Field } from "react-final-form";
 import React from "react";
 
-const TCFHead = (values = {}) => {
+const TCFHead = () => {
   
   const formFields = [
     {
       size: 5,
-      field: <TextField label="ITEM" name="item" margin="none" />,
+      field: <TextField label="ITEM" name="item" margin="none" disabled />,
     },
     {
       size: 7,
       field: <TextField label="Reference" name="reference" margin="none" />,
     },
-
+    {
+        size: 12,
+        field: <TextField multiline label="models" name="models" margin="none" />,
+      },
     {
       size: 12,
       field: <TextField multiline label="requirements" name="requirements" margin="none" />,
