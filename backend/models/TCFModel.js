@@ -6,8 +6,8 @@ const TCFSchema = new Schema({
     // _id: String,
     
     // TCF 구조: 기종과 기종그룹별 세부사항 추가
-    title: String,
-    PSCitem: String,
+    group: String,
+    pscID: String,
     creator: String,
     models: Array,
     requirements: String,    

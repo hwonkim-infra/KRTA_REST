@@ -23,12 +23,7 @@ import StabilityCOG from "./HEXForms/StabilityCOG";
 import TransPortation from "./HEXForms/TransPortation";
 import TAResult from "./HEXForms/TAResult";
 
-import {
-  Grid,
-  Button,
-  Stack,
-  
-} from "@mui/material";
+import { Grid, Button, Stack, } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
 

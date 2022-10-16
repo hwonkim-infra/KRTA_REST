@@ -3,19 +3,21 @@ import React from "react";
 import parse from "html-react-parser";
 
 
-const CertPrev = ({values}) => {
-  const approval = values.approval_result || '';
+const TCFPrev = ({data}) => {
+
   return (
     <div>
 
   <Paper elevation= {2} style= {{
     padding: "10px"
   }}>
-{parse(approval)}
+    {data?.requirements}
+    {console.log(data)}
+
   </Paper>
 
     </div>
   );
 };
 
-export default CertPrev;
+export default TCFPrev;

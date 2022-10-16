@@ -31,6 +31,7 @@ const TCFForm = () => {
   const getTCF = (id) => {
     TCFService.get(id)
       .then((response) => {
+        
         setTCFData(response.data);
       })
       .catch((e) => {
@@ -41,8 +42,11 @@ const TCFForm = () => {
   const getPSC = (id) => {
     PSCService.get(id)
       .then((response) => {
-        delete response.data._id 
-        setPSCData(response.data);
+        let responseData = response.data;
+        console.log("🚀 ~ file: TCFForm.js ~ line 35 ~ .then ~ responseData", responseData, typeof(responseData))
+        // responseData = responseData.toString().replace("\"_id\":", "\"PSCid\":");
+        delete Object.assign(responseData, {["pscID"]: responseData["_id"] })["_id"]
+        setPSCData(responseData);
       })
       .catch((e) => {
         console.log(e);
@@ -66,7 +70,7 @@ const TCFForm = () => {
     await dispatch(createTCF(values))
       .then((response) => {
         console.log(response);
-        navigate("/TCF");
+        navigate("/PSC");
       })
       .catch((e) => {
         console.log(e.response.data);

@@ -1,46 +1,33 @@
 import React, { useEffect, useState } from 'react';
 
 import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Paper,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from '@mui/material';
-import {
-  Edit as EditIcon,
-  Print as PrintIcon,
-  Queue as QueueIcon,
-  TextSnippet,
+  Edit as EditIcon, Queue as QueueIcon
 } from '@mui/icons-material/';
+import { Box, Button, Grid, IconButton, Paper, Stack } from '@mui/material';
 
+import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPSCs } from '../../actions/PSCs';
-import PSCTable from '../../components/TCF/PSCTable';
-import { DataGrid } from '@mui/x-data-grid';
+import { getTCFs } from '../../actions/TCFs';
+import TCFPrev from '../previews/TCFPrev'
 
 const PSCList = () => {
-  const [TCFwindow, setTCFwindow] = useState(false);
+  const [currentTCF, setCurrentTCF] = useState(false);
   const [currentPSC, setCurrentPSC] = useState({});
 
   const PSCs = useSelector((state) => state.productList);
+  const TCFs = useSelector((state) => state.productList);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPSCs());
+    // dispatch(getTCFs());
   }, [dispatch]);
 
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: 'ITEM', headerName: 'ITEM', width: 150 },
+    { field: 'Item', headerName: 'ITEM', width: 150 },
     { field: 'reference', headerName: 'reference', width: 200 },
     { field: 'requirements', headerName: 'requirements', width: 200 },
     {
@@ -64,7 +51,7 @@ const PSCList = () => {
   const rows = PSCs?.map((PSC) => {
     return {
       id: PSC._id,
-      ITEM: PSC.item,
+      Item: PSC.item,
       reference: PSC.reference,
       requirements: PSC.requirements,
       ...PSC,
@@ -109,21 +96,6 @@ const PSCList = () => {
               </Box>
             </Box>
 
-            {/* <div style={{ width: "100%", height: 800 }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              
-              disableMultipleSelection={true}
-              onSelectionModelChange={(ids) => {
-                const selectedIDs = new Set(ids);
-                const selectedRowData = rows.filter((row) =>
-                  selectedIDs.has(row.id.toString())
-                );
-                setCurrentPSC(selectedRowData[0]);
-              }}
-            />
-          </div> */}
           </Paper>
         </Grid>
         <Grid item xs={5}>
@@ -175,6 +147,18 @@ const PSCList = () => {
 
         <Paper elevation={2} style={{ padding: "5px" }}>
           TCF Preview
+          {currentPSC._id}
+          {TCFs.map((datas) => {
+
+            const data = Object.values(datas).filter(datas => {
+              return datas.pscID === currentPSC._id
+            })
+            console.log("🚀 ~ file: PSCList.js ~ line 154 ~ {TCFs.map ~ data", data)
+            return (
+              <TCFPrev data={datas} key={currentTCF._id}/>
+            )
+          })}
+          {/* {console.log(TCFs)} */}
         </Paper>
 
           {/*           {(!currentPSC.ChangeModel && currentPSC.model_name) && (
@@ -193,7 +177,6 @@ const PSCList = () => {
             </Box>
           )} */}
           {/* <SpecSheet values={currentPSC}></SpecSheet> */}
-          {/* <CertPrev values={currentPSC}></CertPrev> */}
         </Grid>
       </Grid>
     </div>
