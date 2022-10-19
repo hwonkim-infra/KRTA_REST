@@ -1,11 +1,11 @@
-import { PRODUCT_LIST, PRODUCT_DETAILS, PRODUCT_DELETE, PRODUCT_CREATE, PRODUCT_UPDATE, PRODUCT_CREATE_CHANGE } from './types'
+import { DOCUMENT_LIST, DOCUMENT_DETAILS, DOCUMENT_DELETE, DOCUMENT_CREATE, DOCUMENT_UPDATE, DOCUMENT_CREATE_CHANGE } from './types'
 import TCFService from '../services/TCFServices';
 
 export const getTCFs = () => async (dispatch) => {
     try {
         const res = await TCFService.getAll();
         dispatch({
-            type: PRODUCT_LIST,
+            type: DOCUMENT_LIST,
             payload: res.data,
         })
     } catch (err) {
@@ -19,7 +19,7 @@ export const getTCF = (id) => async (dispatch) => {
         
         
         dispatch({
-            type: PRODUCT_DETAILS,
+            type: DOCUMENT_DETAILS,
             payload: res.data,
         })
     } catch (err) {
@@ -32,7 +32,7 @@ export const createTCF = (data) => async (dispatch) => {
     try {
         const res = await TCFService.create(data);
         dispatch({
-            type: PRODUCT_CREATE,
+            type: DOCUMENT_CREATE,
             payload: res.data,
         })
         return Promise.resolve(res.data);
@@ -47,7 +47,7 @@ export const updateTCF = (id, data) => async (dispatch) => {
         // console.log("🚀 ~ file: TCFs.js ~ line 32 ~ updateTCF ~ data", data)
         
         dispatch({
-            type: PRODUCT_UPDATE,
+            type: DOCUMENT_UPDATE,
             payload: data,
         })
         return Promise.resolve(res.data);
@@ -61,7 +61,7 @@ export const deleteTCF = (id) => async (dispatch) => {
     try {
         await TCFService.remove(id);
         dispatch({
-            type: PRODUCT_DELETE,
+            type: DOCUMENT_DELETE,
             payload: {id},
         })
     } catch (err) {

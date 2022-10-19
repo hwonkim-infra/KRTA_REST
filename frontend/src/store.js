@@ -3,6 +3,9 @@ import { combineReducers } from 'redux'
 
 import { productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer, productCreateChangeReducer} from './reducers/HEXs'
 
+import { documentListReducer, documentDetailsReducer, documentDeleteReducer, documentCreateReducer, documentUpdateReducer, documentCreateChangeReducer} from './reducers/FILEs'
+
+
 const reducer = combineReducers({
   productList: productListReducer, 
   productDetails: productDetailsReducer,
@@ -10,6 +13,15 @@ const reducer = combineReducers({
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
   productCreateChange: productCreateChangeReducer,
+
+  documentList: documentListReducer, 
+  documentDetails: documentDetailsReducer,
+  documentDelete: documentDeleteReducer,
+  documentCreate: documentCreateReducer,
+  documentUpdate: documentUpdateReducer,
+  documentCreateChange: documentCreateChangeReducer,
+
+  
 })
 
 const store = configureStore({

@@ -14,7 +14,7 @@ const TCFList = ({currentID}) => {
 
   console.log(currentID)
 
-  const TCFs = useSelector((state) => state.productList);
+  const TCFs = useSelector((state) => state.documentList);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,11 +43,15 @@ const TCFList = ({currentID}) => {
             <Box sx={{ width: '100%' }}>
 
             {currentID}
+            TCF List
             {TCFs.map((data) => {
                 return (
                     <li key ={data._id}>
                     {data.item}
                     {data._id}
+                    <IconButton href={'/TCF/edit/' + data._id}>
+          <EditIcon />
+        </IconButton>
 
                     </li>
                 )
@@ -55,21 +59,6 @@ const TCFList = ({currentID}) => {
 
             </Box>
 
-            {/* <div style={{ width: "100%", height: 800 }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              
-              disableMultipleSelection={true}
-              onSelectionModelChange={(ids) => {
-                const selectedIDs = new Set(ids);
-                const selectedRowData = rows.filter((row) =>
-                  selectedIDs.has(row.id.toString())
-                );
-                setCurrentTCF(selectedRowData[0]);
-              }}
-            />
-          </div> */}
         
 
 
