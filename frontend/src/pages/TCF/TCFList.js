@@ -47,6 +47,7 @@ const TCFList = ({currentID}) => {
                 return (
                     <li key ={data._id}>
                     {data.item}
+                    {data._id}
 
                     </li>
                 )

@@ -2,6 +2,16 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
+const TCFSchema = new Schema({
+    // _id: String,
+    
+    // TCF 구조: 기종과 기종그룹별 세부사항 추가
+    group: String,
+    models: Array,
+    riskReduc: String,
+
+}, { timestamps: true });
+
 const PSCSchema = new Schema({
     // _id: String,
     
@@ -15,6 +25,8 @@ const PSCSchema = new Schema({
     description: String,
     tags: Array,
     date: Date,
+
+    TCF: [TCFSchema]    // TCF as subDocuments
 
 }, { timestamps: true });
 

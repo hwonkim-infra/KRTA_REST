@@ -6,7 +6,7 @@ import {
     deleteTCF,
     createTCF,
     updateTCF,    
-} from '../controllers/PSCTCFController.js'
+} from '../controllers/TCFController.js'
 // import { protect, admin } from '../middleware/authMiddleware.js'
 
 router.route('/').get(getTCFs).post(createTCF)

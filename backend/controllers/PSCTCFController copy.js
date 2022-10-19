@@ -51,11 +51,11 @@ const deletePSC = asyncHandler(async (req, res) => {
 // @route   POST /api/posts
 // @access  /Admin
 const createPSC = asyncHandler(async (req, res) => {
-  const { item, ...rest } = req.body;
+  const { title, ...rest } = req.body;
 //   tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
   const post = new PSC({
-    item,
-    // _id: req.body.item + "_" + Date.now(),
+    title,
+    // _id: req.body.title + "_" + Date.now(),
     date: Date.now(),
     ...rest,
   });
@@ -70,8 +70,8 @@ const createPSC = asyncHandler(async (req, res) => {
 // @route   PUT /api/posts/:id
 // @access  Private/Admin
 const updatePSC = asyncHandler(async (req, res) => {
-  let { item, ...rest } = req.body;
-  const postFields = {item, ...rest};
+  let { title, ...rest } = req.body;
+  const postFields = {title, ...rest};
 
   try {
 
@@ -87,6 +87,8 @@ const updatePSC = asyncHandler(async (req, res) => {
     return res.status(500).send("Server Error");
   }
 });
+
+
 
 /* TCF Controller */
 // @desc    Fetch all posts
@@ -118,16 +120,35 @@ const getTCFById = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Delete a post
+// @route   DELETE /api/posts/:id
+// @access  Private/Admin
+const deleteTCF = asyncHandler(async (req, res) => {
+  const post = await TCF.findById(req.params.id);
 
-// @desc    Create a TCF
-// @route   POST /api/PSC/TCF
+  if (post) {
+    await post.remove();
+    res.json({ message: "TCF removed" });
+  } else {
+    res.status(404);
+    throw new Error("TCF not found");
+  }
+});
+
+// @desc    Create a post
+// @route   POST /api/posts
 // @access  /Admin
 const createTCF = asyncHandler(async (req, res) => {
-  const { item, ...rest } = req.body;
+  const { title, ...rest } = req.body;
 //   tags.toString().replace(/\s/g,'').split(',').map(function(tag){return { "name": tag}});
-const TCFFields = {item, ...rest};
+  const post = new TCF({
+    title,
+    // _id: req.body.title + "_" + Date.now(),
+    date: Date.now(),
+    ...rest,
+  });
 
-  const createdTCF = await TCF.create({ $set: TCFFields });
+  const createdTCF = await post.save();
   res.status(201).json(createdTCF);
 });
 
@@ -137,8 +158,8 @@ const TCFFields = {item, ...rest};
 // @route   PUT /api/posts/:id
 // @access  Private/Admin
 const updateTCF = asyncHandler(async (req, res) => {
-  let { item, ...rest } = req.body;
-  const postFields = {item, ...rest};
+  let { title, ...rest } = req.body;
+  const postFields = {title, ...rest};
 
   try {
 
@@ -155,17 +176,6 @@ const updateTCF = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteTCF = asyncHandler(async (req, res) => {
-  const TCFpost = await TCF.findById(req.params.id);
-
-  if (TCFpost) {
-    await TCFpost.remove();
-    res.json({ message: "TCF post removed" });
-  } else {
-    res.status(404);
-    throw new Error("TCF post not found");
-  }
-});
 
 
 export { getPSCs, getPSCById, deletePSC, createPSC, updatePSC, };
