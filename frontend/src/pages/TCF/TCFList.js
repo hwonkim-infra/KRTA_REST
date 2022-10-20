@@ -48,6 +48,7 @@ const TCFList = ({currentID}) => {
                 return (
                     <li key ={data._id}>
                     {data.item}
+                    {data.title}
                     {data._id}
                     <IconButton href={'/TCF/edit/' + data._id}>
           <EditIcon />

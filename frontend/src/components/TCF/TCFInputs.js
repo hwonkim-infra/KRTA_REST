@@ -8,8 +8,12 @@ const TCFHead = () => {
   
   const formFields = [
     {
+      size: 12,
+      field: <TextField multiline label="TITLE" name="title" margin="none" />,
+    },
+    {
       size: 5,
-      field: <TextField label="ITEM" name="item" margin="none" disabled />,
+      field: <TextField label="ITEM" name="item" margin="none"  />,
     },
     {
       size: 7,

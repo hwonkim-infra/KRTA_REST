@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { createTCF, deleteTCF, updateTCF } from "../../actions/TCFs";
-import TCFService from "../../services/TCFServices";
 import PSCService from "../../services/PSCServices";
+import TCFService from "../../services/TCFServices";
 
 import { Form } from "react-final-form";
 
@@ -17,36 +17,22 @@ import { Tab, Tabs } from "react-bootstrap";
 import TCFInput from "../../components/TCF/TCFInputs";
 // import TCFTRiskReduction from "../../components/TCF/TCFTRiskReduction";
 
-const TCFForm = () => {
+export const TCFcreate = () => {
   const [message, setMessage] = useState("");
-  const [TCFData, setTCFData] = useState({});
   const [PSCData, setPSCData] = useState({});
 
-  let { PSCId, TCFId } = useParams();
-
+  const { PSCId,  } = useParams();
 
   const dispatch = useDispatch();
-  let navigate = useNavigate();
-
-  const getTCF = (id) => {
-    TCFService.get(id)
-      .then((response) => {
-        
-        setTCFData(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  let navigate = useNavigate();  
 
   const getPSC = (id) => {
     PSCService.get(id)
       .then((response) => {
-        let responseData = response.data;
-        console.log("🚀 ~ file: TCFForm.js ~ line 35 ~ .then ~ responseData", responseData, typeof(responseData))
-        // responseData = responseData.toString().replace("\"_id\":", "\"PSCid\":");
-        delete Object.assign(responseData, {["pscID"]: responseData["_id"] })["_id"]
-        setPSCData(responseData);
+        delete response.data._id;
+        delete response.data.createdAt;
+        delete response.data.updatedAt;
+        setPSCData(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -54,16 +40,12 @@ const TCFForm = () => {
   };
 
   useEffect(() => {
-    getTCF(TCFId);
     getPSC(PSCId);
+  }, [PSCId]);
 
-  }, [TCFId, PSCId]);
 
   const onSubmit = (values) => {
-    if (!TCFId) {
       return create(values);
-    }
-    return update(TCFId, values);
   };
 
   const create = async (values) => {
@@ -77,77 +59,161 @@ const TCFForm = () => {
       });
   };
 
-  const update = async (id, values) => {
-    await dispatch(updateTCF(id, values))
-      .then((response) => {
-        console.log(response);
-        setMessage("This File updated successfully!");
-        navigate("/TCF");
-      })
-      .catch((e) => {
-        console.log(e.response.data);
-      });
-  };
-
-  const remove = async () => {
-    if (window.confirm("이 문서를 삭제하시겠습니까")) {
-      await dispatch(deleteTCF(TCFId))
-        .then((response) => {
-          console.log(response);
-          setMessage("This File deleted successfully!");
-          navigate("/TCF");
-        })
-        .catch((e) => {
-          console.log(e.response.data);
-        });
-    }
-  };
 
   return (
     <div>
       <Form
         onSubmit={onSubmit}
         initialValues={PSCData}
-        render={({ handleSubmit, form, submitting, pristine, values }) => (
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <TCFInput {...values} />
-                <Typography>Risk Reduction</Typography>
-                {/* <TCFTRiskReduction /> */}
-
-                <Stack
-                  direction="row"
-                  alignItems="flex-end"
-                  justifyContent="space-between"
-                >
-                  <Button
-                    variant="outlined"
-                    startIcon={<SaveIcon />}
-                    type="submit"
-                  >
-                    저장
-                  </Button>
-                  <Button
-                    variant="contained"
-                    startIcon={<DeleteIcon />}
-                    onClick={remove}
-                  >
-                    삭제
-                  </Button>
-                </Stack>
-              </Grid>
-              <Grid item xs={6}>
-                {/* <TCFview values={values} /> */}
-
-                <pre>{JSON.stringify(values, 0, 2)}</pre>
-              </Grid>
-            </Grid>
-          </form>
-        )}
+        render={({ handleSubmit, form, submitting, pristine, values }) => {
+            return <form onSubmit={handleSubmit}>
+            	<Grid container spacing={2}>
+              	<Grid item xs={6}>
+              
+                	<TCFInput {...values} />
+                	<Typography>Risk Reduction</Typography>
+                	{/* <TCFTRiskReduction /> */}
+	
+                	<Stack
+                  	direction="row"
+                  	spacing
+                  	alignItems="flex-end"
+                  	justifyContent="space-between"
+                	>
+                  	<Button
+                    	variant="outlined"
+                    	startIcon={<SaveIcon />}
+                    	type="submit"
+                  	>
+                    	저장
+                  	</Button>
+                  	
+                	</Stack>
+              	</Grid>
+              	<Grid item xs={6}>
+                	{/* <TCFview values={values} /> */}
+	
+                	<pre>{JSON.stringify(values, 0, 2)}</pre>
+              	</Grid>
+            	</Grid>
+          	</form>
+        	}
+        }
       />
     </div>
   );
 };
 
-export default TCFForm;
+export const TCFedit = () => {
+    const [message, setMessage] = useState("");
+    const [TCFData, setTCFData] = useState({});
+  
+    const { TCFid } = useParams();
+  //   const { TCFid } = useParams();
+    console.log("🚀 ~ file: TCFForm.js ~ line 27 ~ TCFForm ~ TCFid", TCFid)
+  
+    const dispatch = useDispatch();
+    let navigate = useNavigate();  
+  
+  
+    const getTCF = (id) => {
+      TCFService.get(id)
+        .then((response) => {
+          delete response.data._id;
+          delete response.data.createdAt;
+          delete response.data.updatedAt;
+          setTCFData(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+  
+    useEffect(() => {
+      getTCF(TCFid);
+    }, [TCFid]);
+  
+  
+    const onSubmit = (values) => {      
+      return update(TCFid, values);
+    };
+  
+      
+    const update = async (id, values) => {
+      await dispatch(updateTCF(id, values))
+        .then((response) => {
+          console.log(response);
+          setMessage("This File updated successfully!");
+          navigate("/PSC");
+        })
+        .catch((e) => {
+          console.log(e.response.data);
+        });
+    };
+  
+    const remove = async () => {
+      if (window.confirm("이 문서를 삭제하시겠습니까")) {
+        await dispatch(deleteTCF(TCFid))
+          .then((response) => {
+            console.log(response);
+            setMessage("This File deleted successfully!");
+            navigate("/TCF");
+          })
+          .catch((e) => {
+            console.log(e.response.data);
+          });
+      }
+    };
+  
+    return (
+      <div>
+        <Form
+          onSubmit={onSubmit}
+          initialValues={TCFData}
+          render={({ handleSubmit, form, submitting, pristine, values }) => {
+              return <form onSubmit={handleSubmit}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      {console.log(TCFid)}
+                
+                      <TCFInput {...values} />
+                      <Typography>Risk Reduction</Typography>
+                      {/* <TCFTRiskReduction /> */}
+      
+                      <Stack
+                        direction="row"
+                        spacing
+                        alignItems="flex-end"
+                        justifyContent="space-between"
+                      >
+                        <Button
+                          variant="outlined"
+                          startIcon={<SaveIcon />}
+                          type="submit"
+                        >
+                          저장
+                        </Button>
+                        <Button
+                          variant="contained"
+                          startIcon={<DeleteIcon />}
+                          onClick={remove}
+                        >
+                          삭제
+                        </Button>
+                      </Stack>
+                    </Grid>
+                    <Grid item xs={6}>
+                      {/* <TCFview values={values} /> */}
+      
+                      <pre>{JSON.stringify(values, 0, 2)}</pre>
+                    </Grid>
+                  </Grid>
+                </form>
+              }
+          }
+        />
+      </div>
+    );
+  };
+  
+  

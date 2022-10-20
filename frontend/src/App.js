@@ -19,7 +19,7 @@ import WEXSpecW from "./pages/print/WEXSpecWindW";
 import PSCs from "./pages/TCF/PSCList";
 // import TCF from "./pages/TCF/TCF";
 import PSCEdit from "./pages/TCF/PSCForm";
-import TCFEdit from "./pages/TCF/TCFForm";
+import {TCFcreate, TCFedit} from "./pages/TCF/TCFForm";
 
 import BLOGs from "./pages/Blog/BLOGs";
 import Blog from "./pages/Blog/Blog";
@@ -55,16 +55,18 @@ const App = () => {
                   <Route index element={<><Navbar modelType={'TCF'}/> <PSCs /></>} />
                   <Route path="new" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />
                   <Route path="edit/:id" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />                  
-                    <Route path=":PSCId/newTCF" element={<> <Navbar modelType={'TCF'}/> <TCFEdit /></>} />
+                  <Route path=":PSCId/newTCF" element={<> <Navbar modelType={'TCF'}/> <TCFcreate /></>} />
+                    {/* 
                     <Route path=":PSCId/editTCF/:TCFId" element={<> <Navbar modelType={'TCF'}/> <TCFEdit /></>} />
+              <Route path=":id/TCF"> */}
+              </Route>
 
-
-              <Route path=":id/TCF">
-
+              <Route path="TCF">
+                <Route path="new" element={<> <Navbar modelType={'TCF'}/> <TCFcreate /></>} />
+                <Route path="edit/:TCFid" element={<> <Navbar modelType={'TCF'}/> <TCFedit /></>} />                  
               </Route>
 
                   
-              </Route>
               <Route path="Blog">
                   <Route index element={<><Navbar modelType={'Blog'}/> <BLOGs /></>} />
                   <Route path="new" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
