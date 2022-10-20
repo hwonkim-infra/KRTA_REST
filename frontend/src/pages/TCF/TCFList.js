@@ -27,8 +27,11 @@ const TCFList = ({currentID}) => {
     </IconButton>
   );
 
+  
   if (!TCFs) return <CircularProgress />
+    
 
+  
   const handleDeleteRow = () => {
     window.alert('Delete row!');
   };
@@ -44,12 +47,15 @@ const TCFList = ({currentID}) => {
 
             {currentID}
             TCF List
-            {TCFs.map((data) => {
+            {TCFs
+            .filter((data) => data.pscID === currentID)
+            .map((data) => {
                 return (
                     <li key ={data._id}>
                     {data.item}
                     {data.title}
                     {data._id}
+}
                     <IconButton href={'/TCF/edit/' + data._id}>
           <EditIcon />
         </IconButton>
