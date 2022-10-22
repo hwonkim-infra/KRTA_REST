@@ -79,12 +79,9 @@ const PSCList = () => {
         <Grid item xs={7}>
           <Paper elevation={2} style={{ padding: '5px' }}>
             <Box sx={{ width: '100%' }}>
-              <Stack direction='row' spacing={1}>
-                <Button size='small' onClick={handleDeleteRow}>
-                  Delete a row
-                </Button>
+              <Stack direction='row' spacing={1}>                
                 <Button size='small' component='a' href={'/PSC/new'}>
-                  Add a row
+                  Add
                 </Button>
               </Stack>
               <Box sx={{ height: 400, mt: 1 }}>
@@ -103,21 +100,7 @@ const PSCList = () => {
               </Box>
             </Box>
 
-            {/* <div style={{ width: "100%", height: 800 }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              
-              disableMultipleSelection={true}
-              onSelectionModelChange={(ids) => {
-                const selectedIDs = new Set(ids);
-                const selectedRowData = rows.filter((row) =>
-                  selectedIDs.has(row.id.toString())
-                );
-                setCurrentPSC(selectedRowData[0]);
-              }}
-            />
-          </div> */}
+          
           </Paper>
         </Grid>
         <Grid item xs={5}>
@@ -130,8 +113,10 @@ const PSCList = () => {
             justifyContent='space-between'
           >
             <Box component='span' sx={{ fontSize: 'h6.fontSize' }}>
-              {' '}
               {currentPSC.item}
+            </Box>
+            <Box component='span' sx={{ fontSize: 'h8.fontSize' }}>
+              {currentPSC._id}
             </Box>
 
             {currentPSC.item && (
@@ -144,26 +129,25 @@ const PSCList = () => {
                 >
                   수정
                 </Button>
-                <IconButton href={'/PSC/edit/' + currentPSC._id}>
-                  <EditIcon />
-                </IconButton>
-              </Box>
+                
+                          <Button
+                          variant='compromised'
+                          startIcon={<QueueIcon />}
+                          psc_id={currentPSC}
+                          >
+                          <Link
+                            to={{
+                              pathname: `/PSC/` + currentPSC._id + '/newTCF',
+                            }}
+                            >
+                            Add TCF
+                          </Link>
+                        </Button>
+                            </Box>
             )}
           </Stack>
           <Box>
-            <Button
-              variant='compromised'
-              startIcon={<QueueIcon />}
-              psc_id={currentPSC}
-            >
-              <Link
-                to={{
-                  pathname: `/PSC/` + currentPSC._id + '/newTCF',
-                }}
-              >
-                Add TCF
-              </Link>
-            </Button>
+
           </Box>
           </Paper>
 

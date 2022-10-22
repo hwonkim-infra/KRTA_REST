@@ -29,9 +29,14 @@ export const TCFcreate = () => {
   const getPSC = (id) => {
     PSCService.get(id)
       .then((response) => {
-        delete response.data._id;
+        // delete response.data._id;
+        // ES5: Object.defineProperty(response.data, pscID, Object.getOwnPropertyDescriptor(response.data, _id));
+        delete Object.assign(response.data, {pscID: response.data._id})._id;
+
+        delete response.data.date;
         delete response.data.createdAt;
         delete response.data.updatedAt;
+        delete response.data.__v;
         setPSCData(response.data);
       })
       .catch((e) => {
