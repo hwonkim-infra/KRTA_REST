@@ -20,7 +20,6 @@ import { getPSCs } from '../../actions/PSCs';
 import TCFList from './TCFList';
 
 const PSCList = () => {
-  const [TCFwindow, setTCFwindow] = useState(false);
   const [currentPSC, setCurrentPSC] = useState({});
 
   const PSCs = useSelector((state) => state.productList);
@@ -47,12 +46,6 @@ const PSCList = () => {
     },
   ];
 
-  const PSCedit = (currentPSC) => (
-    <IconButton href={'/PSC/edit/' + currentPSC._id}>
-      <EditIcon />
-    </IconButton>
-  );
-
   if (!PSCs) return <CircularProgress />
 
   const rows = PSCs.map((PSC) => {
@@ -65,13 +58,6 @@ const PSCList = () => {
     };
   });
 
-  const handleDeleteRow = () => {
-    window.alert('Delete row!');
-  };
-
-  const handleAddRow = () => {
-    window.alert('Add row!');
-  };
 
   return (
     <div>
@@ -121,28 +107,7 @@ const PSCList = () => {
 
             {currentPSC.item && (
               <Box>
-                <Button
-                  sx={{ m: 1 }}
-                  variant='outlined'
-                  startIcon={<EditIcon />}
-                  href={'/PSC/' + currentPSC.id}
-                >
-                  수정
-                </Button>
-                
-                          <Button
-                          variant='compromised'
-                          startIcon={<QueueIcon />}
-                          psc_id={currentPSC}
-                          >
-                          <Link
-                            to={{
-                              pathname: `/PSC/` + currentPSC._id + '/newTCF',
-                            }}
-                            >
-                            Add TCF
-                          </Link>
-                        </Button>
+
                             </Box>
             )}
           </Stack>

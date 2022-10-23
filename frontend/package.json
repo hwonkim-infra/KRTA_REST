@@ -37,6 +37,7 @@
         "react-bootstrap-sidebar-menu": "^2.0.1",
         "react-dom": "^18.1.0",
         "react-final-form": "^6.5.9",
+        "react-final-form-arrays": "^3.1.4",
         "react-flash-message": "^1.0.8",
         "react-hook-form": "^7.34.2",
         "react-icons": "^4.4.0",
