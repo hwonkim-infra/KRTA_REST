@@ -15,6 +15,7 @@ const PSCSchema = new Schema({
     hazardDescript: String,
     description: String,
     tags: Array,
+    actions: Array,
     date: Date,
 
 

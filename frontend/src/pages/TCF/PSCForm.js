@@ -17,6 +17,7 @@ import { Button, Grid, Stack, Typography } from "@mui/material";
 import { Tab, Tabs } from "react-bootstrap";
 
 import PSCInput from "../../components/TCF/PSCInputs";
+import DetailInput from "../../components/TCF/PSCdetailInputs";
 // import PSCTRiskReduction from "../../components/PSC/PSCTRiskReduction";
 
 const PSCForm = () => {
@@ -99,30 +100,30 @@ const PSCForm = () => {
               <Grid item xs={6}>
                 <PSCInput {...values} />
                 <div className="buttons">
-              <button
-                type="button"
-                onClick={() => push('customers', undefined)}
+              <Button
+                variant="outlined" size ="small"
+                onClick={() => push('actions', undefined)}
               >
-                Add Customer
-              </button>
-              <button type="button" onClick={() => pop('customers')}>
-                Remove Customer
-              </button>
+                Add Action
+              </Button>
+              <Button variant="outlined" size ="small" onClick={() => pop('actions')}>
+                Remove Action
+              </Button>
             </div>
-            <FieldArray name="customers">
+            {/* <FieldArray name="actions">
               {({ fields }) =>
                 fields.map((name, index) => (
                   <div key={name}>
-                    <label>Requirement. #{index + 1}</label>
+                    <label>Detail Action. #{index + 1}</label>
                     <Field
-                      name={`${name}.surItem`}
+                      name={`${name}.subItem`}
                       component="input"
-                      placeholder="Sub Item"
+                      placeholder="sub Item"
                     />
                     <Field
-                      name={`${name}.surRequire`}
+                      name={`${name}.subAction`}
                       component="input"
-                      placeholder="Sub Requirement"
+                      placeholder="sub Action"
                     />
                               
                     <span
@@ -134,7 +135,8 @@ const PSCForm = () => {
                   </div>
                 ))
               }
-            </FieldArray>
+            </FieldArray> */}
+            <DetailInput />
                 <Typography>Risk Reduction</Typography>
 
                 <Stack

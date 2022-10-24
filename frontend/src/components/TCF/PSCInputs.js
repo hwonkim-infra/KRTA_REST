@@ -2,9 +2,10 @@ import { Grid, Paper } from "@mui/material";
 import { TextField } from "mui-rff";
 import { Editor } from '@tinymce/tinymce-react';
 import { Field } from "react-final-form";
+import { FieldArray } from 'react-final-form-arrays'
 import React from "react";
 
-const TCFHead = (values = {}) => {
+const PSCInput = (values = {}) => {
   
   const formFields = [
     {
@@ -20,10 +21,10 @@ const TCFHead = (values = {}) => {
       size: 12,
       field: <TextField multiline label="requirements" name="requirements" margin="none" />,
     },
-    {
+    /* {
       size: 12,
       field: <TextField multiline label="Compliance Statement" name="complyStatements" margin="none" />,
-    },
+    }, */
         
   ];
   
@@ -37,7 +38,7 @@ const TCFHead = (values = {}) => {
                 {item.field}
               </Grid>
             ))}
-            
+
             
           </Grid>
 
@@ -51,4 +52,4 @@ const TCFHead = (values = {}) => {
   );
 };
 
-export default TCFHead;
+export default PSCInput;
