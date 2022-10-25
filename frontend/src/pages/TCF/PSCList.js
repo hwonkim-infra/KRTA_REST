@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import { Edit as EditIcon } from "@mui/icons-material/";
-import { Box, Button, CircularProgress, Grid, IconButton, Paper, Stack, Table, TableBody, TableCell, TableHead, TableRow, Typography, } from "@mui/material";
+import { Box, Button, CircularProgress, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { getPSCs } from "../../actions/PSCs";
+import PSCDetailPrev from "../previews/PSCDetailPrev";
 import TCFList from "./TCFList";
 
 const PSCList = () => {
@@ -90,29 +91,12 @@ const PSCList = () => {
               <Box component="span" sx={{ fontSize: "h8.fontSize" }}>
                 {currentPSC.reference}
               </Box>
-
             </Stack>
-            <Box  style={{ padding: "3px"}}>
-            {currentPSC.requirements}
 
-            </Box>
-            <Table sx={{}} size="small">
-              <TableHead>
-                <TableCell>{currentPSC.requirements}</TableCell>
-              </TableHead>
-              <TableBody>
-                {currentPSC.actions && currentPSC.actions?.map((row) => (
-                  <TableRow key={row?.subItem} sx={{'tr, td ': {border: 0}}}>
-                    <TableCell>{row?.subItem}</TableCell>
-                    <TableCell>{row?.subAction}</TableCell>
-                  </TableRow>
-                ))} 
-              </TableBody>
-            </Table>
+            <PSCDetailPrev currentPSC={currentPSC}/>
           </Paper>
 
           <Typography component="h3">
-            TCF Preview
 
           </Typography>
 
