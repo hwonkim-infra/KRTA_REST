@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Edit as EditIcon } from "@mui/icons-material/";
+import { Edit as EditIcon, Queue as QueueIcon, } from "@mui/icons-material/";
 import { Box, Button, CircularProgress, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPSCs } from "../../actions/PSCs";
 import PSCDetailPrev from "../previews/PSCDetailPrev";
 import TCFList from "./TCFList";
+import { Link } from "react-router-dom";
 
 const PSCList = () => {
   const [currentPSC, setCurrentPSC] = useState({});
@@ -99,6 +100,21 @@ const PSCList = () => {
           <Typography component="h3">
 
           </Typography>
+          <Box>
+            <Button
+              variant='compromised'
+              startIcon={<QueueIcon />}
+              psc_id={currentPSC}
+            >
+              <Link
+                to={{
+                  pathname: `/PSC/` + currentPSC._id + '/newTCF',
+                }}
+              >
+                Add TCF
+              </Link>
+            </Button>
+          </Box>
 
           <Paper elevation={2} style={{ padding: "5px" }}>
             <TCFList currentID={currentPSC._id} />
