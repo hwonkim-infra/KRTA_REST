@@ -19,7 +19,6 @@ import ModelsInput from "../../components/TCF/ModelsInputs";
 // import TCFTRiskReduction from "../../components/TCF/TCFTRiskReduction";
 
 export const TCFcreate = () => {
-  const [message, setMessage] = useState("");
   const [PSCData, setPSCData] = useState({});
 
   const { PSCId,  } = useParams();
@@ -64,7 +63,7 @@ export const TCFcreate = () => {
         console.log(e.response.data);
       });
   };
-
+  
 
   return (
     <div>

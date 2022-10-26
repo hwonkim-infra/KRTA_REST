@@ -1,4 +1,4 @@
-import { Grid, Paper } from "@mui/material";
+import { Chip, Grid, Paper } from "@mui/material";
 import { TextField } from "mui-rff";
 import { Editor } from '@tinymce/tinymce-react';
 import { Field } from "react-final-form";
@@ -34,6 +34,20 @@ const TCFHead = () => {
         
   ];
   
+  const TagsInput = () => {
+    return (
+      <div className="tags-input-container">
+        <div className="tag-item">
+          <Chip  />
+          <span className="text">hello</span>
+          <span className="close">&times;</span>
+        </div>
+        <input type="text" className="tags-input" placeholder="type something..." />
+      </div>
+    )
+  }
+
+
   return (
     <>
       <div>
@@ -46,6 +60,9 @@ const TCFHead = () => {
             ))}
             
           </Grid>
+
+          <TagsInput />
+
 
           <Field name='riskReduct'>
         {({ input: {onChange, value}}) => (
