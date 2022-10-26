@@ -52,7 +52,7 @@ const App = () => {
                   <Route path="addChange/:id/" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
               </Route>
               <Route path="PSC">
-                  <Route index element={<><Navbar modelType={'TCF'}/> <PSCs /></>} />
+                  <Route index element={<><Navbar modelType={'PSC'}/> <PSCs /></>} />
                   <Route path="new" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />
                   <Route path="edit/:id" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />                  
                   <Route path=":PSCId/newTCF" element={<> <Navbar modelType={'TCF'}/> <TCFcreate /></>} />

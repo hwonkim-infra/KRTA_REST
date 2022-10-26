@@ -1,13 +1,11 @@
-import * as React from "react";
 import {
   AppBar,
-  Box,
-  Toolbar,
-  Button,
+  Box, Button,
   Link,
   MenuItem,
-  styled,
+  styled, Toolbar
 } from "@mui/material";
+import * as React from "react";
 
 export default function Navbar({ modelType }) {
   const Styledtoolbar = styled(Toolbar)({
@@ -23,7 +21,7 @@ export default function Navbar({ modelType }) {
   const MenuItems = [
     { Name: "HEX", Link: "/" },
     { Name: "WEX", Link: "/WEX" },
-    { Name: "TCF", Link: "/PSC" },
+    { Name: "PSC", Link: "/PSC" },
     { Name: "Blog", Link: "/Blog" },
   ];
 

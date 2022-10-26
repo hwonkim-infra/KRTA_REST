@@ -15,10 +15,10 @@ import { Button, Grid, Stack, Typography } from "@mui/material";
 import { Tab, Tabs } from "react-bootstrap";
 
 import TCFInput from "../../components/TCF/TCFInputs";
+import ModelsInput from "../../components/TCF/ModelsInputs";
 // import TCFTRiskReduction from "../../components/TCF/TCFTRiskReduction";
 
 export const TCFcreate = () => {
-  const [message, setMessage] = useState("");
   const [PSCData, setPSCData] = useState({});
 
   const { PSCId,  } = useParams();
@@ -63,7 +63,7 @@ export const TCFcreate = () => {
         console.log(e.response.data);
       });
   };
-
+  
 
   return (
     <div>
@@ -75,6 +75,7 @@ export const TCFcreate = () => {
             	<Grid container spacing={2}>
               	<Grid item xs={6}>
               
+                  <ModelsInput />
                 	<TCFInput {...values} />
                 	<Typography>Risk Reduction</Typography>
                 	{/* <TCFTRiskReduction /> */}

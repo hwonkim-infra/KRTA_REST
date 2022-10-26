@@ -7,12 +7,10 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { getTCFs } from "../../actions/TCFs";
+import TCFPrev from "../previews/TCFPrev";
 
 const TCFList = ({ currentID }) => {
-  const [TCFwindow, setTCFwindow] = useState(false);
-  const [currentTCF, setCurrentTCF] = useState({});
 
-  console.log(currentID);
 
   const TCFs = useSelector((state) => state.documentList);
   const dispatch = useDispatch();
@@ -49,6 +47,7 @@ const TCFList = ({ currentID }) => {
               <IconButton href={"/TCF/edit/" + data._id}>
                 <EditIcon />
               </IconButton>
+              <TCFPrev data = {data} />
             </li>
           );
         })}

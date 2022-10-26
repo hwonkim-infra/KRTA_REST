@@ -1,11 +1,6 @@
 import React, { useState, } from "react";
 import { useDispatch } from "react-redux";
-import {
-  updateHEX,
-  createHEX,
-  deleteHEX,
-  createHEXChange,
-} from "../actions/HEXs";
+import { updateHEX, createHEX, deleteHEX, createHEXChange, } from "../actions/HEXs";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Form, FormSpy } from "react-final-form";
@@ -23,7 +18,7 @@ import StabilityCOG from "./HEXForms/StabilityCOG";
 import TransPortation from "./HEXForms/TransPortation";
 import TAResult from "./HEXForms/TAResult";
 
-import { Grid, Button, Stack, } from "@mui/material";
+import { Grid, Button, Stack, Snackbar, } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -35,7 +30,17 @@ import { useLocation } from "react-router-dom";
 import HEXCalc from "./HEXCalc";
 
 const HEXForm = (HEXData) => {
-  const [message, setMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const snackbarClick = () => {
+    setSnackbarOpen(true);
+  };
+  const snackbarClose = (e, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   const { id } = useParams();
 
@@ -86,8 +91,7 @@ const HEXForm = (HEXData) => {
     await dispatch(updateHEX(id, values))
       .then((response) => {
         console.log(response);
-        setMessage("This Product updated successfully!");
-        navigate("/");
+        // navigate("/");
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -99,7 +103,6 @@ const HEXForm = (HEXData) => {
       await dispatch(deleteHEX(id))
         .then((response) => {
           console.log(response);
-          setMessage("This Product deleted successfully!");
           navigate("/");
         })
         .catch((e) => {
@@ -163,9 +166,17 @@ const HEXForm = (HEXData) => {
                   variant="outlined"
                   startIcon={<SaveIcon />}
                   type="submit"
-                >
+                  onClick={snackbarClick}
+                  >
                   저장
                 </Button>
+                <Snackbar
+                    open={snackbarOpen}
+                    autoHideDuration={3000}
+                    message="This File was updated successfully"
+                    onClose={snackbarClose}
+                  />
+
                 <Button
                   variant="contained"
                   startIcon={<DeleteIcon />}
@@ -177,7 +188,6 @@ const HEXForm = (HEXData) => {
           </Stack>
 
 
-                  <p>{message}</p>
                   <FlashMessage duration={5000}></FlashMessage>
               </Grid>
         <Grid item xs={5}>

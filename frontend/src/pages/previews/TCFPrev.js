@@ -12,7 +12,7 @@ const TCFPrev = ({data}) => {
     padding: "10px"
   }}>
     {data?.requirements}
-    {console.log(data)}
+    {/* {console.log(data)} */}
 
   </Paper>
 
