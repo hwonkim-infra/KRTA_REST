@@ -68,7 +68,7 @@ const WEXList = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <div style={{ width: "100%"}}>
+          <Box sx={{ width: "100%", height: 1200}}>
             <DataGrid
                   autoHeight
               rows={rows}
@@ -85,7 +85,7 @@ const WEXList = () => {
                 setCurrentWEX(selectedRowData[0]);
               }}
             />
-          </div>
+          </Box>
         </Grid>
 
         <Grid item xs={4}>

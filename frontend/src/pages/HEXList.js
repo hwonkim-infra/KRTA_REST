@@ -70,9 +70,8 @@ const HEXList = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <div style={{ width: "100%"}}>
+            <Box sx={{ width: "100%", height: 1200}}>
             <DataGrid
-                  autoHeight
                   rows={rows}
               columns={columns}
               initialState={{
@@ -87,7 +86,7 @@ const HEXList = () => {
                 setCurrentHEX(selectedRowData[0]);
               }}
             />
-          </div>
+          </Box>
         </Grid>
 
         <Grid item xs={4}>

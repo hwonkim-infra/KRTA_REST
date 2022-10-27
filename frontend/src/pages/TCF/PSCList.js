@@ -55,14 +55,13 @@ const PSCList = () => {
       <Grid container spacing={2}>
         <Grid item xs={7}>
           <Paper elevation={2} style={{ padding: "5px" }}>
-            <Box sx={{ width: "100%" }}>
+            <Box sx={{ width: "100%", height: 1200}}>
               <Stack direction="row" spacing={1}>
                 <Button size="small" component="a" href={"/PSC/new"}>
                   Add
                 </Button>
               </Stack>
                 <DataGrid
-                  autoHeight
                   rows={rows}
                   columns={columns}
                   disableMultipleSelection={true}
