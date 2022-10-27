@@ -22,9 +22,9 @@ const PSCList = () => {
 
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: "ITEM", headerName: "ITEM", width: 150 },
+    { field: "ITEM", headerName: "ITEM", width: 200 },
     { field: "reference", headerName: "reference", width: 200 },
-    { field: "requirements", headerName: "requirements", width: 300 },
+    { field: "requirements", headerName: "requirements", flex: 1, minWidth: 400 },
     {
       field: "Edit",
       headerName: "EDIT",
@@ -61,8 +61,8 @@ const PSCList = () => {
                   Add
                 </Button>
               </Stack>
-              <Box sx={{ height: 400, mt: 1 }}>
                 <DataGrid
+                  autoHeight
                   rows={rows}
                   columns={columns}
                   disableMultipleSelection={true}
@@ -74,12 +74,11 @@ const PSCList = () => {
                     setCurrentPSC(selectedRowData[0]);
                   }}
                 />
-              </Box>
             </Box>
           </Paper>
         </Grid>
         <Grid item xs={5}>
-          <Paper elevation={2} style={{ padding: "5px" }}>
+          <Paper elevation={2} style={{ padding: "5px", m:1 }}>
             <Stack
               direction="row"
               spacing={2}

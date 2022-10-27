@@ -70,9 +70,10 @@ const HEXList = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <div style={{ width: "100%", height: 1000 }}>
+          <div style={{ width: "100%"}}>
             <DataGrid
-              rows={rows}
+                  autoHeight
+                  rows={rows}
               columns={columns}
               initialState={{
                 sorting: { sortModel: [{field: 'model_name', sort: 'asc'}]}

@@ -15,7 +15,7 @@ const PSCDetailPrev = ({ currentPSC }) => {
 
   return (
     <div>
-      <TableContainer component={Paper} sx={{'table, tr, td, th': {border: 0}}}>
+      <TableContainer  sx={{'table, tr, td, th': {border: 0}}}>
         <Table  size="small">
           <TableHead>
             <TableCell>{currentPSC.requirements}</TableCell>
