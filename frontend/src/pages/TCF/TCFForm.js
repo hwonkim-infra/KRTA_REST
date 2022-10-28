@@ -75,9 +75,8 @@ export const TCFcreate = () => {
             	<Grid container spacing={2}>
               	<Grid item xs={6}>
               
-                  <ModelsInput />
                 	<TCFInput {...values} />
-                	<Typography>Risk Reduction</Typography>
+                	{/* <Typography>Risk Reduction</Typography> */}
                 	{/* <TCFTRiskReduction /> */}
 	
                 	<Stack

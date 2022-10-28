@@ -20,14 +20,16 @@ const ModelsInput = () => {
         <Paper style={{ padding: 16 }}>
           <Grid container alignItems='flex-start' spacing={2}>
             <Checkboxes
-              name='Models'
+              label= 'MEX'
+              name='models'
               data={checkboxDatas}
+              checked={true}
               sx={{ '& .MuiSvgIcon-root': { fontSize: 12 } }}
             />
 
             <Checkboxes
-              label=''
-              name='Models'
+              label='HEX'
+              name='models'
               data={checkboxDatas2}
               sx={{ '& .MuiSvgIcon-root': { fontSize: 12 } }}
             />

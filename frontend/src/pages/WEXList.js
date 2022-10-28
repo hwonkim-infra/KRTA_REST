@@ -68,9 +68,8 @@ const WEXList = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <Box sx={{ width: "100%", height: 1200}}>
+          <Box sx={{ width: "100%", height: 900}}>
             <DataGrid
-                  autoHeight
               rows={rows}
               columns={columns}
               initialState={{

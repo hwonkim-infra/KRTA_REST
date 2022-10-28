@@ -21,10 +21,10 @@ const PSCInput = (values = {}) => {
       size: 12,
       field: <TextField multiline label="requirements" name="requirements" margin="none" />,
     },
-    /* {
+    {
       size: 12,
       field: <TextField multiline label="Compliance Statement" name="complyStatements" margin="none" />,
-    }, */
+    },
         
   ];
   

@@ -3,6 +3,7 @@ import { TextField } from "mui-rff";
 import { Editor } from '@tinymce/tinymce-react';
 import { Field } from "react-final-form";
 import React from "react";
+import ModelsInput from "./ModelsInputs";
 
 const TCFHead = () => {
   
@@ -18,11 +19,7 @@ const TCFHead = () => {
     {
       size: 7,
       field: <TextField label="Reference" name="reference" margin="none" />,
-    },
-    {
-        size: 12,
-        field: <TextField multiline label="models" name="models" margin="none" />,
-      },
+    },    
     {
       size: 12,
       field: <TextField multiline label="requirements" name="requirements" margin="none" />,
@@ -53,6 +50,7 @@ const TCFHead = () => {
       <div>
         <Paper style={{ padding: 16 }}>
           <Grid container alignItems="flex-start" spacing={2}>
+            <ModelsInput />
             {formFields.map((item, idx) => (
               <Grid item xs={item.size} key={idx}>
                 {item.field}
@@ -62,6 +60,7 @@ const TCFHead = () => {
           </Grid>
 
           <TagsInput />
+
 
 
           <Field name='riskReduct'>

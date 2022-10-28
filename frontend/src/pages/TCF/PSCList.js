@@ -54,8 +54,8 @@ const PSCList = () => {
     <div>
       <Grid container spacing={2}>
         <Grid item xs={7}>
-          <Paper elevation={2} style={{ padding: "5px" }}>
-            <Box sx={{ width: "100%", height: 1200}}>
+          {/* <Paper elevation={2} style={{ padding: "5px" }}> */}
+            <Box sx={{ width: "100%", height: 900}}>
               <Stack direction="row" spacing={1}>
                 <Button size="small" component="a" href={"/PSC/new"}>
                   Add
@@ -74,7 +74,7 @@ const PSCList = () => {
                   }}
                 />
             </Box>
-          </Paper>
+          {/* </Paper> */}
         </Grid>
         <Grid item xs={5}>
           <Paper elevation={2} style={{ padding: "5px", m:1 }}>

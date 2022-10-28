@@ -70,7 +70,7 @@ const HEXList = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={8}>
-            <Box sx={{ width: "100%", height: 1200}}>
+            <Box sx={{ width: "100%", height: 900}}>
             <DataGrid
                   rows={rows}
               columns={columns}

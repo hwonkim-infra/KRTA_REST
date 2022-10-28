@@ -1,12 +1,10 @@
 import {
-  CircularProgress,
-  Paper,
-  Table,
+  CircularProgress, Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
+  TableRow
 } from "@mui/material";
 import React from "react";
 
