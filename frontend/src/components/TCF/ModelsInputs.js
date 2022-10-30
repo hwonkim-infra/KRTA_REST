@@ -1,37 +1,44 @@
-import { Grid, Paper } from '@mui/material';
-import { Checkboxes } from 'mui-rff';
-import React from 'react';
+import { Grid, Paper } from "@mui/material";
+import { Checkboxes } from "mui-rff";
+import React from "react";
+import { useState } from "react";
 
-const Models1 = ['HX30A', 'HX60A', 'HX85A'];
-const Models2 = ['HX140A', 'HX150A', 'HX220A'];
+const MiniModels = ["HX30A", "HX60A", "HX85A"];
+const MidModels = ["HX150A", "HX150ACR", "HX220A", "HX235ACR"];
+const LargeModels = ["HX300A", "HX330A", "HX380A", "HX480A", "HX520A"];
 
 const ModelsInput = () => {
-  const checkboxDatas = Models1.map((model) => {
-    return { label: model, value: model };
-  });
-
-  const checkboxDatas2 = Models2.map((model) => {
-    return { label: model, value: model };
-  });
+  const [checked, setChecked] = useState(true)
+  const checkboxDatas = (Models) =>
+    Models.map((model) => {
+      return { label: model, value: model };
+    });
 
   return (
     <>
       <div>
         <Paper style={{ padding: 16 }}>
-          <Grid container alignItems='flex-start' spacing={2}>
+          <Grid container alignItems="flex-start" spacing={2}>
             <Checkboxes
-              label= 'MEX'
-              name='models'
-              data={checkboxDatas}
-              checked={true}
-              sx={{ '& .MuiSvgIcon-root': { fontSize: 12 } }}
+              label="mini"
+              name="models"
+              checked={checked}
+              data={checkboxDatas(MiniModels)}
+              sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
             />
 
             <Checkboxes
-              label='HEX'
-              name='models'
-              data={checkboxDatas2}
-              sx={{ '& .MuiSvgIcon-root': { fontSize: 12 } }}
+              label="mid EX"
+              name="models"
+              data={checkboxDatas(MidModels)}
+              sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
+            />
+
+            <Checkboxes
+              label="large EX"
+              name="models"
+              data={checkboxDatas(LargeModels)}
+              sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
             />
           </Grid>
         </Paper>
