@@ -18,12 +18,16 @@ const TCFPrev = ({data}) => {
     <table>
 <thead>
   <tr>
-    <th colSpan="2">Title: {data.item} <IconButton href={"/TCF/edit/" + data._id}>
+    <th colSpan="2">Title: {data.title} <IconButton href={"/TCF/edit/" + data._id}>
                 <EditIcon />
               </IconButton></th>
   </tr>
 </thead>
 <tbody>
+  <tr>
+    <td colSpan="2"><Box sx={{fontFamily: 'Calibri', fontWeight: 'bold'}}>{data.item}</Box></td>
+
+  </tr>
   <tr>
     <td>1</td>
     <td><Box sx={{fontFamily: 'Arial'}}>Models</Box>{data.models.map((model) => (<span key={model}>{model},</span>))}</td>
