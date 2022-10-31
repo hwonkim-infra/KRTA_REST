@@ -1,6 +1,7 @@
-import { Box, CircularProgress, Paper, Typography } from "@mui/material";
+import { Box, CircularProgress, IconButton, Paper, Typography } from "@mui/material";
 import React from "react";
 import parse from "html-react-parser";
+import { Edit as EditIcon } from "@mui/icons-material/";
 
 
 const TCFPrev = ({data}) => {
@@ -13,36 +14,35 @@ const TCFPrev = ({data}) => {
   <Paper elevation= {2} style= {{
     padding: "10px"
   }}>
-    <Box> {data.item} </Box>
-    <Box> {data.requirements} </Box>
-    <Box> {data.models} </Box>
-    {/* {console.log(data)} */}
+
     <table>
 <thead>
   <tr>
-    <th colSpan="2">Title: {data.item}</th>
+    <th colSpan="2">Title: {data.item} <IconButton href={"/TCF/edit/" + data._id}>
+                <EditIcon />
+              </IconButton></th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td>1</td>
-    <td>{data.models.map((model) => (<span key={model}>{model},</span>))}</td>
+    <td><Box sx={{fontFamily: 'Arial'}}>Models</Box>{data.models.map((model) => (<span key={model}>{model},</span>))}</td>
   </tr>
   <tr>
     <td>2</td>
-    <td>{data.reference}</td>
+    <td><Box sx={{fontFamily: 'Arial'}}>Reference</Box>{data.reference}</td>
   </tr>
   <tr>
     <td>3</td>
-    <td>Risk Reduction</td>
+    <td><Box sx={{fontFamily: 'Arial'}}>Risk Reduction</Box></td>
   </tr>
   <tr>
     <td>4</td>
-    <td>Compliance Statement{data.complyStatements}</td>
+    <td> <Box sx={{fontFamily: 'Arial'}}>Compliance Statement</Box> {data.complyStatements}</td>
   </tr>
   <tr>
     <td>5</td>
-    <td>Risk Reduction{parse(data.riskReduct || '')}</td>
+    <td>{parse(data.riskReduct || '')}</td>
   </tr>
 </tbody>
 </table>

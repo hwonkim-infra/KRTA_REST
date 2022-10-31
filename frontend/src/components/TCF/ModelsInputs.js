@@ -25,7 +25,6 @@ const ModelsInput = () => {
             <Checkboxes
               label="mini"
               name="models"
-              checked={checked}
               data={checkboxDatas(MiniModels)}
               sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
             />
@@ -45,7 +44,7 @@ const ModelsInput = () => {
             />
           </Grid>
         </Paper>
-        <div>
+        {/* <div>
             <label>First Name</label>
             <Field
               name="firstName"
@@ -126,7 +125,7 @@ const ModelsInput = () => {
               multiline
               label="Notes"
             />
-          </div>
+          </div> */}
       </div>
     </>
   );
