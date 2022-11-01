@@ -10,21 +10,16 @@ const PSCdetailInput = (values = {}) => {
         {({ fields }) =>
           fields.map((name, index) => (
             <div key={name}>
-              <label>Detail Action. #{index + 1}</label>
+              <label>Sub Item #{index + 1}</label>
               <Field
                 name={`${name}.subItem`}
                 component="input"
                 placeholder="sub Item"
-              />
-              <Field
-                name={`${name}.subAction`}
-                component="input"
-                placeholder="sub Action"
-              />
-              <Field name={`${name}.Detail`}>
+              />              
+              <Field name={`${name}.subAction`}>
         {({ input: {onChange, value}}) => (
           <Editor tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
-          value={value + ''} init={{height: "640",
+          value={value + ''} init={{height: "320",
           resize: true, menubar: false,
         }} onEditorChange = {(e) => onChange(e)} />
         )}
