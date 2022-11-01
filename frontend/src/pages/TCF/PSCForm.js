@@ -159,7 +159,7 @@ const PSCForm = () => {
               
                 {/* <TCFview values={values} /> */}
 
-                {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+                <pre>{JSON.stringify(values, 0, 2)}</pre>
               </Grid>
             </Grid>
           </form>
