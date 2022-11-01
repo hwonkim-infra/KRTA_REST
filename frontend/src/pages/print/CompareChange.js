@@ -40,7 +40,7 @@ const CompareChange = ({ values }) => {
       <Grid container justifyContent="center" padding="20px">
       <Paper variant="outlined" elevation={1} style= {{
       padding: "15px", width: '80%'
-    }}>
+    }} className="content-editable" contenteditable="true">
       주요 형식 변경 사양:
       {values.ECN}
 
