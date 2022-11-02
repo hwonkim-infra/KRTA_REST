@@ -7,6 +7,7 @@ import {
   TableRow
 } from "@mui/material";
 import React from "react";
+import parse from "html-react-parser";
 
 const PSCDetailPrev = ({ currentPSC }) => {
   if (!currentPSC) return <CircularProgress />;
@@ -22,8 +23,8 @@ const PSCDetailPrev = ({ currentPSC }) => {
             {currentPSC.actions &&
               currentPSC.actions?.map((row) => (
                 <TableRow key={row?.subItem}  >
-                  <TableCell scope="row">{row?.subItem}</TableCell>
-                  <TableCell>{row?.subAction}</TableCell>
+                  <TableCell scope="row" width="20%">{row?.subItem}</TableCell>
+                  <TableCell><details><summary>detail</summary> {parse(row?.subAction || '')}</details></TableCell>
                 </TableRow>
               ))}
           </TableBody>
