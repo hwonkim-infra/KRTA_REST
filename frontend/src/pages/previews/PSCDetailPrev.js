@@ -23,8 +23,9 @@ const PSCDetailPrev = ({ currentPSC }) => {
             {currentPSC.actions &&
               currentPSC.actions?.map((row) => (
                 <TableRow key={row?.subItem}  >
-                  <TableCell scope="row" width="20%">{row?.subItem}</TableCell>
-                  <TableCell><details><summary>detail</summary> {parse(row?.subAction || '')}</details></TableCell>
+                  {/* <details><summary><TableCell scope="row" width="20%">{row?.subItem}</TableCell></summary> */}
+                  <details><summary>{row?.subItem}</summary>
+                  {parse(row?.subAction || '')}</details>
                 </TableRow>
               ))}
           </TableBody>
