@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getTCFs } from "../../actions/TCFs";
 import TCFPrev from "../previews/TCFPrev";
+import TabComponent from "../../components/TabComponent"
 
 const TCFList = ({ currentID }) => {
 
@@ -25,6 +26,8 @@ const TCFList = ({ currentID }) => {
     </IconButton>
   );
 
+  const filteredTCFs = TCFs.filter(data => data.pscID === currentID);
+
   if (!TCFs) return <CircularProgress />;
 
   const handleDeleteRow = () => {
@@ -37,7 +40,8 @@ const TCFList = ({ currentID }) => {
   return (
     <div>
       <Box sx={{ width: "100%" }}>
-        {/* TCF List */}
+        <TabComponent data={filteredTCFs} />
+        
         {TCFs.filter((data) => data.pscID === currentID).map((data) => {
           return (
             <li key={data._id}>
