@@ -4,7 +4,6 @@ import { updateHEX, createHEX, deleteHEX, createHEXChange, } from "../actions/HE
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Form, FormSpy } from "react-final-form";
-import FlashMessage from "react-flash-message";
 
 import Summary from "./HEXForms/Summary";
 import EngineFields from "./EngineFields";
@@ -188,7 +187,6 @@ const HEXForm = (HEXData) => {
           </Stack>
 
 
-                  <FlashMessage duration={5000}></FlashMessage>
               </Grid>
         <Grid item xs={5}>
                   {values.ChangeModel && <CompareSheet values={values} />}

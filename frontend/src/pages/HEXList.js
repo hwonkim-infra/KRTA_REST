@@ -11,7 +11,7 @@ import {
 
 import {Edit as EditIcon, Print as PrintIcon, Queue as QueueIcon, TextSnippet }  from "@mui/icons-material/";
 
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 import SpecSheet from "./previews/SpecSheet";
 import CertPrev from "./previews/CertPrev";
@@ -74,6 +74,7 @@ const HEXList = () => {
             <DataGrid
                   rows={rows}
               columns={columns}
+              components={{Toolbar: GridToolbar }}
               initialState={{
                 sorting: { sortModel: [{field: 'model_name', sort: 'asc'}]}
               }}
