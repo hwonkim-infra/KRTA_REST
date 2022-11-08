@@ -42,14 +42,14 @@ const TCFList = ({ currentID }) => {
       <Box sx={{ width: "100%" }}>
         <TabComponent data={filteredTCFs} />
         
-        {TCFs.filter((data) => data.pscID === currentID).map((data) => {
+{/*         {TCFs.filter((data) => data.pscID === currentID).map((data) => {
           return (
             <li key={data._id}>
               
               <TCFPrev data = {data} />
             </li>
           );
-        })}
+        })} */}
       </Box>
     </div>
   );

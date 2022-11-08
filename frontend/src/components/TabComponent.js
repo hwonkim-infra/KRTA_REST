@@ -52,24 +52,36 @@ export default function BasicTabs({data}) {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+    <Tab label=" One" {...a11yProps(0)} />
+    <Tab label=" Two" {...a11yProps(1)} />
+    <Tab label=" Three" {...a11yProps(2)} />
+   {/*  {data.map(((values, index) => {
+          return (<>
+            <Tab label={values._id} {...a11yProps(index)} />
+            <TabPanel value={value} index={index} >
+              <TCFPrev data = {values} />
+      </TabPanel>
+        </>)
+      }))} */}
+  </Tabs>
             
-
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
+        
+          
+      {data.map(((values, index) => {
+          return (<>
+        <TabPanel value={value} index={index} >
+              <TCFPrev data = {values} />
+      </TabPanel>
+        </>)
+      }))}
       </Box>
-      <TabPanel value={value} index={0}>
-        {console.log(data.item)}
-        {data? data.item : <CircularProgress /> }
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+{/*       <TabPanel value={value} index={0}>
+        {console.log(data)}
+        {console.log(data[0])}
+        {data[0] ? data[0].item : <CircularProgress /> }
+      </TabPanel> */}
+
     </Box>
   );
 }
