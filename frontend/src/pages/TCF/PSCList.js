@@ -78,7 +78,7 @@ const PSCList = () => {
         </Grid>
         <Grid item xs={6}>
           <Paper elevation={2} style={{ padding: "5px", m:1 }}>
-            <Stack
+{/*             <Stack
               direction="row"
               spacing={2}
               alignItems="center"
@@ -90,7 +90,7 @@ const PSCList = () => {
               <Box component="span" sx={{ fontSize: "h8.fontSize" }}>
                 {currentPSC.reference}
               </Box>
-            </Stack>
+            </Stack> */}
 
             <PSCDetailPrev currentPSC={currentPSC}/>
           </Paper>

@@ -69,8 +69,6 @@ const PSCForm = () => {
     await dispatch(updatePSC(id, values))
       .then((response) => {
         console.log(response);
-        // setMessage("This File updated successfully!");
-        // navigate("/PSC");
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -123,8 +121,6 @@ const PSCForm = () => {
                 >
                   Remove Action
                 </Button>
-                <DetailInput />
-                <Typography>Risk Reduction</Typography>
 
                 <Stack
                   direction="row"
@@ -156,10 +152,17 @@ const PSCForm = () => {
                 </Stack>
               </Grid>
               <Grid item xs={6}>
-              
+              <DetailInput />
+              <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => push("actions", undefined)}
+                >
+                  Add Action
+                </Button>
                 {/* <TCFview values={values} /> */}
 
-                <pre>{JSON.stringify(values, 0, 2)}</pre>
+                {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
               </Grid>
             </Grid>
           </form>
