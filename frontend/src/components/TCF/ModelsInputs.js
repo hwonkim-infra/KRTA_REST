@@ -1,4 +1,4 @@
-import { Grid, Paper } from "@mui/material";
+import { FormGroup, Grid, Paper } from "@mui/material";
 import { Checkboxes } from "mui-rff";
 import React from "react";
 import { useState } from "react";
@@ -39,6 +39,7 @@ const ModelsInput = () => {
             <Checkboxes
               label="large EX"
               name="models"
+              component={FormGroup}
               data={checkboxDatas(LargeModels)}
               sx={{ "& .MuiSvgIcon-root": { fontSize: 12 } }}
             />

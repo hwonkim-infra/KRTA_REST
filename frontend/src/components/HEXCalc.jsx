@@ -8,17 +8,17 @@ const roundOne = (num) => {
 
 
 const HEXCalc = (values) => {
-    values.undercarriage ??= {};
-    values.engine ??= {};
-    values.attachments ??= {};
-    values.swivel ??= {};
-    values.travel ??= {};
-    values.drawings ??= {};
-    values.description ??= {};
-    values.COG ??= {};
-    values.transport ??= {};
+    /* values.undercarriage ?? = {};
+    values.engine ?? = {};
+    values.attachments ?? = {};
+    values.swivel ?? = {};
+    values.travel ?? = {};
+    values.drawings ?? = {};
+    values.description ?? = {};
+    values.COG ?? = {};
+    values.transport ?? = {}; */
 
-console.log("🚀 ~ file: HEXCalc.jsx ~ line 11 ~ HEXCalc ~ values", values)
+    console.log("🚀 ~ file: HEXCalc.jsx ~ line 11 ~ HEXCalc ~ values", values)
     const grossWeight = Number(values.operating_weight) + 65; // 총중량
     const bucket_exca_capa = Number(values.attachments.bucket_heap) * 1500; // 산적 시 버켓 중량
     const quick_coupler_weight = Math.max(
@@ -29,8 +29,8 @@ console.log("🚀 ~ file: HEXCalc.jsx ~ line 11 ~ HEXCalc ~ values", values)
     const grossWeight_load = grossWeight + bucket_exca_capa; // 적재총중량
 
     const ground_Length =
-        0.65 * values.undercarriage.tumbler_distance +
-        0.35 * values.undercarriage.track_length; // 접지길이
+        Math.round(0.65 * values.undercarriage.tumbler_distance +
+            0.35 * values.undercarriage.track_length) / 10; // 접지길이
     const ground_pressure =
         roundTwo(
             grossWeight /

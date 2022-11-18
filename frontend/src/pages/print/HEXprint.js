@@ -16,6 +16,7 @@ import TravelSlope from "./TravelSlope";
 import StabilityHX from "./StabilityHX";
 import Drawings from "./Drawings";
 import Transportation from "./Transportation";
+import AppendixDrawings from "./AppendixDrawings";
 
 const HEXprint = () => {
   
@@ -50,6 +51,7 @@ const HEXprint = () => {
       <HEXSpec values={HEXdata} />
       {HEXdata.ChangeModel && <CompareChange values={HEXdata} />}
       <Drawings values={HEXdata}  />
+      <AppendixDrawings values={HEXdata}  />
       <WorkingRange values={HEXdata} />
       <QCouplr values={HEXdata} />
       <GrossWeights values={HEXdata} />

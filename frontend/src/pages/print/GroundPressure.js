@@ -49,14 +49,14 @@ const GroundPressure = ({ values, config }) => {
                       <td>
                         L<sub>t</sub>{" "}
                       </td>
-                      <td>{values.undercarriage?.track_length / 10}</td>
+                      <td>{(values.undercarriage?.track_length / 10)}</td>
                       <td>(㎝)</td>
                       <td>　</td>
                     </tr>
                     <tr>
                       <td>접지길이</td>
                       <td>L</td>
-                      <td>{values.undercarriage?.ground_Length / 10}</td>
+                      <td>{values.undercarriage?.ground_Length}</td>
                       <td>(㎝)</td>
                       <td>
                       l+0.35×(L<sub>t</sub>-L<sub>c</sub>)

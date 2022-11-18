@@ -122,7 +122,9 @@ const HEXSchema = new Schema({
         Emission_Certi: String,
         Emission_Certi2: String,
         EngineCurve: String,
+        
     },
+    appendix: Array,
 
     description: {
         swing_reduction: String,

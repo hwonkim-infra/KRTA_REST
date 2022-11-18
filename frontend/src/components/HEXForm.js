@@ -4,6 +4,7 @@ import { updateHEX, createHEX, deleteHEX, createHEXChange, } from "../actions/HE
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Form, FormSpy } from "react-final-form";
+import arrayMutators from 'final-form-arrays'
 
 import Summary from "./HEXForms/Summary";
 import EngineFields from "./EngineFields";
@@ -115,6 +116,11 @@ const HEXForm = (HEXData) => {
       <Form
         onSubmit={onSubmit}
         initialValues={HEXData.HEXData || ""}
+        mutators={{
+          // potentially other mutators could be merged here
+          ...arrayMutators
+        }}
+    
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
@@ -192,7 +198,7 @@ const HEXForm = (HEXData) => {
                   {values.ChangeModel && <CompareSheet values={values} />}
                   <SpecSheet values={values} />
 
-                    {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+                    <pre>{JSON.stringify(values, 0, 2)}</pre>
 
             </Grid>
       </Grid>

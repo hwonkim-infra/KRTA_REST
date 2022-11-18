@@ -15,6 +15,7 @@ import TravelSpecHW from "./TravelSpecHW";
 import TravelSlopeWX from "./TravelSlopeWX";
 import TravelBrakingWX from "./TravelBrakingWX";
 import Drawings from "./Drawings";
+import AppendixDrawings from "./AppendixDrawings";
 
 const WEXprint = () => {
   const { id } = useParams();
@@ -46,6 +47,8 @@ const WEXprint = () => {
     <div>
       <WEXSpec {...WEXdata} />
       {WEXdata.ChangeModel && <CompareChangeWX values={WEXdata} />}
+      <Drawings values={WEXdata}  />
+      <AppendixDrawings values={WEXdata}  />
       <WorkingRange values={WEXdata} />
       <QCouplr values={WEXdata} />
       <GrossWeights values={WEXdata} />
@@ -54,7 +57,6 @@ const WEXprint = () => {
       <TravelSpecHW values={WEXdata} config={config} />
       <TravelSlopeWX values={WEXdata} config={config} />
       <TravelBrakingWX values={WEXdata} config={config} />
-      <Drawings values={WEXdata}  />
       {/*       
       <StabilityHX values={WEXdata}  />
       <Transportation values={WEXdata}  /> */}

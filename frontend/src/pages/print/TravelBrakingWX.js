@@ -26,15 +26,15 @@ const TravelBrakingWX = ({ values, config }) => {
     1
   );
   const decceleration = (decceleration_rate * 9.81).toFixed(1);
-  const braking_distance_max = (
+  const braking_distance_max = Math.round(
     (values.travel?.travel_speed ** 2 / (2 * decceleration)) *
       (1000 / 3600) ** 2 +
     idle_running * values.travel?.travel_speed * (1000 / 3600)
-  ).toFixed(1);
-  const braking_distance_norm = (
+  *100)/100;
+  const braking_distance_norm = Math.round(
     (braking_speed_standard ** 2 / (2 * decceleration)) * (1000 / 3600) ** 2 +
     idle_running * braking_speed_standard * (1000 / 3600)
-  ).toFixed(1);
+  *100)/100;
 
   return (
     <>

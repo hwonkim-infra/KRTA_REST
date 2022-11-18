@@ -4,7 +4,7 @@ import { updateWEX, createWEX, deleteWEX, createWEXChange, } from "../actions/WE
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Form, FormSpy } from "react-final-form";
-import FlashMessage from "react-flash-message";
+import arrayMutators from 'final-form-arrays'
 
 import Summary from "./HEXForms/Summary";
 import EngineFields from "./EngineFields";
@@ -115,20 +115,12 @@ const WEXForm = (WEXData) => {
       <Form
         onSubmit={onSubmit}
         initialValues={
-          WEXData.WEXData ||
-          {
-            /* 
-            undercarriage: {},
-            engine: {},
-            attachments: {},
-            swivel: {},
-            travel: {},
-            drawings: {},
-            description: {},
-            COG: {},
-            transport: {}, */
-          }
+          WEXData.WEXData || ''
         }
+        mutators={{
+          // potentially other mutators could be merged here
+          ...arrayMutators
+        }}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
@@ -196,14 +188,13 @@ const WEXForm = (WEXData) => {
                   </Button>
                 </Stack>
 
-                <FlashMessage duration={5000}></FlashMessage>
               </Grid>
               <Grid item xs={5}>
                 {values.ChangeModel && <CompareSheetWX values={values} />}
                 <FormSpy subscription={{ values: true }}>
                   {({ values }) => <SpecSheetWX values={values} />}
                 </FormSpy>
-                <pre>{JSON.stringify(values, 0, 2)}</pre>
+                {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
               </Grid>
             </Grid>
             {WEXCalc(values)}
