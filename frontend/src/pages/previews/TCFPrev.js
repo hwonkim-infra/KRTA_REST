@@ -7,7 +7,7 @@ const TCFPrev = ({ data }) => {
   if (!data) return <CircularProgress />;
 
   return (
-    <div>
+    <>
       <Paper elevation={2} style={{ padding: "10px", }} >
         <table>
           <thead>
@@ -67,7 +67,7 @@ const TCFPrev = ({ data }) => {
           </tbody>
         </table>
       </Paper>
-    </div>
+    </>
   );
 };
 

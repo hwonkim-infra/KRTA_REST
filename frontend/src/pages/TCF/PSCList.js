@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { Edit as EditIcon, Queue as QueueIcon, } from "@mui/icons-material/";
+import { Edit as EditIcon, PostAdd } from "@mui/icons-material/";
 import { Box, Button, CircularProgress, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getPSCs } from "../../actions/PSCs";
 import PSCDetailPrev from "../previews/PSCDetailPrev";
 import TCFList from "./TCFList";
-import { Link } from "react-router-dom";
 
 const PSCList = () => {
   const [currentPSC, setCurrentPSC] = useState({});
@@ -54,11 +54,11 @@ const PSCList = () => {
     <div>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          {/* <Paper elevation={2} style={{ padding: "5px" }}> */}
+          <Paper elevation={2} style={{ padding: "5px" }}>
             <Box sx={{ width: "100%", height: 900}}>
               <Stack direction="row" spacing={1}>
                 <Button size="small" component="a" href={"/PSC/new"}>
-                  Add
+                  Add Item
                 </Button>
               </Stack>
                 <DataGrid
@@ -74,34 +74,17 @@ const PSCList = () => {
                   }}
                 />
             </Box>
-          {/* </Paper> */}
+          </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper elevation={2} style={{ padding: "5px", m:1 }}>
-{/*             <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Box component="span" sx={{ fontSize: "h5.fontSize" }}>
-                {currentPSC.item}
-              </Box>
-              <Box component="span" sx={{ fontSize: "h8.fontSize" }}>
-                {currentPSC.reference}
-              </Box>
-            </Stack> */}
+        {currentPSC._id && (<><Paper elevation={2} style={{ padding: "5px", m:1 }}>
 
             <PSCDetailPrev currentPSC={currentPSC}/>
           </Paper>
-
-          <Typography component="h3">
-
-          </Typography>
           <Box>
             <Button
               variant='compromised'
-              startIcon={<QueueIcon />}
+              startIcon={<PostAdd />}
               psc_id={currentPSC}
             >
               <Link
@@ -117,6 +100,7 @@ const PSCList = () => {
           <Paper elevation={2} style={{ padding: "5px" }}>
             <TCFList currentID={currentPSC._id} />
           </Paper>
+          </>)}
         </Grid>
       </Grid>
     </div>

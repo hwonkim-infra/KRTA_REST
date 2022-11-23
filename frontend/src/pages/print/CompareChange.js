@@ -182,7 +182,11 @@ const CompareChange = ({ values }) => {
               <td>{values.engine?.power} </td>
             </tr>
           )}
-          
+          <tr contenteditable="true" height="50">
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
           
         </tbody>
       </table>

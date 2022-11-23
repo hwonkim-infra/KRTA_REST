@@ -170,6 +170,7 @@ const WEXSchema = new Schema({
         climb: String,
         bucket_creep: String,
     },
+    appendix: Array,
 
     // 무게중심 관련
     COG: {

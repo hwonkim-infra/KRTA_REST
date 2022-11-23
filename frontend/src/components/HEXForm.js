@@ -198,7 +198,7 @@ const HEXForm = (HEXData) => {
                   {values.ChangeModel && <CompareSheet values={values} />}
                   <SpecSheet values={values} />
 
-                    <pre>{JSON.stringify(values, 0, 2)}</pre>
+                    {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
 
             </Grid>
       </Grid>

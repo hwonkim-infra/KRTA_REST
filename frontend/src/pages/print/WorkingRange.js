@@ -28,7 +28,7 @@ const WorkingRange = ({ values }) => {
                   <td>퀵 커플러 미장착</td>
                 </tr>
                 <tr>
-                  <td>최대덤프높이 D </td>
+                  <td>최대덤프높이 E </td>
                   <td id="">{values.attachments?.loading_height}</td>
                   <td id="">{values.attachments?.loading_height_woqc}</td>
                 </tr>
@@ -38,7 +38,7 @@ const WorkingRange = ({ values }) => {
                   <td id="">{values.attachments?.digging_reach_woqc}</td>
                 </tr>
                 <tr>
-                  <td>최대굴착깊이 C </td>
+                  <td>최대굴착깊이 B </td>
                   <td id="">{values.attachments?.digging_depth}</td>
                   <td id="">{values.attachments?.digging_depth_woqc}</td>
                 </tr>

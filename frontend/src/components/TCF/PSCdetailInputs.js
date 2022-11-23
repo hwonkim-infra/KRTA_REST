@@ -1,10 +1,9 @@
+import { Button, Paper } from "@mui/material";
+import { Editor } from "@tinymce/tinymce-react";
+import { TextField } from "mui-rff";
 import React from "react";
 import { Field } from "react-final-form";
 import { FieldArray } from "react-final-form-arrays";
-import { TextField } from "mui-rff";
-import { Editor } from "@tinymce/tinymce-react";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Button, Paper } from "@mui/material";
 
 const PSCdetailInput = (values = {}) => {
   return (
@@ -23,12 +22,13 @@ const PSCdetailInput = (values = {}) => {
                       tinymceScriptSrc={
                         process.env.PUBLIC_URL + "/tinymce/tinymce.min.js"
                       }
-                      value={value + ""}
+                      value={value + ""}                      
                       init={{ height: "320", resize: true, menubar: false }}
                       onEditorChange={(e) => onChange(e)}
                     />
                   )}
                 </Field>
+                {/* {console.trace()} */}
                 <span
                   onClick={() => fields.remove(index)}
                   style={{ cursor: "pointer" }}
@@ -36,7 +36,8 @@ const PSCdetailInput = (values = {}) => {
                   <Button
                     variant="outlined"
                     size="small"
-                    onClick={() => fields.remove(index)}
+                    onClick={() => fields.remove(index)
+                    }
                   >
                     Remove Action
                   </Button>
