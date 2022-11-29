@@ -93,6 +93,7 @@ const HEXSchema = new Schema({
     travel: {
         pump_displacement: Number,
         pump_pressure: Number,
+        traction_force: Number,
         TM_flow_1: Number,
         TM_flow_2: Number,
         TM_mv: Number,
@@ -102,6 +103,17 @@ const HEXSchema = new Schema({
         sprocket_radius: Number,
         drag: Number,
         reduc: Number,
+        
+        TM_1: Number,
+        TM_2: Number,
+
+        DP: Number, // 견인력 계산
+
+        theta_1: Number,    // 미끄러짐 등판각
+        theta_2: Number,    // 견인력 등판각
+
+        friction_surface: Number,
+        traction_slope: Number,
         greadability_ref: Number,
         brake_torque: Number,
 

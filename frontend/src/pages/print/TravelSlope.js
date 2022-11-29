@@ -57,6 +57,8 @@ const TravelSlope = ({ values, config }) => {
   ).toFixed(1);
   const theta_3 = values.travel?.greadability_ref;
 
+  
+
   return (
     <>
       <MathJaxContext version={3} config={config}>
@@ -180,7 +182,7 @@ const TravelSlope = ({ values, config }) => {
           </table>
         </div>
 
-        <div className="pages" id="Greadability">
+        {values.travel?.pump_pressure && <div className="pages" id="Greadability">
           <table className="bordertable">
             <thead>
               <tr className="borderheader">
@@ -190,7 +192,7 @@ const TravelSlope = ({ values, config }) => {
             <tbody>
               <tr>
                 <td className="head_description">
-                  <p>▷ 아래 계산 결과에 따라 주행 견인력은 {DP} kgf</p>
+                  <p>▷ 아래 계산 결과에 따라 주행 견인력은 {values.travel?.DP} kgf</p>
                   <div className="head_description">주행 모터 토크 계산</div>
 
                   <table className="innertable" width="100%">
@@ -205,7 +207,7 @@ const TravelSlope = ({ values, config }) => {
                         </td>
 
                         <td>
-                          <MathJax>{`$$${TM_1}$$`}</MathJax>
+                          <MathJax>{`$$${values.travel?.TM_1}$$`}</MathJax>
                         </td>
                       </tr>
                       <tr>
@@ -215,7 +217,7 @@ const TravelSlope = ({ values, config }) => {
                         </td>
 
                         <td>
-                          <MathJax>{`$$${TM_2}$$`}</MathJax>
+                          <MathJax>{`$$${values.travel?.TM_2}$$`}</MathJax>
                         </td>
                       </tr>
                     </tbody>
@@ -234,7 +236,7 @@ const TravelSlope = ({ values, config }) => {
                       </tr>
                       <tr>
                         <td>
-                          <MathJax>{`$$TS = \\frac{2 \\times \\TM_{max} \\times 1,000}{R} \\times \\mu_r$$`}</MathJax>
+                          <MathJax>{`$$TS = \\frac{2 \\times \TM_{max} \\times 1,000}{R} \\times \\mu_r$$`}</MathJax>
                         </td>
                         <td>
                           <MathJax>{`$$ \\frac{2 \\times ${Math.max(
@@ -272,7 +274,7 @@ const TravelSlope = ({ values, config }) => {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div>}
 
         <div className="pages" id="Greadability_Slope">
           <table className="bordertable">
@@ -289,9 +291,7 @@ const TravelSlope = ({ values, config }) => {
                     <br />
                     아래 계산 결과에 따라 등판 가능 경사각:{" "}
                     <MathJax>{`$$ ${Math.min(
-                      theta_1,
-                      theta_2,
-                      theta_3
+                      values.travel?.greadability
                     )}°$$`}</MathJax>
                   </p>
 
@@ -341,10 +341,10 @@ const TravelSlope = ({ values, config }) => {
                           <MathJax>{`$$\\theta_2 = \\sin^{-1}{\\frac{DP - \\xi W_T}{W_T}} $$`}</MathJax>
                         </td>
                         <td>
-                          <MathJax>{`$$\\sin^{-1}(\\frac{${DP}  - ${values.travel?.surface_drag} \\times ${values.grossWeight}}{${values.grossWeight}}) $$`}</MathJax>
+                          <MathJax>{`$$\\sin^{-1}(\\frac{${DP || values.travel?.traction_force}  - ${values.travel?.surface_drag || values.travel?.friction_surface} \\times ${values.grossWeight}}{${values.grossWeight}}) $$`}</MathJax>
                         </td>
                         <td>
-                          <MathJax>{`$$ ${theta_2} $$`}</MathJax>
+                          <MathJax>{`$$ ${values.travel?.theta_2 || values.travel?.traction_slope} $$`}</MathJax>
                         </td>
                       </tr>
 

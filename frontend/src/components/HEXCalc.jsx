@@ -6,6 +6,13 @@ const roundOne = (num) => {
     return +(Math.round(num + "e+1") + "e-1");
 };
 
+const degrees_to_radians = (degrees) => {
+    return degrees / (180 / Math.PI);
+};
+const radians_to_degrees = (radians) => {
+    return radians * (180 / Math.PI);
+};
+
 
 const HEXCalc = (values) => {
     /* values.undercarriage ?? = {};
@@ -34,12 +41,12 @@ const HEXCalc = (values) => {
     const ground_pressure =
         roundTwo(
             grossWeight /
-            ((((2 * values.undercarriage.shoe_width) / 10) * ground_Length) / 10)
+            ((2 * values.undercarriage.shoe_width / 10) * ground_Length)
         ) || null; // 접지압
     const ground_pressure_woqc =
         roundTwo(
             (grossWeight - quick_coupler_weight) /
-            ((((2 * values.undercarriage.shoe_width) / 10) * ground_Length) / 10)
+            ((2 * values.undercarriage.shoe_width / 10) * ground_Length)
         ) || null; // 접지압
 
     /* 주행성능 */
@@ -93,7 +100,28 @@ const HEXCalc = (values) => {
         Math.asin((DP - values.travel.drag * grossWeight) / grossWeight)
     ).toFixed(1);
     const theta_3 = values.travel.greadability_ref;
-    const greadability = Math.min(theta_1, theta_2, theta_3) || null;
+
+    const noslip_slope = radians_to_degrees(
+        Math.atan(values.travel.friction_surface)
+    ).toFixed(1);
+    const traction_slope = radians_to_degrees(
+        Math.asin(
+            Number((values.travel.traction_force -
+                    values.travel.drag * grossWeight) /
+                grossWeight)
+        )
+    ) || '';
+
+
+    /* 두 경우의 등판각 비교 */
+    const greadability_1 = Math.min(theta_1, theta_2, theta_3)
+    const greadability_2 = Math.min(
+        values.travel.greadability_ref,
+        noslip_slope,
+        traction_slope
+    )
+
+    const greadability = greadability_1 || greadability_2
 
     /* 전도안정도 */
 
@@ -138,12 +166,16 @@ const HEXCalc = (values) => {
         (values.swivel.swing_rev = swing_rev),
         (values.travel.TM_rev_1 = TM_rev_1),
         (values.travel.TM_rev_2 = TM_rev_2),
+        (values.travel.TM_1 = TM_1),
+        (values.travel.TM_2 = TM_2),
+
+        (values.travel.DP = DP),
         (values.travel.travel_speed_1 = travel_speed_1),
         (values.travel.travel_speed_2 = travel_speed_2),
         (values.travel.travel_speed = travel_speed),
         (values.travel.theta_1 = theta_1),
         (values.travel.theta_2 = theta_2),
-        (values.travel.theta_3 = theta_3),
+        (values.travel.traction_slope = traction_slope),
         (values.travel.greadability = greadability),
         (values.transport.transport_1_weight = transport_1_weight),
         (values.COG.COG_longitudinal = COG_longitudinal),
