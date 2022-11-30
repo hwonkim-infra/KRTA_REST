@@ -1,9 +1,10 @@
-import { Button, Paper } from "@mui/material";
+import { Button, Grid, Paper } from "@mui/material";
 import { Editor } from "@tinymce/tinymce-react";
 import { TextField } from "mui-rff";
 import React from "react";
 import { Field } from "react-final-form";
 import { FieldArray } from "react-final-form-arrays";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const PSCdetailInput = (values = {}) => {
   return (
@@ -15,7 +16,17 @@ const PSCdetailInput = (values = {}) => {
               <div key={name}>
                 {/* <label>Sub Item #{index + 1}</label> */}
                 {/* <Field name={`${name}.subItem`} component="input" placeholder="sub Item" />  */}
-                <TextField name={`${name}.subItem`} label="Sub Item" />
+          <Grid container alignItems="flex-start" spacing={2}>
+
+                <Grid item xs={11}>
+                  <TextField name={`${name}.subItem`} label="Sub Item" />
+                </Grid>
+                <Grid item xs={1}
+                  // style={{ cursor: "pointer" }}
+                >
+                  <DeleteForeverIcon fontSize="large" style={{ cursor: "pointer" }} onClick={() => fields.remove(index)} />                  
+                </Grid>
+          </Grid>
                 <Field name={`${name}.subAction`}>
                   {({ input: { onChange, value } }) => (
                     <Editor
@@ -29,20 +40,7 @@ const PSCdetailInput = (values = {}) => {
                   )}
                 </Field>
                 {/* {console.trace()} */}
-                <span
-                  onClick={() => fields.remove(index)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    onClick={() => fields.remove(index)
-                    }
-                  >
-                    Remove Action
-                  </Button>
-                  {/* <DeleteIcon /> */}
-                </span>
+                
               </div>
             ))
           }

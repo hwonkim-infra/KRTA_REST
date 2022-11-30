@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { Form, Field } from "react-final-form";
 import { Editor } from "@tinymce/tinymce-react";
-import { FieldArray } from "react-final-form-arrays";
+import React, { useState } from "react";
+import { Field } from "react-final-form";
 import DrawingAdditional from "./DrawingAdditional";
 
 const TabPanel = (props) => {

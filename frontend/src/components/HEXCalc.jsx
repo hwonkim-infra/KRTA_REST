@@ -94,11 +94,11 @@ const HEXCalc = (values) => {
     const theta_1 = (
         Math.atan(values.travel.surface_drag) *
         (180 / Math.PI)
-    ).toFixed(1);
+    ) || '';
     const theta_2 = (
         (180 / Math.PI) *
         Math.asin((DP - values.travel.drag * grossWeight) / grossWeight)
-    ).toFixed(1);
+    ) || '';
     const theta_3 = values.travel.greadability_ref;
 
     const noslip_slope = radians_to_degrees(
