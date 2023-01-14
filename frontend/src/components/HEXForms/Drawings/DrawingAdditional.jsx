@@ -17,7 +17,7 @@ const DrawingAdditional = () => {
                             <Grid container alignItems="flex-start" spacing={2}>
                             <Grid item xs={11}>
 
-                  <TextField name={`${name}.subItem`} label="기타 항목" />
+                  <TextField name={`${name}.subItem`} label="자료 제목" />
                 </Grid>
                 <Grid item xs={1}
                   // style={{ cursor: "pointer" }}
@@ -48,7 +48,7 @@ const DrawingAdditional = () => {
                   size="small"
                 onClick={() => fields.push({subItem: '', subDrawing: ''})}
                 >
-                  Add Action
+                  도면 추가
                 </Button>
             </div>
           )}

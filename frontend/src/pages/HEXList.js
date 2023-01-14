@@ -97,8 +97,8 @@ const HEXList = () => {
             alignItems="flex-end"
             justifyContent="space-between"
           >
+            {console.log(currentHEX?.model_name)}
             <Box component="span" sx={{ fontSize: "h4.fontSize" }}>
-              {" "}
               {currentHEX?.model_name}
             </Box>
             <Box component="span" sx={{ p: 1, border: "1px" }}>
