@@ -24,6 +24,7 @@ import {TCFcreate, TCFedit} from "./pages/TCF/TCFForm";
 import BLOGs from "./pages/Blog/BLOGs";
 import Blog from "./pages/Blog/Blog";
 import BlogEdit from "./pages/Blog/BlogEdit";
+import Topbar from "./components/nav-section/Topbar";
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
     <div >
       <Container maxWidth={false} >
         <BrowserRouter>
+        <Topbar />
           <Routes>
             <Route path="/" >
               <Route index element={<> <Navbar modelType={'HEX'}/> <HEXList /></>} />
