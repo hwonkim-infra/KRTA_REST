@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
-const ROOTS_DASHBOARD = '/';
+const ROOTS_DASHBOARD = '/dashboard';
 
 function path(root, sublink) {
   return `${root}${sublink}`;
@@ -31,6 +31,8 @@ const PATH_DASHBOARD = {
   
   KRTA: {
     HEX: path(ROOTS_DASHBOARD, '/HEX'),
+    WEX: path(ROOTS_DASHBOARD, '/WEX'),
+
     HEXnew: path(ROOTS_DASHBOARD, '/HEX/new'),
     HEXedit: (id) => path(ROOTS_DASHBOARD, `/HEX/${id}`),
     HEXprint: (id) => path(ROOTS_DASHBOARD, `/HEX/print/${id}`),
@@ -102,39 +104,22 @@ const navConfig = [
         path: PATH_DASHBOARD,
         icon: ICONS.kanban,
         children: [
-          { title: 'HEX', path: PATH_DASHBOARD.KRTA.HEX },
-          { title: 'WEX', path: PATH_DASHBOARD.KRTA.WEX },
-          { title: 'WLD', path: PATH_DASHBOARD.KRTA.WLD },
+          { title: 'HEX', path: "/" },
+          { title: 'WEX', path: "/WEX" },
+          // { title: 'WEX', path: PATH_DASHBOARD.KRTA.WEX },
+          // { title: 'WLD', path: PATH_DASHBOARD.KRTA.WLD },
         ],
       },
 
       // E-COMMERCE
       {
-        title: 'ecommerce',
-        path: PATH_DASHBOARD.eCommerce.root,
+        title: 'PSC',
+        path: PATH_DASHBOARD,
         icon: ICONS.cart,
         children: [
-          { title: 'shop', path: PATH_DASHBOARD.eCommerce.shop },
-          { title: 'product', path: PATH_DASHBOARD.eCommerce.demoView },
-          { title: 'list', path: PATH_DASHBOARD.eCommerce.list },
-          { title: 'create', path: PATH_DASHBOARD.eCommerce.new },
-          { title: 'edit', path: PATH_DASHBOARD.eCommerce.demoEdit },
-          { title: 'checkout', path: PATH_DASHBOARD.eCommerce.checkout },
+          { title: 'PSC list', path: "/PSC" },
         ],
-      },
-
-      // INVOICE
-      {
-        title: 'invoice',
-        path: PATH_DASHBOARD.invoice.root,
-        icon: ICONS.invoice,
-        children: [
-          { title: 'list', path: PATH_DASHBOARD.invoice.list },
-          { title: 'details', path: PATH_DASHBOARD.invoice.demoView },
-          { title: 'create', path: PATH_DASHBOARD.invoice.new },
-          { title: 'edit', path: PATH_DASHBOARD.invoice.demoEdit },
-        ],
-      },
+      },     
 
       // BLOG
       {
@@ -142,9 +127,7 @@ const navConfig = [
         path: PATH_DASHBOARD.blog.root,
         icon: ICONS.blog,
         children: [
-          { title: 'posts', path: PATH_DASHBOARD.blog.posts },
-          { title: 'post', path: PATH_DASHBOARD.blog.demoView },
-          { title: 'create', path: PATH_DASHBOARD.blog.new },
+          { title: 'posts', path: "/blog" },
         ],
       },
     ],

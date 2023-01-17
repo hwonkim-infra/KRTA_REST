@@ -14,6 +14,9 @@ import {Edit as EditIcon, Print as PrintIcon, Queue as QueueIcon, TextSnippet } 
 
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
+import HeaderBreadcrumbs from '../components/HeaderBreadcrumbs';
+import Iconify from '../components/Iconify'
+
 import SpecSheetWX from "./previews/SpecSheetWX";
 import CertPrev from "./previews/CertPrev";
 
@@ -69,6 +72,23 @@ const WEXList = () => {
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <Box sx={{ width: "100%", height: 900}}>
+          <HeaderBreadcrumbs
+          heading="Wheeled Excavator"
+          links={[
+            { name: '형식승인', },
+            { name: 'WEX',  },
+          ]}
+          action={
+            <Button
+              variant="contained"
+              component={Link}
+              to={"/WEX/new"}              
+              startIcon={<Iconify icon={'eva:plus-fill'} />}
+            >
+              New File
+            </Button>
+          }
+        />
             <DataGrid
               rows={rows}
               columns={columns}

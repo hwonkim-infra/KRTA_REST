@@ -11,9 +11,9 @@ const Topbar = () => {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box display="flex" justifyContent="space-between" p={2} backgroundColor={colors.primary[400]}>
+    <Box display="flex" justifyContent="space-between" p={1} backgroundColor='#E0E6F8'>
 
-      <Stack direction="row" justifyContent="center" sx={{ bgcolor: '#F0FFFF', borderRadius: 1, px: 0.5 }}>
+      <Stack direction="row" justifyContent="center" sx={{ bgcolor: '#F2F2F2', borderRadius: 1, px: 0.5 }}>
         {navConfig.map((group) => (
           <Stack key={group.subheader} direction="row" flexShrink={0}>
             {group.items.map((list) => (

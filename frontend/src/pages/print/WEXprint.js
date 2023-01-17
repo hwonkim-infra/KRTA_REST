@@ -44,7 +44,7 @@ const WEXprint = () => {
   };
   
   return (
-    <div>
+    <div contenteditable="true">
       <WEXSpec {...WEXdata} />
       {WEXdata.ChangeModel && <CompareChangeWX values={WEXdata} />}
       <Drawings values={WEXdata}  />

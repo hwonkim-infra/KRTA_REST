@@ -14,7 +14,6 @@ import QueueIcon from "@mui/icons-material/Queue";
 
 
 
-
 const Blog = () => {
   const {id} = useParams();
 
@@ -36,6 +35,7 @@ const Blog = () => {
             <CssBaseline />
             <Container>
             <Box>
+            
             <Typography variant="h4" sx={{mb: 3}}>
               {post.title}
             </Typography>

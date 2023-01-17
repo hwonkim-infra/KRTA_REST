@@ -34,46 +34,46 @@ const App = () => {
     <div >
       <Container maxWidth={false} >
         <BrowserRouter>
-        <Topbar />
+        {/* <Topbar /> */}
           <Routes>
             <Route path="/" >
-              <Route index element={<> <Navbar modelType={'HEX'}/> <HEXList /></>} />
+              <Route index element={<> <Topbar modelType={'HEX'}/> <HEXList /></>} />
               <Route path="HEX">
-                  <Route path="new" element={<> <Navbar/> <HEX /></>} />
-                  <Route path=":id" element={<> <Navbar/> <HEX /></>} />
+                  <Route path="new" element={<> <Topbar /> <HEX /></>} />
+                  <Route path=":id" element={<> <Topbar /> <HEX /></>} />
                   <Route path="print/:id" element={<HEXprint />} />
                   <Route path="specW/:id" element={<HEXSpecW />} />
-                  <Route path="addChange/:id/" element={<> <Navbar/> <HEX /></>} />
+                  <Route path="addChange/:id/" element={<> <Topbar /> <HEX /></>} />
               </Route>
               <Route path="WEX">
-                  <Route index element={<> <Navbar modelType={'WEX'}/> <WEXList /></>} />
-                  <Route path="new" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
-                  <Route path=":id" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
+                  <Route index element={<> <Topbar /> <WEXList /></>} />
+                  <Route path="new" element={<> <Topbar /> <WEX /></>} />
+                  <Route path=":id" element={<> <Topbar /> <WEX /></>} />
                   <Route path="print/:id" element={<WEXprint />} />
                   <Route path="specW/:id" element={<WEXSpecW />} />
-                  <Route path="addChange/:id/" element={<> <Navbar modelType={'WEX'}/> <WEX /></>} />
+                  <Route path="addChange/:id/" element={<> <Topbar /> <WEX /></>} />
               </Route>
               <Route path="PSC">
-                  <Route index element={<><Navbar modelType={'PSC'}/> <PSCs /></>} />
-                  <Route path="new" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />
-                  <Route path="edit/:id" element={<> <Navbar modelType={'PSC'}/> <PSCEdit /></>} />                  
-                  <Route path=":PSCId/newTCF" element={<> <Navbar modelType={'TCF'}/> <TCFcreate /></>} />
+                  <Route index element={<><Topbar /> <PSCs /></>} />
+                  <Route path="new" element={<> <Topbar />/> <PSCEdit /></>} />
+                  <Route path="edit/:id" element={<> <Topbar /> <PSCEdit /></>} />                  
+                  <Route path=":PSCId/newTCF" element={<> <Topbar /> <TCFcreate /></>} />
                     {/* 
                     <Route path=":PSCId/editTCF/:TCFId" element={<> <Navbar modelType={'TCF'}/> <TCFEdit /></>} />
               <Route path=":id/TCF"> */}
               </Route>
 
               <Route path="TCF">
-                <Route path="new" element={<> <Navbar modelType={'TCF'}/> <TCFcreate /></>} />
-                <Route path="edit/:TCFid" element={<> <Navbar modelType={'TCF'}/> <TCFedit /></>} />                  
+                <Route path="new" element={<><Topbar />  <TCFcreate /></>} />
+                <Route path="edit/:TCFid" element={<> <Topbar /> <TCFedit /></>} />                  
               </Route>
 
                   
               <Route path="Blog">
-                  <Route index element={<><Navbar modelType={'Blog'}/> <BLOGs /></>} />
-                  <Route path="new" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
-                  <Route path=":id" element={<> <Navbar modelType={'Blog'}/> <Blog /></>} />
-                  <Route path="edit/:id" element={<> <Navbar modelType={'Blog'}/> <BlogEdit /></>} />
+                  <Route index element={<> <Topbar /><BLOGs /></>} />
+                  <Route path="new" element={<><Topbar />  <BlogEdit /></>} />
+                  <Route path=":id" element={<><Topbar />  <Blog /></>} />
+                  <Route path="edit/:id" element={<>  <Topbar /><BlogEdit /></>} />
                   
               </Route>
 

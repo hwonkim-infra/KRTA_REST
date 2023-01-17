@@ -10,6 +10,10 @@ import { getPSCs } from "../../actions/PSCs";
 import PSCDetailPrev from "../previews/PSCDetailPrev";
 import TCFList from "./TCFList";
 
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Iconify from '../../components/Iconify'
+
+
 const PSCList = () => {
   const [currentPSC, setCurrentPSC] = useState({});
 
@@ -52,6 +56,22 @@ const PSCList = () => {
 
   return (
     <div>
+            <HeaderBreadcrumbs
+          heading="Product Safety Compliance "
+          links={[
+            { name: '규제점검리스트', },
+          ]}
+          action={
+            <Button
+              variant="contained"
+              component={Link}
+              to={"/PSC/new"}              
+              startIcon={<Iconify icon={'eva:plus-fill'} />}
+            >
+              New File
+            </Button>
+          }
+        />
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Paper elevation={2} style={{ padding: "5px" }}>

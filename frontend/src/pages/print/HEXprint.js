@@ -47,7 +47,7 @@ const HEXprint = () => {
   };
 
     return (
-    <div>
+    <div contenteditable="true">
       <HEXSpec values={HEXdata} />
       {HEXdata.ChangeModel && <CompareChange values={HEXdata} />}
       <Drawings values={HEXdata}  />

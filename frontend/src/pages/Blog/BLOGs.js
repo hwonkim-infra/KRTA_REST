@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getBlogs } from "../../actions/Blogs";
 import {
-  Grid,
+  Grid, Button, 
   ThemeProvider,
   createTheme,
   CssBaseline,
@@ -10,6 +11,9 @@ import {
 } from "@mui/material";
 import PostCard from './PostCard'
 
+
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Iconify from '../../components/Iconify'
 
 
 
@@ -33,6 +37,22 @@ const BLOGs = () => {
 
         {/* <ThemeProvider theme={theme}> */}
             <CssBaseline />
+            <HeaderBreadcrumbs
+          heading="인증규제 정보 블로그 "
+          links={[
+            { name: 'Blog', },
+          ]}
+          action={
+            <Button
+              variant="contained"
+              component={Link}
+              to={"/Blog/new"}              
+              startIcon={<Iconify icon={'eva:plus-fill'} />}
+            >
+              New File
+            </Button>
+          }
+        />
             <Container >
                 {/* <Header /> */}
                 <main> 

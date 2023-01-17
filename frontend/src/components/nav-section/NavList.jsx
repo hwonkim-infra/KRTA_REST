@@ -27,6 +27,7 @@ const NavItem = forwardRef(({ item, depth, open, ...other }, ref) => {
       depth={depth}
       disabled={disabled}
       {...other}
+      // sx={{color:"white"}}
     >
       {icon && (
         <ListItemIcon
@@ -35,17 +36,17 @@ const NavItem = forwardRef(({ item, depth, open, ...other }, ref) => {
             flexShrink: 0,
             width: ICON.NAVBAR_ITEM_HORIZONTAL,
             height: ICON.NAVBAR_ITEM_HORIZONTAL,
-          }}
+    }}
         >
           {icon}
         </ListItemIcon>
       )}
 
-      <ListItemText primary={title} />
+      <ListItemText primary={title}  />
 
       {caption && (
         <Tooltip title={caption} arrow>
-          <Box component="span" sx={{ ml: 0.5, lineHeight: 0 }}>
+          <Box component="span" sx={{ ml: 0.5, lineHeight: 0, bgcolor: '#1e1ef7' }} >
             <Iconify
               icon="eva:info-outline"
               sx={{

@@ -49,7 +49,7 @@ export default function Navbar({ modelType }) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ background: "#0000af" }} position="static">
+      <AppBar sx={{ background: "#1e1ef7" }} position="static">
         <Styledtoolbar>
           {/* <IconButton
             size="small"
@@ -76,19 +76,7 @@ export default function Navbar({ modelType }) {
             ))}
           </MenuBox>
 
-          {/* <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem>              <Link href="/" underline="hover">Crawler</Link>            </MenuItem>
-            <MenuItem>              <Link href="/WEX" underline="hover">Wheel Exca</Link>            </MenuItem>
-            <MenuItem>              <Link href="/Blog" underline="hover">                BLOG              </Link>            </MenuItem>
-          </Menu> */}
+
 
           <Button color="inherit">
             <Link href={modelType + "/new"} sx={{ color: "white" }}>

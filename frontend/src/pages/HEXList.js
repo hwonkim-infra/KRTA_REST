@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import { getHEXs } from "../actions/HEXs";
-import {
-  Grid,
-  Box,
-  Button,
-  Stack,
-} from "@mui/material";
+import { Grid, Box, Button, Stack, } from "@mui/material";
+import HeaderBreadcrumbs from '../components/HeaderBreadcrumbs';
 
 import {Edit as EditIcon, Print as PrintIcon, Queue as QueueIcon, TextSnippet }  from "@mui/icons-material/";
 
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
+import Iconify from '../components/Iconify'
 import SpecSheet from "./previews/SpecSheet";
 import CertPrev from "./previews/CertPrev";
 
@@ -71,6 +68,23 @@ const HEXList = () => {
       <Grid container spacing={2}>
         <Grid item xs={8}>
             <Box sx={{ width: "100%", height: 900}}>
+            <HeaderBreadcrumbs
+          heading="Crawler Excavator"
+          links={[
+            { name: '형식승인', },
+            { name: 'HEX',  },
+          ]}
+          action={
+            <Button
+              variant="contained"
+              component={Link}
+              to={"/HEX/new"}              
+              startIcon={<Iconify icon={'eva:plus-fill'} />}
+            >
+              New File
+            </Button>
+          }
+        />
             <DataGrid
                   rows={rows}
               columns={columns}
