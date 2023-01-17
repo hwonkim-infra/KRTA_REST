@@ -61,6 +61,7 @@ const PSCList = () => {
           links={[
             { name: '규제점검리스트', },
           ]}
+          sx={{m:2}}
           action={
             <Button
               variant="contained"

@@ -115,7 +115,7 @@ const navConfig = [
       {
         title: 'PSC',
         path: PATH_DASHBOARD,
-        icon: ICONS.cart,
+        icon: ICONS.booking,
         children: [
           { title: 'PSC list', path: "/PSC" },
         ],

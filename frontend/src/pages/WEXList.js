@@ -78,6 +78,7 @@ const WEXList = () => {
             { name: '형식승인', },
             { name: 'WEX',  },
           ]}
+          sx={{m:2}}
           action={
             <Button
               variant="contained"

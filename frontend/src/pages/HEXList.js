@@ -74,6 +74,7 @@ const HEXList = () => {
             { name: '형식승인', },
             { name: 'HEX',  },
           ]}
+          sx={{m:2}}
           action={
             <Button
               variant="contained"

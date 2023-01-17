@@ -42,6 +42,7 @@ const BLOGs = () => {
           links={[
             { name: 'Blog', },
           ]}
+          sx={{m:2}}
           action={
             <Button
               variant="contained"
